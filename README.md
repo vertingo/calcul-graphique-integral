@@ -52,7 +52,7 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
 
 
 ## Usage
-Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de n'importe quelle courbe en spécifiant la valeur des borne inférieur et supérieur de l'intégral et également visualiser graphiquement l'air sous la courbe!
+Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de n'importe quelle courbe en spécifiant la valeur des bornes inférieur et supérieur de l'intégral et également visualiser graphiquement l'air sous la courbe!
 Voyez les illustrations ci-dessous!
 
 <p align="center">
