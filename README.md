@@ -26,9 +26,6 @@ c. Donnez le chemin d’installation de mingw, c’est-à-dire à la racine du d
 </p>
 d. validez avec la touche entrée
 
-<p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW.png" width="600" height="250"/></a>
-</p>
 
 
 Installation de la bibliothèque SDL qui permet de créer des graphiques dans la console disponible sur le lien suivant: https://www.libsdl.org/
@@ -36,13 +33,13 @@ Ensuite en bas à droite accéder à l'onglet download!
 Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Code::Blocks et suivez-les étapes illustrer ci-dessous!
 
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl.png" width="600" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl2.png" width="600" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl3.png" width="600" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl.png" width="600" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl2.png" width="600" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl3.png" width="600" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl4.png" width="600" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl.png" width="600" height="350"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl2.png" width="600" height="350"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl3.png" width="600" height="350"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl.png" width="600" height="350"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl2.png" width="600" height="350"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl3.png" width="600" height="350"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl4.png" width="600" height="350"/></a><br>
 </p>
 
 
