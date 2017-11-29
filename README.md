@@ -12,7 +12,7 @@ Téléchargement et installation du logiciel Code::Blocks disponible en téléch
 3) Choisir mingw-developper-toolkit, mingw32-base, mingw32-gcc g++, msys-base comme sur
 la capture ci-dessous:
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW2.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW2.png" width="600" height="250"/></a>
 </p>
 4) Puis dans le menu « Installation » cliquez sur « Apply changes »
 5) Les packages sont alors téléchargés
@@ -22,12 +22,12 @@ a. y (yes)
 b. y (yes)
 c. Donnez le chemin d’installation de mingw, c’est-à-dire à la racine du disque c: c:\mingw
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW.png" width="600" height="250"/></a>
 </p>
 d. validez avec la touche entrée
 
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW.png" width="600" height="250"/></a>
 </p>
 
 
@@ -36,13 +36,13 @@ Ensuite en bas à droite accéder à l'onglet download!
 Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Code::Blocks et suivez-les étapes illustrer ci-dessous!
 
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl2.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl3.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl2.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl3.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl4.png" width="400" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl.png" width="600" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl2.png" width="600" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl3.png" width="600" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl.png" width="600" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl2.png" width="600" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl3.png" width="600" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl4.png" width="600" height="250"/></a><br>
 </p>
 
 
@@ -51,13 +51,13 @@ Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de 
 Voyez les illustrations ci-dessous!
 
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image1.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image1.png" width="600" height="250"/></a>
 </p>
 
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe.png" width="400" height="250"/></a>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe2.png" width="400" height="250"/></a>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe3.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe.png" width="500" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe2.png" width="500" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe3.png" width="500" height="250"/></a>
 </p>
 
 
