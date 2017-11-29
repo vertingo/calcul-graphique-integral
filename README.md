@@ -32,11 +32,15 @@ Installation de la bibliothèque SDL qui permet de créer des graphiques dans la
 Ensuite en bas à droite accéder à l'onglet download!
 Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Code::Blocks et suivez-les étapes illustrer ci-dessous!
 
+Dézippé le contenu du dossier SDL à la racine du dossier du logiciel Code::Blocks
 <p align="center">
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl.png" width="600" height="350"/></a><br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl2.png" width="600" height="350"/></a><br>
+  Assurez-vous bien que le dossier include contient bien le dossier SDL
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl3.png" width="600" height="350"/></a><br>
+  Dans Code::Blocks faites file -> new project et choissisez un projet type SDL
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl.png" width="600" height="350"/></a><br>
+ 
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl2.png" width="600" height="350"/></a><br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl3.png" width="600" height="350"/></a><br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl4.png" width="600" height="350"/></a><br>
