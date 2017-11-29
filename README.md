@@ -39,7 +39,8 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl2.png" width="600" height="350"/></a><br>
   Assurez-vous bien que le dossier include contient bien le dossier SDL<br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl3.png" width="600" height="350"/></a><br>
-
+</p>
+<p align="center">
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl.png" width="600" height="350"/></a><br>
   Dans Code::Blocks faites file -> new project et choissisez un projet type SDL
   <br>
