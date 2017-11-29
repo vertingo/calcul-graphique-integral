@@ -45,7 +45,7 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
   <br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl2.png" width="600" height="350"/></a><br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl3.png" width="600" height="350"/></a><br>
-  Indiquez le chemin du dossier contenant le bibliothèque SDL normalement stocker à la racine du dossier contenant le logiciel Code::Blocks!<br>
+  Indiquez le chemin du dossier contenant le bibliothèque SDL normalement stocker <br>à la racine du dossier contenant le logiciel Code::Blocks!<br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl4.png" width="600" height="350"/></a><br>
 </p>
 
