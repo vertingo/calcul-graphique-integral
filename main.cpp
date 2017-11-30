@@ -22,7 +22,7 @@
 double f(double x)
 {
     // changez ici la fonction que vous voulez afficher. (pas forcément un polynome)
-    return 5*x+10;
+    return sqrt(x);
 }
 
 void waitkey()            // attend qu'on appuie sur ESC
@@ -136,17 +136,11 @@ void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double),int m
     int x,y;
     double resfonc;
 
-    SDL_Surface *rectangle = SDL_CreateRGBSurface(0,5,5,32,0,0,0,0);
-    SDL_Rect surface_rect = {4,1,5,5};
-
     for(i=0;i<XRES;i++)
     {
         x = i;
         resfonc = fonc(Ecr_to_ReX(i,minX,maxX));
         y = Re_to_EcrY(resfonc,minY,maxY);
-
-       /* SDL_FillRect(rectangle, &surface_rect, SDL_MapRGB(rectangle->format,255,0,0));
-        SDL_BlitSurface(rectangle, NULL, screen, &surface_rect);*/
 
         if (i!=0)
             Line(screen,x,y,lastx,lasty,couleur);
@@ -231,8 +225,7 @@ double simpson(int n, double a, double b)
 
 }
 
-
-int main(int argc, char *argv[])
+void Calcul_Integral()
 {
   int i,n;
   float a,b,spmthd;
@@ -241,10 +234,6 @@ int main(int argc, char *argv[])
   int fonction2[15];
   int choix;
   SDL_Surface *screen;
-
-  a=0; /* Borne inferieure */
-  b=0; /* Borne superieure */
-  n=0; /* Nombre d'iteration  */
 
   SDL_Init(SDL_INIT_VIDEO);
   freopen("CON", "w", stdout); // redirects stdout
@@ -288,10 +277,16 @@ int main(int argc, char *argv[])
            SDL_UnlockSurface(screen);
            SDL_Flip(screen);
            waitkey();
-           return 0;
 
           };break;
 
   }
+}
+
+
+int main(int argc, char *argv[])
+{
+
+  Calcul_Integral();
 
 }
