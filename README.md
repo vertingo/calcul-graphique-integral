@@ -77,11 +77,11 @@ Voyez les illustrations ci-dessous!
   <br>
    <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe5.png" width="500" height="250"/></a>
   <br>
-  Représentation graphique de la fonction inverse log(x) sur [20,40]!
+  Représentation graphique de la fonction log(x) sur [0,25]!
   <br>
    <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe6.png" width="500" height="250"/></a>
   <br>
-  Représentation graphique de la fonction 1/x sur [0,15]!
+  Représentation graphique de la fonction inverse 1/x sur [0,15]!
   <br>
 </p>
 
