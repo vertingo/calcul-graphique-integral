@@ -12,7 +12,7 @@ Téléchargement et installation du logiciel Code::Blocks disponible en téléch
 3) Choisir mingw-developper-toolkit, mingw32-base, mingw32-gcc g++, msys-base comme sur
 la capture ci-dessous:
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW2.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW2.png" width="600" height="250"/></a>
 </p>
 4) Puis dans le menu « Installation » cliquez sur « Apply changes »
 5) Les packages sont alors téléchargés
@@ -22,42 +22,47 @@ a. y (yes)
 b. y (yes)
 c. Donnez le chemin d’installation de mingw, c’est-à-dire à la racine du disque c: c:\mingw
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW.png" width="600" height="250"/></a>
 </p>
 d. validez avec la touche entrée
 
-<p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-MinGW.png" width="400" height="250"/></a>
-</p>
 
 
 Installation de la bibliothèque SDL qui permet de créer des graphiques dans la console disponible sur le lien suivant: https://www.libsdl.org/
 Ensuite en bas à droite accéder à l'onglet download!
 Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Code::Blocks et suivez-les étapes illustrer ci-dessous!
 
+
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl2.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl3.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl2.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl3.png" width="400" height="250"/></a><br>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl4.png" width="400" height="250"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl.png" width="600" height="350"/></a><br>
+  Dézippé le contenu du dossier SDL à la racine du dossier du logiciel Code::Blocks<br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl2.png" width="600" height="350"/></a><br>
+  Assurez-vous bien que le dossier include contient bien le dossier SDL<br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/install-sdl3.png" width="600" height="350"/></a><br>
+</p>
+<p align="center">
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl.png" width="600" height="350"/></a><br>
+  Dans Code::Blocks faites file -> new project et choissisez un projet type SDL
+  <br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl2.png" width="600" height="350"/></a><br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl3.png" width="600" height="350"/></a><br>
+  Indiquez le chemin du dossier contenant le bibliothèque SDL normalement stocker <br>à la racine du dossier contenant le logiciel Code::Blocks!<br>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/newproject-sdl4.png" width="600" height="350"/></a><br>
 </p>
 
 
 ## Usage
-Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de n'importe quelle courbe mais également visualiser graphiquement l'air sous la courbe!
+Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de n'importe quelle courbe en spécifiant la valeur des bornes inférieure et supérieure de l'intégral et également visualiser graphiquement l'air sous la courbe!
 Voyez les illustrations ci-dessous!
 
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image1.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image1.png" width="600" height="250"/></a>
 </p>
 
 <p align="center">
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe.png" width="400" height="250"/></a>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe2.png" width="400" height="250"/></a>
-  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe3.png" width="400" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe.png" width="500" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe2.png" width="500" height="250"/></a>
+  <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe3.png" width="500" height="250"/></a>
 </p>
 
 
