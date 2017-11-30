@@ -61,27 +61,27 @@ Voyez les illustrations ci-dessous!
 
 <p align="center">
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe.png" width="500" height="250"/></a><br>
-  Représenation graphique de la fonction x²!
+  Représentation graphique de la fonction x² sur [0,25]!
   <br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe2.png" width="500" height="250"/></a>
   <br>
-  Représenation graphique de la fonction x²!
+  Représentation graphique de la fonction x² sur [25,50]!
   <br>
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe3.png" width="500" height="250"/></a>
   <br>
-  Représenation graphique d'une fonction linéaire 3*x+7!
+  Représentation graphique d'une fonction de type linéaire 3*x+7 sur [25,50]!
   <br>
    <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe4.png" width="500" height="250"/></a>
   <br>
-  Représenation graphique de la fonction x²!
+  Représentation graphique de la fonction cos(x) sur [0,100]!
   <br>
    <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe5.png" width="500" height="250"/></a>
   <br>
-  Représenation graphique de la fonction x²!
+  Représentation graphique de la fonction inverse 1/x sur [0,15]!
   <br>
    <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe6.png" width="500" height="250"/></a>
   <br>
-  Représenation graphique de la fonction x²!
+  Représentation graphique de la fonction x²!
   <br>
 </p>
 
