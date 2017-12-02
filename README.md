@@ -56,7 +56,7 @@ Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de 
 Voyez les illustrations ci-dessous!
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image1.png"><img src="images/image1.png" width="600" height="250"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image1.png" width="600" height="250"/></a>
 </p>
 
 <p align="center">
@@ -84,6 +84,7 @@ Voyez les illustrations ci-dessous!
   Représentation graphique de la fonction inverse 1/x sur [0,15]!
   <br>
 </p>
+
 ```
 Un petit coup de pouce suivez nous sur YouTube et Facebook!
 [You Tube] ==> https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1 
