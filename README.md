@@ -38,16 +38,16 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
   Dézippé le contenu du dossier SDL à la racine du dossier du logiciel Code::Blocks<br>
   <a href=""><img src="images/install-sdl2.png" width="600" height="350"/></a><br>
   Assurez-vous bien que le dossier include contient bien le dossier SDL<br>
-  <a href=""><img src="images/install-sdl3.png" width="600" height="350"/></a><br>
+  <a href="images/install-sdl3.png"><img src="images/install-sdl3.png" width="600" height="350"/></a><br>
 </p>
 <p align="center">
-  <a href=""><img src="images/newproject-sdl.png" width="600" height="350"/></a><br>
+  <a href="images/newproject-sdl.png"><img src="images/newproject-sdl.png" width="600" height="350"/></a><br>
   Dans Code::Blocks faites file -> new project et choissisez un projet type SDL
   <br>
-  <a href=""><img src="images/newproject-sdl2.png" width="600" height="350"/></a><br>
-  <a href=""><img src="images/newproject-sdl3.png" width="600" height="350"/></a><br>
+  <a href="images/newproject-sdl2.png"><img src="images/newproject-sdl2.png" width="600" height="350"/></a><br>
+  <a href="images/newproject-sdl3.png"><img src="images/newproject-sdl3.png" width="600" height="350"/></a><br>
   Indiquez le chemin du dossier contenant le bibliothèque SDL normalement stocker <br>à la racine du dossier contenant le logiciel Code::Blocks!<br>
-  <a href=""><img src="images/newproject-sdl4.png" width="600" height="350"/></a><br>
+  <a href="images/newproject-sdl4.png"><img src="images/newproject-sdl4.png" width="600" height="350"/></a><br>
 </p>
 
 
@@ -56,26 +56,26 @@ Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de 
 Voyez les illustrations ci-dessous!
 
 <p align="center">
-  <a href=""><img src="images/image1.png" width="600" height="250"/></a>
+  <a href="images/image1.png"><img src="images/image1.png" width="600" height="250"/></a>
 </p>
 
 <p align="center">
-  <a href=""><img src="images/image_courbe.png" width="500" height="250"/></a><br>
+  <a href="images/image_courbe.png"><img src="images/image_courbe.png" width="500" height="250"/></a><br>
   Représentation graphique de la fonction x² sur [0,25]!
   <br>
-  <a href=""><img src="images/image_courbe2.png" width="500" height="250"/></a>
+  <a href="images/image_courbe2.png"><img src="images/image_courbe2.png" width="500" height="250"/></a>
   <br>
   Représentation graphique de la fonction x² sur [25,50]!
   <br>
-  <a href=""><img src="images/image_courbe3.png" width="500" height="250"/></a>
+  <a href="images/image_courbe3.png"><img src="images/image_courbe3.png" width="500" height="250"/></a>
   <br>
   Représentation graphique d'une fonction de type linéaire 3*x+7 sur [25,50]!
   <br>
-   <a href=""><img src="images/image_courbe4.png" width="500" height="250"/></a>
+   <a href="images/image_courbe4.png"><img src="images/image_courbe4.png" width="500" height="250"/></a>
   <br>
   Représentation graphique de la fonction cos(x) sur [0,100]!
   <br>
-   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe5.png" width="500" height="250"/></a>
+   <a href="images/image_courbe5.png"><img src="images/image_courbe5.png" width="500" height="250"/></a>
   <br>
   Représentation graphique de la fonction log(x) sur [0,25]!
   <br>
