@@ -1,5 +1,5 @@
 /************************************************************************/
-/*RÈgression linÈaire mÈthode des moindres carrÈs version 1.1c avec menu*/
+/*R√©gression lin√©aire m√©thode des moindres carr√©s version 1.1c avec menu*/
 /************************************************************************/
 
 #include <stdio.h>
@@ -11,7 +11,7 @@
 #include <string.h>
 #include <sdl/sdl.h>
 
-#define MAX 100 /*dÈfinition de la taille maximum des tableaux donc du nombre d'element Xi et Yi*/
+#define MAX 100 /*d√©finition de la taille maximum des tableaux donc du nombre d'element Xi et Yi*/
 #define XRES 800
 #define YRES 600
 #define MINX 0.0
@@ -25,7 +25,7 @@
 #endif
 
 /***************************/
-/*DÈclaration des fonctions*/
+/*D√©claration des fonctions*/
 /***************************/
 
 void entete();
@@ -53,7 +53,7 @@ void Calcul_Integral();
 /*********************************/
 
 
-/*Fonction d'affichage de l'en-tÍte avec nom et version du programme etc...*/
+/*Fonction d'affichage de l'en-t√™te avec nom et version du programme etc...*/
 
 void entete()
 {
@@ -68,7 +68,7 @@ void entete()
 }
 
 
-/*Fonction d'entrÈe du nombre d'elements*/
+/*Fonction d'entr√©e du nombre d'elements*/
 
 int nbrelement()
 {
@@ -167,7 +167,7 @@ float ordonee(float MoyenneXi,float MoyenneYi,float a)
 	return (b);
 }
 
-/*Fonction de calcul des Ècarts ‡ la moyenne*/
+/*Fonction de calcul des √©carts √† la moyenne*/
 
 void ecart_a_moyenne(float tab[],float tab_ecart_a_moyenne[],float Moyenne,int N)
 {
@@ -180,7 +180,7 @@ void ecart_a_moyenne(float tab[],float tab_ecart_a_moyenne[],float Moyenne,int N
 
 }
 
-/*Calcul du coefficient de corrÈlation "r"*/
+/*Calcul du coefficient de corr√©lation "r"*/
 
 double corr(float SommeCarreXiMoinMoyenneXi,float SommeCarreYiMoinMoyenneYi,float a)
 {
@@ -211,7 +211,7 @@ double corr(float SommeCarreXiMoinMoyenneXi,float SommeCarreYiMoinMoyenneYi,floa
 /*************************************/
 
 
-/*Fonction d'affichage des rÈsultats*/
+/*Fonction d'affichage des r√©sultats*/
 
 void affichage(float tab[])
 {
@@ -249,7 +249,7 @@ void affichage(float tab[])
 	getchar();
 }
 
-/*Fonction d'affichage simple de l'Èquation*/
+/*Fonction d'affichage simple de l'√©quation*/
 
 void aff_equation(float tab[])
 {
@@ -306,7 +306,7 @@ void titre(char titre[])
 	printf("\n\n");
 }
 
-/*Fonction d'affichage des donnÈe sous forme de tableau*/
+/*Fonction d'affichage des donn√©e sous forme de tableau*/
 
 void affich_tab(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],float tab5[],int N)
 {
@@ -355,7 +355,7 @@ void affich_tab(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],
 	ligne(13);/*boucle d affichage double ligne*/
 	printf("%c",185);
 
-    /*Boucle d affichage des donnÈes proprement dites*/
+    /*Boucle d affichage des donn√©es proprement dites*/
 
 	while(i<N+1)
 	{
@@ -442,10 +442,10 @@ void fichier(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],flo
      /* Si tout va bien, ecriture dans le fichier */
 
 	fprintf(sortie1,"\n\n************************");
-    fprintf(sortie1,"\n* Tableau des donnÈes: *");
+    fprintf(sortie1,"\n* Tableau des donn√©es: *");
 	fprintf(sortie1,"\n************************\n\n");
 	fprintf(sortie1,"\n************************************************************************************");
-	fprintf(sortie1,"\n*   N   *       Xi     *       Yi     *      XiYi    *   (Xi-<X>)≤  *   (Yi-<Y>)≤  *");
+	fprintf(sortie1,"\n*   N   *       Xi     *       Yi     *      XiYi    *   (Xi-<X>)¬≤  *   (Yi-<Y>)¬≤  *");
 	fprintf(sortie1,"\n************************************************************************************");
 
 	while(i<N+1)
@@ -461,7 +461,7 @@ void fichier(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],flo
 
 	fprintf(sortie1,"\n\n");
 	fprintf(sortie1,"*************\n");
-    fprintf(sortie1,"* RÈsultats:*\n");
+    fprintf(sortie1,"* R√©sultats:*\n");
 	fprintf(sortie1,"*************\n\n");
 
 	fprintf(sortie1,"\nSomme Xi = %f",tab[0]);
@@ -474,11 +474,11 @@ void fichier(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],flo
 
 	fprintf(sortie1,"\n\nPente de la droite:=========> a = %f",tab[7]);
 
-	fprintf(sortie1,"\nOrdonnÈe %c l'origine:=======> b = %f",133,tab[8]);
+	fprintf(sortie1,"\nOrdonn√©e %c l'origine:=======> b = %f",133,tab[8]);
 
-	fprintf(sortie1,"\nCoefficient de corrÈlation:=> r = %lf",tab[9]);
+	fprintf(sortie1,"\nCoefficient de corr√©lation:=> r = %lf",tab[9]);
 
-	fprintf(sortie1,"\n\nL'Èquation de la droite est:");
+	fprintf(sortie1,"\n\nL'√©quation de la droite est:");
 	fprintf(sortie1,"\n\n   *****************************");
 	fprintf(sortie1,"\n   * Y = %f X + %f *",tab[7],tab[8]);
 	fprintf(sortie1,"\n   *****************************");
@@ -524,14 +524,14 @@ void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],f
 		MoyenneXi = moyenne(SommeXi,N);
 		MoyenneYi = moyenne(SommeYi,N);
 
-   /*Calcul de de la pente "a"de la droite et de l'ordonee ‡ l'origine "b" */
+   /*Calcul de de la pente "a"de la droite et de l'ordonee √† l'origine "b" */
 
    /*Somme des Xi*Yi*/
 
 		produittab(Xi,Yi,ProduitXiYi,N);
 		SommeProduitXiYi = somme(ProduitXiYi,N);
 
-	/*calcul des (Xi- MoyenneXi)≤ et (Yi- MoyenneYi)≤ */
+	/*calcul des (Xi- MoyenneXi)¬≤ et (Yi- MoyenneYi)¬≤ */
 
 	ecart_a_moyenne(Xi,tab_ecart_a_moyenne,MoyenneXi,N);
 
@@ -551,7 +551,7 @@ void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],f
 		carre_ecart_a_moyenne_Yi[i] = ((ecart_a_moyenne_Yi[i])*(ecart_a_moyenne_Yi[i]));i++;
 	};
 
-	/*Somme des (Xi- MoyenneXi)≤*/
+	/*Somme des (Xi- MoyenneXi)¬≤*/
 
 	SommeCarreXiMoinMoyenneXi = somme(carre_ecart_a_moyenne_Xi,N);
     SommeCarreYiMoinMoyenneYi = somme(carre_ecart_a_moyenne_Yi,N);
@@ -564,11 +564,11 @@ void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],f
 
 	b=ordonee(MoyenneXi,MoyenneYi,a);
 
-    /*Calcul du coefficient de corrÈlation "r"*/
+    /*Calcul du coefficient de corr√©lation "r"*/
 
 	r=corr(SommeCarreXiMoinMoyenneXi,SommeCarreYiMoinMoyenneYi,a);
 
-    /*Stockage des rÈsultats dans une tableau de varialbes*/
+    /*Stockage des r√©sultats dans une tableau de varialbes*/
 
 	result[0]=SommeXi;
 	result[1]=SommeYi;
@@ -585,7 +585,7 @@ void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],f
 
 double f(double x)
 {
-    // changez ici la fonction que vous voulez afficher. (pas forcÈment un polynome)
+    // changez ici la fonction que vous voulez afficher. (pas forc√©ment un polynome)
     return log(x+3);
 }
 
@@ -740,7 +740,11 @@ void ShowAxis(SDL_Surface* screen,int minX,int maxX,int minY,int maxY)
     while(0);
 }
 
-/*Function definition to perform integration by Trapezoidal Rule */
+/*Calcul d'une int√©gral par la m√©thode des trap√®ze qui d√©coupe l'interval en n trap√®ze qui pour tout x variant de 0,1,2,3..etc calcul la somme de x*f(x). 
+L'aire d'un trap√®ze √©tant (l1 + l2) x h / 2 on retrouve dans cette fonction pour n trap√®ze la formule faisant la somme total des aires des trap√®zes avec 
+(f(a)+f(b)+2*sum)=(l1 + l2) l1 et l2 les longueurs des ses deux c√¥t√©s(tous les n trap√®zes confondues) ce qui nous donne la valeur de la surface 
+d'un trap√®ze comme ci l'interval de d√©coupage ne repr√©sent√© au final qu'un seul trap√®ze pour n=1 cependant augmenter la valeur de n nous permet d'obtenir
+une meilleur pr√©cision de la surface de l'int√©gral!*/
 double trapezoidal(double a,double b,int n){
   double x,h=0,sum=0,integral;
   double i;
@@ -847,13 +851,13 @@ void Calcul_Integral()
 
 int main(int argc, char *argv[])
 {
-  	int position,choix=-1,choix1=-1,choix1_2=-1,choix1_1=-1,N,i=1;		/*DÈclaration des variables*/
+  	int position,choix=-1,choix1=-1,choix1_2=-1,choix1_1=-1,N,i=1;		/*D√©claration des variables*/
    	float Xi[MAX],Yi[MAX],result[10];
 	float ProduitXiYi[MAX];
 	float carre_ecart_a_moyenne_Xi[MAX];
 	float carre_ecart_a_moyenne_Yi[MAX];
 
-/*Appel de la fonction d'affichage d'en-tÍte*/
+/*Appel de la fonction d'affichage d'en-t√™te*/
 
 	entete();
 
@@ -923,13 +927,13 @@ while(choix1_1!=0)
 							{
 								titre("Donnees:");/*Fonction d'affichage de titre*/
 
-								/*Appel de la fonction d'entrÈe du nombre d'Èlement*/
+								/*Appel de la fonction d'entr√©e du nombre d'√©lement*/
 
 								N=nbrelement();
 
 								i=1;
 
-								/*Entree des Èlements Xi*/
+								/*Entree des √©lements Xi*/
 
 								titre("Entree des valeurs de Xi:");/*Fonction d'affichage de titre*/
 
@@ -941,7 +945,7 @@ while(choix1_1!=0)
 
 								i=1;
 
-								/*Entree des Èlements Yi*/
+								/*Entree des √©lements Yi*/
 
 								titre("Entree des valeurs de Yi:");/*Fonction d'affichage de titre*/
 
@@ -1013,13 +1017,13 @@ while(choix1_1!=0)
 
                 case 2:
                 {
-				/*Appel de la fonction de regression linÈaire*/
+				/*Appel de la fonction de regression lin√©aire*/
 
 				regression(Xi,Yi,N,result,ProduitXiYi,carre_ecart_a_moyenne_Xi,carre_ecart_a_moyenne_Yi);
 
 				printf("\nOp%Cration termin%ce...\n",130,130);
 
-				/*Affichage de l'Èqation et de la corrÈlation "r"*/
+				/*Affichage de l'√©qation et de la corr√©lation "r"*/
 
 				aff_equation(result);
 
@@ -1045,7 +1049,7 @@ while(choix1_1!=0)
 
                 case 4:
                 {
-				/*Affichage des rÈsultats*/
+				/*Affichage des r√©sultats*/
 
 				affichage(result);
 				printf("\nTappez une touche pour revenir au menu pr%cc%cdant:",130,130);
