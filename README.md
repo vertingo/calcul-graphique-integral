@@ -84,4 +84,8 @@ Voyez les illustrations ci-dessous!
   Représentation graphique de la fonction inverse 1/x sur [0,15]!
   <br>
 </p>
-
+```
+Un petit coup de pouce suivez nous sur YouTube et Facebook!
+[You Tube] ==> https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1 
+[Facebook] ==> https://www.facebook.com/vertingo/ 
+```
