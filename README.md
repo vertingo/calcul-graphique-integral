@@ -56,7 +56,7 @@ Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de 
 Voyez les illustrations ci-dessous!
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="600" height="250"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="900" height="550"/></a>
 </p>
 
 <p align="center">
