@@ -12,7 +12,7 @@ Téléchargement et installation du logiciel Code::Blocks disponible en téléch
 3) Choisir mingw-developper-toolkit, mingw32-base, mingw32-gcc g++, msys-base comme sur
 la capture ci-dessous:
 <p align="center">
-  <a href=""><img src="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-MinGW2.png" width="600" height="250"/></a>
+  <a href=""><img src="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-MinGW2.png" width="700" height="550"/></a>
 </p>
 4) Puis dans le menu « Installation » cliquez sur « Apply changes »
 5) Les packages sont alors téléchargés
@@ -22,7 +22,7 @@ a. y (yes)
 b. y (yes)
 c. Donnez le chemin d’installation de mingw, c’est-à-dire à la racine du disque c: c:\mingw
 <p align="center">
-  <a href=""><img src="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-MinGW.png" width="600" height="250"/></a>
+  <a href=""><img src="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-MinGW.png" width="700" height="500"/></a>
 </p>
 d. validez avec la touche entrée
 
@@ -34,20 +34,20 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
 
 
 <p align="center">
-  <a href=""><img src="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-sdl.png" width="600" height="350"/></a><br>
+  <a href=""><img src="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-sdl.png" width="800" height="500"/></a><br>
   Dézippé le contenu du dossier SDL à la racine du dossier du logiciel Code::Blocks<br>
-  <a href=""><img src="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-sdl2.png" width="600" height="350"/></a><br>
+  <a href=""><img src="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-sdl2.png" width="800" height="500"/></a><br>
   Assurez-vous bien que le dossier include contient bien le dossier SDL<br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-sdl3.png"><img src="images/install-sdl3.png" width="600" height="350"/></a><br>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/install-sdl3.png"><img src="images/install-sdl3.png" width="800" height="500"/></a><br>
 </p>
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl.png"><img src="images/newproject-sdl.png" width="600" height="350"/></a><br>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl.png"><img src="images/newproject-sdl.png" width="800" height="500"/></a><br>
   Dans Code::Blocks faites file -> new project et choissisez un projet type SDL
   <br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl2.png"><img src="images/newproject-sdl2.png" width="600" height="350"/></a><br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl3.png"><img src="images/newproject-sdl3.png" width="600" height="350"/></a><br>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl2.png"><img src="images/newproject-sdl2.png" width="800" height="500"/></a><br>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl3.png"><img src="images/newproject-sdl3.png" width="800" height="500"/></a><br>
   Indiquez le chemin du dossier contenant le bibliothèque SDL normalement stocker <br>à la racine du dossier contenant le logiciel Code::Blocks!<br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl4.png"><img src="images/newproject-sdl4.png" width="600" height="350"/></a><br>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl4.png"><img src="images/newproject-sdl4.png" width="800" height="500"/></a><br>
 </p>
 
 
