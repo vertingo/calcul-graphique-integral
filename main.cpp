@@ -10,6 +10,7 @@
 #include <conio.h>
 #include <string.h>
 #include <sdl/sdl.h>
+#include <string.h> // Penser à inclure string.h pour strchr()
 
 #define MAX 100 /*définition de la taille maximum des tableaux donc du nombre d'element Xi et Yi*/
 #define XRES 800
@@ -583,10 +584,38 @@ void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],f
 
 }
 
-double f(double x)
+double f(double x,double a,double b,int choix_f)
 {
-    // changez ici la fonction que vous voulez afficher. (pas forcément un polynome)
-    return log(x+3);
+
+    if(choix_f==1)
+    {
+     return a*x+b;
+    }
+    else if(choix_f==2)
+    {
+     return a*x*x+b;
+    }
+    else if(choix_f==3)
+    {
+     return a*x*x*x+b;
+    }
+    else if(choix_f==4)
+    {
+     return 1/(a*x+b);
+    }
+    else if(choix_f==5)
+    {
+     return log(a*x+b);
+    }
+    else if(choix_f==6)
+    {
+     return sin(a*x+b);
+    }
+    else if(choix_f==7)
+    {
+     return cos(x*x+b);
+    }
+
 }
 
 void waitkey()            // attend qu'on appuie sur ESC
@@ -692,7 +721,7 @@ double Ecr_to_ReY(int i,double minY,double maxY)
 }
 
 
-void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double),int minX,int maxX,int minY,int maxY)
+void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,double,double,int),int minX,int maxX,int minY,int maxY,double a,double b,int choix_f)
 {
     int i;
     int lastx = 0;
@@ -703,7 +732,7 @@ void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double),int m
     for(i=0;i<XRES;i++)
     {
         x = i;
-        resfonc = fonc(Ecr_to_ReX(i,minX,maxX));
+        resfonc = fonc(Ecr_to_ReX(i,minX,maxX),a,b,choix_f);
         y = Re_to_EcrY(resfonc,minY,maxY);
 
         if(i!=0)
@@ -714,7 +743,7 @@ void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double),int m
     }
 }
 
-void ShowAxis(SDL_Surface* screen,int minX,int maxX,int minY,int maxY)
+void ShowAxis(SDL_Surface* screen,int minX,int maxX,int minY,int maxY,double a,double b,int choix_f)
 {
     int centreX = Re_to_EcrX(0.0,minX,maxX);
     int centreY = Re_to_EcrY(0.0,minY,maxY);
@@ -732,7 +761,7 @@ void ShowAxis(SDL_Surface* screen,int minX,int maxX,int minY,int maxY)
 
     for(int i=xpas;i<xmax;i++)
     {
-        resfonc2 = f(Ecr_to_ReX(i,minX,maxX));
+        resfonc2 = f(Ecr_to_ReX(i,minX,maxX),a,b,choix_f);
         y = Re_to_EcrY(resfonc2,minY,maxY);
         Line(screen,i,y,i,centreY,bleu);
     }
@@ -740,35 +769,35 @@ void ShowAxis(SDL_Surface* screen,int minX,int maxX,int minY,int maxY)
     while(0);
 }
 
-/*Calcul d'une intégral par la méthode des trapèze qui découpe l'interval en n trapèze qui pour tout x variant de 0,1,2,3..etc calcul la somme de x*f(x). 
-L'aire d'un trapèze étant (l1 + l2) x h / 2 on retrouve dans cette fonction pour n trapèze la formule faisant la somme total des aires des trapèzes avec 
-(f(a)+f(b)+2*sum)=(l1 + l2) l1 et l2 les longueurs des ses deux côtés(tous les n trapèzes confondues) ce qui nous donne la valeur de la surface 
+/*Calcul d'une intégral par la méthode des trapèze qui découpe l'interval en n trapèze qui pour tout x variant de 0,1,2,3..etc calcul la somme de x*f(x).
+L'aire d'un trapèze étant (l1 + l2) x h / 2 on retrouve dans cette fonction pour n trapèze la formule faisant la somme total des aires des trapèzes avec
+(f(a)+f(b)+2*sum)=(l1 + l2) l1 et l2 les longueurs des ses deux côtés(tous les n trapèzes confondues) ce qui nous donne la valeur de la surface
 d'un trapèze comme ci l'interval de découpage ne représenté au final qu'un seul trapèze pour n=1 cependant augmenter la valeur de n nous permet d'obtenir
 une meilleur précision de la surface de l'intégral!*/
-double trapezoidal(double a,double b,int n){
+double trapezoidal(double x1,double x2,int n,double a, double b,int choix_f){
   double x,h=0,sum=0,integral;
   double i;
-  h=fabs(b-a)/n;
+  h=fabs(x2-x1)/n;
 
   for(i=1;i<n;i++){
-    x=a+i*h;
-    sum=sum+f(x);
+    x=x1+i*h;
+    sum=sum+f(x,a,b,choix_f);
   }
-  integral=(h/2)*(f(a)+f(b)+2*sum);
+  integral=(h/2)*(f(x1,a,b,choix_f)+f(x2,a,b,choix_f)+2*sum);
 
   return integral;
 }
 
-double simpson(int n, double a, double b)
+double simpson(int n, double x1, double x2,double a,double b,int choix_f)
 {
   double X, h, Iapp0, Iapp1, Iapp2, Iapp;
   int NN, i;
 
   // Etape 1
-  h = (b - a) / n;
+  h = (x2 - x1) / n;
 
   // Etape 2
-  Iapp0 = f(a) + f(b);
+  Iapp0 = f(x1,a,b,choix_f) + f(x2,a,b,choix_f);
   Iapp1 = 0.0;
   Iapp2 = 0.0;
 
@@ -777,12 +806,12 @@ double simpson(int n, double a, double b)
   for (i=1; i<=NN; i++)
     {
       // Etape 4
-      X = a + i*h;
+      X = x1 + i*h;
       // Etape 5
       if ((i%2) == 0)
-        Iapp2 = Iapp2 + f(X);
+        Iapp2 = Iapp2 + f(X,a,b,choix_f);
       else
-        Iapp1 = Iapp1 + f(X);
+        Iapp1 = Iapp1 + f(X,a,b,choix_f);
     }
 
   // Etape 6
@@ -796,23 +825,30 @@ double simpson(int n, double a, double b)
 void Calcul_Integral()
 {
   int i,n;
-  float a,b,spmthd;
+  float x1,x2,spmthd,a,b;
   double minX, maxX, minY, maxY;
   char fonction[10];
-  int fonction2[15];
-  int choix;
+  int fonction2;
+  int choix, choix_f;
   SDL_Surface *screen;
 
   SDL_Init(SDL_INIT_VIDEO);
+  printf("Entrez la fonction de l'integral a calculer!\n (1) Fonction lineaire: a*x+b \n (2) Fonction x au carre: a*x*x+b \n (3) Fonction x au cube: a*x*x*x+b \n (4) Fonction inverse: 1/(a*x+b)\n (5) Fonction logarithme: log(a*x+b) \n (6) Fonction sinus: sin(a*x+b)\n (7) Fonction cosinus: cos(a*x+b)\n");
+  printf("\nQuel est votre choix? :");
+  scanf("%i",&choix_f);
 
-  printf("Entrez la valeur a de la borne inferieure de l'interval de l'integral!\na=");
+  printf("Entrez la valeur de a!\na=");
   scanf("%f",&a);
-  printf("Entrez la valeur b de la borne superieure de l'interval de l'integral!\nb=");
+  printf("Entrez la valeur de b!\nb=");
   scanf("%f",&b);
+  printf("Entrez la valeur x1 de la borne inferieure de l'interval de l'integral!\nx1=");
+  scanf("%f",&x1);
+  printf("Entrez la valeur x2 de la borne superieure de l'interval de l'integral!\nx2=");
+  scanf("%f",&x2);
   printf("Entrez la valeur n correspondant au nombre de decoupage de l'interval en trapeze!\nn=");
   scanf("%i",&n);
-  trapezoidal(a,b,n);
-  spmthd=trapezoidal(a,b,n);
+
+  spmthd=trapezoidal(x1,x2,n,a,b,choix_f);
   printf("\nValeur de l'integral: %f \n",spmthd);
 
   printf("\nEntrez le numero de l\'operation desiree?:\n");
@@ -825,19 +861,19 @@ void Calcul_Integral()
   {
    case 1:
          {
-           minX=a-1;
-           maxX=b+1;
+           minX=x1-1;
+           maxX=x2+1;
            minY=-50;
-           maxY=f(b)+1;
+           maxY=f(x2,a,b,choix_f)+1;
 
            screen=SDL_SetVideoMode(XRES,YRES,32,SDL_SWSURFACE|SDL_DOUBLEBUF);
 
            if(SDL_MUSTLOCK(screen))
            SDL_LockSurface(screen);
 
-           ShowAxis(screen,minX,maxX,minY,maxY);
+           ShowAxis(screen,minX,maxX,minY,maxY,a,b,choix_f);
 
-           ShowFoncion(screen,0x00FF00,f,minX,maxX,minY,maxY);
+           ShowFoncion(screen,0x00FF00,f,minX,maxX,minY,maxY,a,b,choix_f);
 
            if(SDL_MUSTLOCK(screen))
            SDL_UnlockSurface(screen);
@@ -857,16 +893,16 @@ int main(int argc, char *argv[])
 	float carre_ecart_a_moyenne_Xi[MAX];
 	float carre_ecart_a_moyenne_Yi[MAX];
 
-/*Appel de la fonction d'affichage d'en-tête*/
+    /*Appel de la fonction d'affichage d'en-tête*/
 
 	entete();
 
-/********/
-/* MENU */
-/********/
+    /********/
+    /* MENU */
+    /********/
 
-while(choix1_1!=0)
-{
+    while(choix1_1!=0)
+    {
     freopen("CON", "w", stdout); // redirects stdout
     freopen("CON", "w", stderr); // redirects stderr
 
