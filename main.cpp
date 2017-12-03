@@ -613,7 +613,7 @@ double f(double x,double a,double b,int choix_f)
     }
     else if(choix_f==7)
     {
-     return cos(x*x+b);
+     return cos(a*x+b);
     }
 
 }
@@ -864,7 +864,7 @@ void Calcul_Integral()
            minX=x1-1;
            maxX=x2+1;
            minY=-50;
-           maxY=f(x2,a,b,choix_f)+1;
+           maxY=f(x2,a,b,choix_f)+25;
 
            screen=SDL_SetVideoMode(XRES,YRES,32,SDL_SWSURFACE|SDL_DOUBLEBUF);
 
