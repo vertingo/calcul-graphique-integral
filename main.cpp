@@ -34,6 +34,7 @@ int nbrelement();
 void ligne(int nbr);
 void ligne2(int deb,int nbr,int fin);
 void titre(char titre[]);
+int Factorielle (int nombre);
 float somme(float tab[],int N);
 float moyenne(float somme,int N);
 void produittab(float tab1[],float tab2[],float tab_produit[],int N);
@@ -47,6 +48,7 @@ void aff_equation(float tab[]);
 void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],float carre_ecart_a_moyenne_Xi[],float carre_ecart_a_moyenne_Yi[]);
 void fichier(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],float tab5[],int N);
 void Calcul_Integral();
+void bernouilli();
 
 
 /*********************************/
@@ -66,6 +68,19 @@ void entete()
 	printf("*    ==> Un menu                                                       *\n",130,130);
 	printf("************************************************************************\n\n");
 
+}
+
+int Factorielle(int nombre)
+{
+    int i;
+    int resultat = 1;
+
+    /* Nous commencons la boucle qu'a partir de 2 car 0! == 1 et 1! == 1, 1 etant la valeur par initialisation.
+    Nous avons donc seulement besoins de multiplier si le nombre rentrer par l'utilisateur est >= 2 */
+    for (i=2 ; i<=nombre ; i++)
+        resultat *= i;
+
+    return resultat;
 }
 
 
@@ -584,6 +599,66 @@ void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],f
 
 }
 
+void bernouilli()
+{
+     int n, k;
+     double e, p, q, r, t, x, y, z;
+
+     printf("Entrez la valeur de k entier non nul positif\n");
+     scanf("%d", &k);
+     printf("Entrez le nombre d'essais n entier non nul positif\n");
+     scanf("%d", &n);
+
+     x = Factorielle(n);
+     y = Factorielle(k);
+     z = Factorielle(n-k);
+
+     r = x/(y*z);
+
+     printf("La combinaison n de k est: %lf\n", r);
+
+     x = n-1;
+     y = k-1;
+     z = x-y;
+     x = Factorielle(x);
+     y = Factorielle(y);
+     z = Factorielle(z);
+
+     e = x/(y*z);
+     e = e/x;
+     p = pow(e, k);
+
+     printf("La probabilite de succes k de n est: %lf\n", p);
+
+     x = n-k;
+     y = 1-p;
+     q = pow(y, x);
+
+     r = r*p*q;
+     printf("Le resultat de la loi binomiale est: %lf\n", r);
+     e = n*p;
+     printf("L'esperance est de: %lf\n", e);
+     t = sqrt(e*q);
+     printf("L'ecart type est de: %lf\n", t);
+
+     x = exp(-e);
+     y = pow (e,k);
+     z = x*y;
+     k = Factorielle(k);
+     x = z/k;
+     printf("La loi de poisson est: %g\n", x);
+}
+
+double poisson(int x,int y)
+{
+    double fact_x,puis;
+
+        fact_x=Factorielle(x);
+        puis=pow(y,x);
+
+     return (puis*exp(-y))/(fact_x);
+}
+
 double f(double x,double a,double b,int choix_f)
 {
 
@@ -614,6 +689,10 @@ double f(double x,double a,double b,int choix_f)
     else if(choix_f==7)
     {
      return cos(a*x+b);
+    }
+    else if(choix_f==8)
+    {
+     return poisson(x,a);
     }
 
 }
@@ -653,10 +732,12 @@ void Line(SDL_Surface* surf,int x1,int y1, int x2,int y2,Uint32 couleur)  // Bre
 
     Dx = abs(x2-x1);
     Dy = abs(y2-y1);
+
     if(x1<x2)
         xincr = 1;
     else
         xincr = -1;
+
     if(y1<y2)
         yincr = 1;
     else
@@ -664,6 +745,7 @@ void Line(SDL_Surface* surf,int x1,int y1, int x2,int y2,Uint32 couleur)  // Bre
 
     x = x1;
     y = y1;
+
     if(Dx>Dy)
     {
         erreur = Dx/2;
@@ -721,7 +803,7 @@ double Ecr_to_ReY(int i,double minY,double maxY)
 }
 
 
-void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,double,double,int),int minX,int maxX,int minY,int maxY,double a,double b,int choix_f)
+void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,double,double,int),double minX,double maxX,double minY,double maxY,double a,double b,int choix_f)
 {
     int i;
     int lastx = 0;
@@ -743,7 +825,7 @@ void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,double
     }
 }
 
-void ShowAxis(SDL_Surface* screen,int minX,int maxX,int minY,int maxY,double a,double b,int choix_f)
+void ShowAxis(SDL_Surface* screen,double minX,double maxX,double minY,double maxY,double a,double b,int choix_f)
 {
     int centreX = Re_to_EcrX(0.0,minX,maxX);
     int centreY = Re_to_EcrY(0.0,minY,maxY);
@@ -822,25 +904,121 @@ double simpson(int n, double x1, double x2,double a,double b,int choix_f)
 
 }
 
-void Calcul_Integral()
+void Calcul_Integral(bool stats,float tab[])
 {
   int i,n;
-  float x1,x2,spmthd,a,b;
+  float x1,x2,spmthd=0,a,b,res_poisson=0,res_poisson_au_plus=0,k_poisson=0,y_poisson=0;
+  int res_pourcentage_au_plus=0,res_pourcentage=0;
   double minX, maxX, minY, maxY;
   char fonction[10];
   int fonction2;
-  int choix, choix_f;
+  int choix, choix_f,choix_poisson;
   SDL_Surface *screen;
 
   SDL_Init(SDL_INIT_VIDEO);
-  printf("Entrez la fonction de l'integral a calculer!\n (1) Fonction lineaire: a*x+b \n (2) Fonction x au carre: a*x*x+b \n (3) Fonction x au cube: a*x*x*x+b \n (4) Fonction inverse: 1/(a*x+b)\n (5) Fonction logarithme: log(a*x+b) \n (6) Fonction sinus: sin(a*x+b)\n (7) Fonction cosinus: cos(a*x+b)\n");
+
+  if(stats==false)
+  {
+  printf("Entrez la fonction de l'integral a calculer!\n (1) Fonction lineaire: a*x+b \n (2) Fonction x au carre: a*x*x+b \n (3) Fonction x au cube: a*x*x*x+b \n (4) Fonction inverse: 1/(a*x+b)\n (5) Fonction logarithme: log(a*x+b) \n (6) Fonction sinus: sin(a*x+b)\n (7) Fonction cosinus: cos(a*x+b)\n (8) Fonction loi de poisson avec P(X=k;y)=(y^k*e^-y)/k!\n");
   printf("\nQuel est votre choix? :");
   scanf("%i",&choix_f);
+  }
+  else
+  {
+      choix_f=1;
+  }
 
-  printf("Entrez la valeur de a!\na=");
-  scanf("%f",&a);
-  printf("Entrez la valeur de b!\nb=");
-  scanf("%f",&b);
+  if(choix_f==8)
+  {
+    printf("(1) Probabilite de la loi de poisson de type P(X=k,y) Probabilite qu'il se produise exactement k evenements par rapport a une frequence periodique y connue!\n");
+    printf("(2) Probabilite de la loi de poisson de type P(X>=k,y) Probabilite qu'il se produise exactement k ou plus evenements par rapport a une frequence periodique y connue!\n");
+    printf("(3) Probabilite de la loi de poisson de type P(X<=k,y) Probabilite qu'il se produise exactement k ou moins evenements par rapport a une frequence periodique y connue!\n");
+    printf("Quel est votre choix?:");
+    scanf("%i",&choix_poisson);
+
+     switch(choix_poisson)
+     {
+     case 1:
+          {
+            printf("Entrez la valeur de k sachant que k correspond au nombre exact qu'un evenement se produise!\nk=");
+            scanf("%f",&k_poisson);
+            printf("Entrez la valeur de y sachant que y correspond au nombre d'evenements survenue pour une periodicite connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=");
+            scanf("%f",&y_poisson);
+
+            res_poisson=poisson(k_poisson,y_poisson);
+            res_pourcentage=(int)round(res_poisson*100);
+            x1=k_poisson-1;
+            x2=k_poisson;
+            a=y_poisson;
+            b=1;
+
+            printf("La probabilite qu'il se produise exactement k evenements pour une frequence periodique de: %i est de: %f \nsoit %i pourcent!\n",(int)y_poisson,res_poisson,res_pourcentage);
+
+          };break;
+     case 2:
+          {
+            printf("Entrez la valeur de k sachant que k correspond au nombre exact ou plus qu'un evenement se produise!\nk=");
+            scanf("%f",&k_poisson);
+            printf("Entrez la valeur de y sachant que y correspond au nombre d'evenements survenue pour une periodicite connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=");
+            scanf("%f",&y_poisson);
+
+            for(int i=0; i<=k_poisson; i++)
+            {
+            res_poisson=res_poisson+poisson(i,y_poisson);
+            }
+
+            res_poisson_au_plus=1-res_poisson;
+            res_pourcentage=res_poisson*100;
+            res_pourcentage_au_plus=(int)round(100-res_pourcentage);
+            x1=k_poisson;
+            x2=y_poisson;
+            a=y_poisson;
+            b=1;
+
+            printf("La probabilite qu'il se produise exactement k evenements ou plus pour une frequence periodique de: %i \nest de: %f soit %i pourcent!\n",(int)y_poisson,res_poisson_au_plus,res_pourcentage_au_plus);
+
+          };break;
+     case 3:
+          {
+            printf("Entrez la valeur de k sachant que k correspond au nombre exact ou moins qu'un evenement se produise!\nk=");
+            scanf("%f",&k_poisson);
+            printf("Entrez la valeur de y sachant que y correspond au nombre d'evenements survenue pour une periodicite connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=");
+            scanf("%f",&y_poisson);
+
+            for(int i=0; i<=k_poisson; i++)
+            {
+            res_poisson=res_poisson+poisson(i,y_poisson);
+            }
+
+            res_pourcentage=(int)round(res_poisson*100);
+            x1=0;
+            x2=k_poisson;
+            a=y_poisson;
+            b=1;
+
+            spmthd=trapezoidal(0,k_poisson,50,y_poisson,0,choix_f);
+            printf("\nValeur de l'integral: %f \n",spmthd);
+
+            printf("La probabilite qu'il se produise exactement k evenements ou moins pour une frequence periodique de: %i \nest de: %f soit %i pourcent!\n",(int)y_poisson,res_poisson,res_pourcentage);
+
+          };break;
+     }
+  }
+  else
+  {
+      if(stats==false)
+      {
+          printf("Entrez la valeur de a!\na=");
+          scanf("%f",&a);
+          printf("Entrez la valeur de b!\nb=");
+          scanf("%f",&b);
+      }
+      else
+      {
+       a=tab[7];
+       b=tab[8];
+      }
+
   printf("Entrez la valeur x1 de la borne inferieure de l'interval de l'integral!\nx1=");
   scanf("%f",&x1);
   printf("Entrez la valeur x2 de la borne superieure de l'interval de l'integral!\nx2=");
@@ -850,6 +1028,7 @@ void Calcul_Integral()
 
   spmthd=trapezoidal(x1,x2,n,a,b,choix_f);
   printf("\nValeur de l'integral: %f \n",spmthd);
+  }
 
   printf("\nEntrez le numero de l\'operation desiree?:\n");
   printf("\n(1) Afficher une representation graphique de la courbe?\n",spmthd);
@@ -863,8 +1042,28 @@ void Calcul_Integral()
          {
            minX=x1-1;
            maxX=x2+1;
-           minY=-50;
-           maxY=f(x2,a,b,choix_f)+25;
+
+           if(choix_f==8)
+           {
+                 minY=-0.1;
+                 maxY=f(x2,a,b,choix_f)+0.1;
+           }
+           else
+           {
+
+                 minY=-50;
+                 double maxYx1=f(x1,a,b,choix_f)+25;
+                 double maxYx2=f(x2,a,b,choix_f)+25;
+
+                 if(maxYx1>maxYx2)
+                 {
+                    maxY=maxYx1;
+                 }
+                 else
+                 {
+                    maxY=maxYx2;
+                 }
+           }
 
            screen=SDL_SetVideoMode(XRES,YRES,32,SDL_SWSURFACE|SDL_DOUBLEBUF);
 
@@ -910,7 +1109,8 @@ int main(int argc, char *argv[])
 
     printf("\n(1) Calcul d'int%cgral + representation graphique.",130);
     printf("\n(2) Saisir des donnees statistiques et calcul de la droite de regression lineaire.",130);
-    printf("\n(3) S'abonner et suivre les dernieres nouvelles de Vertin Go Website!",130);
+    printf("\n(3) Calcul de probabilite(Loi de bernouilli de parametre n et k).",130);
+    printf("\n(4) S'abonner et suivre les dernieres nouvelles de Vertin Go Website!",130);
     printf("\n(0) Quitter le programme.");
     printf("\n\n  Quel est votre choix? :");
     scanf("%d",&choix1_1);
@@ -919,7 +1119,7 @@ int main(int argc, char *argv[])
 	{
         case 1:
 	    {
-	        Calcul_Integral();
+	        Calcul_Integral(false,result);
 	    }
         case 2:
 	    {
@@ -935,7 +1135,7 @@ int main(int argc, char *argv[])
             printf("\n(3) Afficher le tableau des valeurs interm%cdiaires.",130);
             printf("\n(4) Afficher les r%csultats.",130);
             printf("\n(5) Sauvegarder les donn%ces dans un fichier.",130);
-            printf("\n(6) Calcul d'int%cgral + repr%csentation graphique.",130);
+            printf("\n(6) Calcul int%cgral + repr%csentation graphique de la droite de regression lineaire.",130);
             printf("\n(7) S'abonner et suivre les dernieres nouvelles de Vertin Go Website!",130);
             //printf("\n(8) Revenir au menu principal.",130);
             scanf("%d",&choix);
@@ -1101,7 +1301,7 @@ int main(int argc, char *argv[])
                 }
                 case 6:
                 {
-				Calcul_Integral();
+				Calcul_Integral(true,result);
 				getchar();
                 }
                 case 7:
@@ -1121,8 +1321,14 @@ int main(int argc, char *argv[])
                 };
             }
 	    }
+	    case 3:
+	    {
+            bernouilli();
+	        getchar();
+	        break;
+	    }
 
-        case 3:
+        case 4:
 	    {
 	        system("start chrome.exe https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1");
 	        getchar();
