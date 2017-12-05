@@ -23,7 +23,7 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
 </p>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_stats.png"><img src="images/image_menu_stats.png" width="700" height="450"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_poisson.png"><img src="images/image_menu_poisson.png" width="700" height="450"/></a>
   <center>Représentation graphique de la loi de poisson sur [0,10] et [0,13]!</center>
  <center> <table>
   <td>
@@ -36,6 +36,19 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
   
   <br>
 </p>
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_stats.png"><img src="images/image_menu_stats.png" width="700" height="450"/></a>
+  <center>Représentation graphique de la droite de régréssion linéaire d'une série statistique!</center>
+ <center> <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_stats.png"><img src="images/image_courbe_stats.png" width="200" height="100"/></a>
+  </td>
+  </table><br></center> 
+  
+  <br>
+</p>
+
 
 ## Prérequis
 Téléchargement et installation du logiciel Code::Blocks disponible en téléchargement sur le lien suivant: http://www.commentcamarche.net/download/telecharger-34056352-code-blocks
