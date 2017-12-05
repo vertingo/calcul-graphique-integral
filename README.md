@@ -67,7 +67,6 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl4.png"><img src="images/newproject-sdl4.png" width="700" height="450"/></a><br>
 </p>
 
-
 ## Usage
 Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de n'importe quelle courbe en spécifiant la valeur des bornes inférieure et supérieure de l'intégral et également visualiser graphiquement l'air sous la courbe!
 Voyez les illustrations ci-dessous!
@@ -81,12 +80,6 @@ Voyez les illustrations ci-dessous!
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_stats.png"><img src="images/image_courbe_stats.png" width="200" height="100"/></a>
   </td>
   </table><br>
- 
-</p>
-
-
-<p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
 </p>
 
 <p align="center">
@@ -105,9 +98,7 @@ Voyez les illustrations ci-dessous!
   <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe4.png"><img src="images/image_courbe4.png" width="200" height="100"/></a>
   </td></table><br>
-  
 </p>
-
 
 <p align="center">
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="http://vertin-go.com/Fonctions_Annexes/annexes/pdt-page-de-telechargement/Android%20You%20Tube%20Data%20API/youtube2.png" width="400" height="250"/></a>
