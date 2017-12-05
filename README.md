@@ -17,13 +17,13 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
   <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe4.png"><img src="images/image_courbe4.png" width="200" height="100"/></a>
   </td></table><br>
-  Représentation graphique de la fonction x² sur [0,25]!
+  <center>Représentation graphique de la fonction x² sur [0,25] et [25,50] d'une fonction lineaire ax+b sur [0,25] et cos(x) sur [0,100]!</center>
   <br>
 </p>
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_stats.png"><img src="images/image_menu_stats.png" width="700" height="450"/></a>
-  <table>
+ <center> <table>
   <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe7.png"><img src="images/image_courbe_7.png" width="200" height="100"/></a>
   </td>
@@ -32,6 +32,7 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
   </td>
   </table><br>
   Représentation graphique de la loi de poisson sur [0,10] et [0,13]!
+  </center>
   <br>
 </p>
 
