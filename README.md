@@ -79,7 +79,7 @@ Voyez les illustrations ci-dessous!
   <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_stats.png"><img src="images/image_courbe_stats.png" width="200" height="100"/></a>
   </td>
-  </table><br>
+  </table>
 </p>
 
 <p align="center">
