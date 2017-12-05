@@ -2,24 +2,6 @@
 
 Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécuté voir ci-dessous) en langage c 
 
-<p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
-  <center>Représentation graphique de la fonction x² sur [0,25] et [25,50] d'une fonction lineaire ax+b sur [0,25] et cos(x) sur [0,100]!</center>
-  <table>
-  <td>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe.png"><img src="images/image_courbe.png" width="200" height="100"/></a>
-  </td>
-  <td>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe2.png"><img src="images/image_courbe2.png" width="200" height="100"/></a>
-  </td>
-  <td>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe3.png"><img src="images/image_courbe3.png" width="200" height="100"/></a>
-  </td>
-  <td>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe4.png"><img src="images/image_courbe4.png" width="200" height="100"/></a>
-  </td></table><br>
-  
-</p>
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_poisson.png"><img src="images/image_menu_poisson.png" width="700" height="450"/></a>
@@ -108,30 +90,24 @@ Voyez les illustrations ci-dessous!
 </p>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe.png"><img src="images/image_courbe.png" width="500" height="250"/></a><br>
-  Représentation graphique de la fonction x² sur [0,25]!
-  <br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe2.png"><img src="images/image_courbe2.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique de la fonction x² sur [25,50]!
-  <br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe3.png"><img src="images/image_courbe3.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique d'une fonction de type linéaire 3*x+7 sur [25,50]!
-  <br>
-   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe4.png"><img src="images/image_courbe4.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique de la fonction cos(x) sur [0,100]!
-  <br>
-   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe5.png"><img src="images/image_courbe5.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique de la fonction log(x) sur [0,25]!
-  <br>
-   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe6.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique de la fonction inverse 1/x sur [0,15]!
-  <br>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
+  <center>Représentation graphique de la fonction x² sur [0,25] et [25,50] d'une fonction lineaire ax+b sur [0,25] et cos(x) sur [0,100]!</center>
+  <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe.png"><img src="images/image_courbe.png" width="200" height="100"/></a>
+  </td>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe2.png"><img src="images/image_courbe2.png" width="200" height="100"/></a>
+  </td>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe3.png"><img src="images/image_courbe3.png" width="200" height="100"/></a>
+  </td>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe4.png"><img src="images/image_courbe4.png" width="200" height="100"/></a>
+  </td></table><br>
+  
 </p>
+
 
 <p align="center">
   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="http://vertin-go.com/Fonctions_Annexes/annexes/pdt-page-de-telechargement/Android%20You%20Tube%20Data%20API/youtube2.png" width="400" height="250"/></a>
