@@ -39,6 +39,7 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_stats.png"><img src="images/image_menu_stats.png" width="700" height="450"/></a>
+  <br>
   Représentation graphique de la droite de régréssion linéaire d'une série statistique!
   <table>
   <td>
