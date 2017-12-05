@@ -24,15 +24,15 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_poisson.png"><img src="images/image_menu_poisson.png" width="700" height="450"/></a>
-  <center>Représentation graphique de la loi de poisson sur [0,10] et [0,13]!</center>
- <center> <table>
+  Représentation graphique de la loi de poisson sur [0,10] et [0,13]!
+ <table>
   <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe7.png"><img src="images/image_courbe_7.png" width="200" height="100"/></a>
   </td>
   <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe8.png"><img src="images/image_courbe_8.png" width="200" height="100"/></a>
   </td>
-  </table><br></center> 
+  </table><br>
   
   <br>
 </p>
