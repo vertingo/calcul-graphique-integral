@@ -4,7 +4,8 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe.png"><img src="images/image_courbe.png" width="200" height="100"/></a><br>
+  <table><td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe.png"><img src="images/image_courbe.png" width="200" height="100"/></a></td><td><a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe2.png"><img src="images/image_courbe.png" width="200" height="100"/></a></td></table><br>
   Représentation graphique de la fonction x² sur [0,25]!
   <br>
 </p>
