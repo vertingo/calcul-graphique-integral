@@ -19,7 +19,6 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe4.png"><img src="images/image_courbe4.png" width="200" height="100"/></a>
   </td></table><br>
   
-  <br>
 </p>
 
 <p align="center">
@@ -35,7 +34,7 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
   </td>
   </table><br>
   
-  <br>
+
 </p>
 
 <p align="center">
