@@ -37,19 +37,6 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
 
 </p>
 
-<p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_stats.png"><img src="images/image_menu_stats.png" width="700" height="450"/></a>
-  <br>
-  Représentation graphique de la droite de régréssion linéaire d'une série statistique!
-  <table>
-  <td>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_stats.png"><img src="images/image_courbe_stats.png" width="200" height="100"/></a>
-  </td>
-  </table><br>
-  
-  <br>
-</p>
-
 
 ## Prérequis
 Téléchargement et installation du logiciel Code::Blocks disponible en téléchargement sur le lien suivant: http://www.commentcamarche.net/download/telecharger-34056352-code-blocks
@@ -102,6 +89,19 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
 ## Usage
 Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de n'importe quelle courbe en spécifiant la valeur des bornes inférieure et supérieure de l'intégral et également visualiser graphiquement l'air sous la courbe!
 Voyez les illustrations ci-dessous!
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_stats.png"><img src="images/image_menu_stats.png" width="700" height="450"/></a>
+  <br>
+  Représentation graphique de la droite de régréssion linéaire d'une série statistique!
+  <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_stats.png"><img src="images/image_courbe_stats.png" width="200" height="100"/></a>
+  </td>
+  </table><br>
+ 
+</p>
+
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
