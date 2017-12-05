@@ -25,10 +25,10 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_stats.png"><img src="images/image_menu_stats.png" width="700" height="450"/></a>
   <table>
   <td>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe7.png"><img src="images/image_courbe7.png" width="200" height="100"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe7.png"><img src="images/image_courbe_7.png" width="200" height="100"/></a>
   </td>
   <td>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe8.png"><img src="images/image_courbe8.png" width="200" height="100"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe8.png"><img src="images/image_courbe_8.png" width="200" height="100"/></a>
   </td>
   </table><br>
   Représentation graphique de la loi de poisson sur [0,10] et [0,13]!
