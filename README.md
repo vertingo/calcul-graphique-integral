@@ -2,12 +2,23 @@
 
 Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécuté voir ci-dessous) en langage c 
 
+
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe.png"><img src="images/image_courbe.png" width="200" height="100"/></a><br>
-  Représentation graphique de la fonction x² sur [0,25]!
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_poisson.png"><img src="images/image_menu_poisson.png" width="700" height="450"/></a>
   <br>
+  Représentation graphique de la loi de poisson sur [0,10] et [0,13]!
+ <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_7.png"><img src="images/image_courbe_7.png" width="200" height="100"/></a>
+  </td>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_8.png"><img src="images/image_courbe_8.png" width="200" height="100"/></a>
+  </td>
+  </table><br>
+  
+
 </p>
+
 
 ## Prérequis
 Téléchargement et installation du logiciel Code::Blocks disponible en téléchargement sur le lien suivant: http://www.commentcamarche.net/download/telecharger-34056352-code-blocks
@@ -56,39 +67,37 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl4.png"><img src="images/newproject-sdl4.png" width="700" height="450"/></a><br>
 </p>
 
-
 ## Usage
 Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de n'importe quelle courbe en spécifiant la valeur des bornes inférieure et supérieure de l'intégral et également visualiser graphiquement l'air sous la courbe!
 Voyez les illustrations ci-dessous!
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_stats.png"><img src="images/image_menu_stats.png" width="700" height="450"/></a>
+  <br>
+  Représentation graphique de la droite de régréssion linéaire d'une série statistique!
+  <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_stats.png"><img src="images/image_courbe_stats.png" width="200" height="100"/></a>
+  </td>
+  </table>
 </p>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe.png"><img src="images/image_courbe.png" width="500" height="250"/></a><br>
-  Représentation graphique de la fonction x² sur [0,25]!
-  <br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe2.png"><img src="images/image_courbe2.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique de la fonction x² sur [25,50]!
-  <br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe3.png"><img src="images/image_courbe3.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique d'une fonction de type linéaire 3*x+7 sur [25,50]!
-  <br>
-   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe4.png"><img src="images/image_courbe4.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique de la fonction cos(x) sur [0,100]!
-  <br>
-   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe5.png"><img src="images/image_courbe5.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique de la fonction log(x) sur [0,25]!
-  <br>
-   <a href="https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1"><img src="images/image_courbe6.png" width="500" height="250"/></a>
-  <br>
-  Représentation graphique de la fonction inverse 1/x sur [0,15]!
-  <br>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
+  <center>Représentation graphique de la fonction x² sur [0,25] et [25,50] d'une fonction lineaire ax+b sur [0,25] et cos(x) sur [0,100]!</center>
+  <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe.png"><img src="images/image_courbe.png" width="200" height="100"/></a>
+  </td>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe2.png"><img src="images/image_courbe2.png" width="200" height="100"/></a>
+  </td>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe3.png"><img src="images/image_courbe3.png" width="200" height="100"/></a>
+  </td>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe4.png"><img src="images/image_courbe4.png" width="200" height="100"/></a>
+  </td></table><br>
 </p>
 
 <p align="center">
