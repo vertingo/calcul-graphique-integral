@@ -14,10 +14,10 @@
 #include <iostream>
 #include <vector>
 #include <locale.h>
-#include "mini_rsa.h"
-#include "vecteurs.h"
-#include "utilisateur.h"
-#include "outils.h"
+#include "headers/mini_rsa.h"
+#include "headers/vecteurs.h"
+#include "headers/utilisateur.h"
+#include "headers/outils.h"
 
 #define COUNT(t) (sizeof(t)/sizeof(t[0]))
 
