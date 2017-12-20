@@ -83,6 +83,17 @@ Voyez les illustrations ci-dessous!
 </p>
 
 <p align="center">
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_tengente.png"><img src="images/image_menu_tengente.png" width="700" height="450"/></a>
+  <br>
+  Représentation graphique d'une tengente avec sa droite d'équation de la forme y=f'(a)(x-a)+f(a)!
+  <table>
+   <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe8.png"><img src="images/image_courbe8.png" width="200" height="100"/></a>
+  </td>
+  </table>
+</p>
+
+<p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_second_degree.png"><img src="images/image_menu_second_degree.png" width="700" height="450"/></a>
   <br>
   Représentation graphique d'un polynôme du second degré de la forme ax²+bx+c!
