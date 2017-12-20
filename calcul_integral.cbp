@@ -42,8 +42,16 @@
 			<Add library="dxguid" />
 			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.15/lib" />
 		</Linker>
+		<Unit filename="Convertisseur.h" />
+		<Unit filename="Convertisseur_temperature.h" />
+		<Unit filename="Outils.h" />
+		<Unit filename="Utilisateur.h" />
+		<Unit filename="Utilitaires.h" />
+		<Unit filename="Vecteurs.h" />
 		<Unit filename="cb.bmp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="mini_rsa.cpp" />
+		<Unit filename="mini_rsa.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

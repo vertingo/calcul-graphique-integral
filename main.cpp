@@ -11,6 +11,17 @@
 #include <string.h>
 #include <sdl/sdl.h>
 #include <string.h> // Penser à inclure string.h pour strchr()
+#include <iostream>
+#include <vector>
+#include <locale.h>
+#include "mini_rsa.h"
+#include "vecteurs.h"
+#include "utilisateur.h"
+#include "outils.h"
+
+#define COUNT(t) (sizeof(t)/sizeof(t[0]))
+
+using namespace std ;
 
 #define MAX 100 /*définition de la taille maximum des tableaux donc du nombre d'element Xi et Yi*/
 #define XRES 800
@@ -50,6 +61,8 @@ void fichier(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],flo
 void Calcul_Integral();
 void bernouilli();
 
+SDL_Surface * screen;
+Uint32 white, black, couleur[100];
 
 /*********************************/
 /*         Les Fonctions         */
@@ -67,7 +80,6 @@ void entete()
 	printf("* Nouveaut%cs par rapport %c la version 1.1b:                            *\n",130,133);
 	printf("*    ==> Un menu                                                       *\n",130,130);
 	printf("************************************************************************\n\n");
-
 }
 
 int Factorielle(int nombre)
@@ -77,7 +89,7 @@ int Factorielle(int nombre)
 
     /* Nous commencons la boucle qu'a partir de 2 car 0! == 1 et 1! == 1, 1 etant la valeur par initialisation.
     Nous avons donc seulement besoins de multiplier si le nombre rentrer par l'utilisateur est >= 2 */
-    for (i=2 ; i<=nombre ; i++)
+    for (i=2;i<=nombre;i++)
         resultat *= i;
 
     return resultat;
@@ -145,7 +157,7 @@ float moyenne(float somme,int N)
 
 	moyenne=((somme)/(float)N);
 
-	return (moyenne);
+	return(moyenne);
 }
 
 /*Fonction de calcul du produit d'element de deux tableau ligne par ligne*/
@@ -154,11 +166,10 @@ void produittab(float tab1[],float tab2[],float tab_produit[],int N)
 {
 	int i=1;
 
-	while (i<(N+1))
+	while(i<(N+1))
 	{
 		tab_produit[i]=(tab1[i]*tab2[i]);i++;
 	};
-
 }
 
 /*Fonction de calcul de la pente "a" de la droite*/
@@ -175,7 +186,6 @@ float pente(float SommeProduitXiYi,float MoyenneXi,float MoyenneYi,float SommeCa
 /*Fonction de calcul de l'ordonee a l'orrigine "b"*/
 
 float ordonee(float MoyenneXi,float MoyenneYi,float a)
-
 {
 	float b;
 
@@ -189,11 +199,10 @@ void ecart_a_moyenne(float tab[],float tab_ecart_a_moyenne[],float Moyenne,int N
 {
 	int i=1;
 
-	while (i<(N+1))
+	while(i<(N+1))
 	{
 	tab_ecart_a_moyenne[i]=(tab[i]-Moyenne);i++;
 	};
-
 }
 
 /*Calcul du coefficient de corrélation "r"*/
@@ -210,11 +219,11 @@ double corr(float SommeCarreXiMoinMoyenneXi,float SommeCarreYiMoinMoyenneYi,floa
 
 	if(a>=0.0)
 	{
-	    q = 1;
+	    q=1;
 	}
 	else
 	{
-	    q = -1;
+	    q=-1;
 	};
 
 	r=(sqrt(rCarre))*q;
@@ -425,7 +434,7 @@ void affich_tab(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],
 
 void fichier(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],float tab5[],int N)
 {
-	FILE   *sortie1;
+	FILE *sortie1;
 	char car,filename[20];
 	int i=1;
 
@@ -440,14 +449,14 @@ void fichier(float tab[],float tab1[],float tab2[],float tab3[],float tab4[],flo
 		printf("\n\nTapez un nom de fichier:");
 		scanf("%s",filename);
 
-		printf ("\nOuverture du fichier: %s",filename);
+		printf("\nOuverture du fichier: %s",filename);
 
 	/*Ouvreture du fichier */
 
 		 sortie1  = fopen (filename, "a");
 
 	 /* Test d ouvreture */
-		 if (sortie1 == NULL)
+		 if(sortie1 == NULL)
          {
 		   /* fopen a echoue */
 		  printf ("\nErreur a l'ouverture du fichier: %s.",filename);
@@ -552,7 +561,7 @@ void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],f
 	ecart_a_moyenne(Xi,tab_ecart_a_moyenne,MoyenneXi,N);
 
 	i=1;
-	while (i<(N+1))
+	while(i<(N+1))
 	{
 		ecart_a_moyenne_Xi[i] = tab_ecart_a_moyenne[i];
 		carre_ecart_a_moyenne_Xi[i] = ((ecart_a_moyenne_Xi[i])*(ecart_a_moyenne_Xi[i]));i++;
@@ -561,7 +570,7 @@ void regression(float Xi[],float Yi[],int N,float result[],float ProduitXiYi[],f
 	ecart_a_moyenne(Yi,tab_ecart_a_moyenne,MoyenneYi,N);
 
 	i=1;
-	while (i<(N+1))
+	while(i<(N+1))
 	{
 		ecart_a_moyenne_Yi[i] = tab_ecart_a_moyenne[i];
 		carre_ecart_a_moyenne_Yi[i] = ((ecart_a_moyenne_Yi[i])*(ecart_a_moyenne_Yi[i]));i++;
@@ -628,18 +637,18 @@ void bernouilli()
      e = e/x;
      p = pow(e, k);
 
-     printf("La probabilite de succes k de n est: %lf\n", p);
+     printf("La probabilit%c de succ%cs k de n est: %lf\n",130,138,p);
 
      x = n-k;
      y = 1-p;
      q = pow(y, x);
 
      r = r*p*q;
-     printf("Le resultat de la loi binomiale est: %lf\n", r);
+     printf("Le r%csultat de la loi binomiale est: %lf\n",130,r);
      e = n*p;
-     printf("L'esperance est de: %lf\n", e);
+     printf("L'esp%crance est de: %lf\n",130,e);
      t = sqrt(e*q);
-     printf("L'ecart type est de: %lf\n", t);
+     printf("L'%ccart type est de: %lf\n",130,t);
 
      x = exp(-e);
      y = pow (e,k);
@@ -647,6 +656,107 @@ void bernouilli()
      k = Factorielle(k);
      x = z/k;
      printf("La loi de poisson est: %g\n", x);
+}
+
+int pgcd(int a1, int b1)
+    {
+    int a;
+    int b;
+
+    if(a1<b1){
+        a = b1;
+        b = a1;
+    }
+    else{
+        a = a1;
+        b = b1;
+    }
+
+    if(b == 0)
+        return a;
+
+    int reste=1;
+
+    while(reste != 0){
+        int q=0;
+        while((b*q)<a){
+        q++;
+        }
+        if((b*q)!=a)
+        q--;
+        reste = a - (q*b);
+        a = b;
+        b = reste;
+    }
+
+
+    return a;
+    }
+
+void extgcd(int m,int n)
+{
+   // Both arrays ma and na are arrays of 3 integers such that
+	// ma[0] = m ma[1] + n ma[2] and na[0] = m na[1] + n na[2]
+	int ma[3] = {m, 1, 0};
+	int na[3] = {n, 0, 1};
+
+	int ta[3];		// Temporary variable
+	int i;			// Loop index
+	int q;			// Quotient
+	int r;			// Rest
+
+	// Exchange ma and na if m < n
+	if(m < n)
+	{
+	    ta[0]=na[0];
+	    ta[1]=na[1];
+	    ta[2]=na[2];
+
+	    na[0] = ma[0];
+	    na[1] = ma[1];
+	    na[2] = ma[2];
+
+	    ma[0] = ta[0];
+	    ma[1] = ta[1];
+	    ma[2] = ta[2];
+	}
+
+	if(pgcd(m,n)==1)
+	{
+		printf("M et N premiers entre-eux on aura donc une %cquivalence de la forme: %i.u + %i.v = 1!\nCalculons d%csormais les coefficients de b%czouts:\n",130,m,n,130,130);
+	}
+	else
+	{
+		printf("M et N ne sont pas premiers entre-eux on aura donc une %cquivalence de la forme: %i.u +%i.v = 1.k avec k appartenant %c \nl'ensemble des entiers naturels except%c:1!\n",130,m,n,133,130);
+	}
+
+	//Divisions euclidiennes successives à programmer!
+
+		while (na[0] > 0)
+		{
+			q = ma[0] / na[0];	// Quotient
+				for (i = 0; i < 3; i++)
+				{
+					r = ma[i] - q * na[i];
+						ma[i] = na[i];
+						na[i] = r;
+                }
+        }
+
+
+	printf("Le r%csultat nous am%cne donc %c la relation d'%cquivalence suivante tel que u et v = (%i,%i) soit %i=%i.%i+%i.%i",130,138,133,130,ma[1],ma[2],ma[0],m,ma[1],n,ma[2]);
+}
+
+void bezout()
+{
+    int a, b;
+
+        printf("Entrez un entier a: \n");
+        scanf("%i",&a);
+        printf("Entrez un entier b: \n");
+        scanf("%i",&b);
+
+        extgcd(a,b);
 }
 
 double poisson(int x,int y)
@@ -697,6 +807,51 @@ double f(double x,double a,double b,int choix_f)
 
 }
 
+double f_second_degree(double x,double a,double b,double c,int choix_f)
+{
+    if(choix_f==1)
+    {
+     return a*x*x+b*x+c;
+    }
+}
+
+double f_derive(double x,double a,double b,int choix_f)
+{
+
+    if(choix_f==1)
+    {
+     return a;
+    }
+    else if(choix_f==2)
+    {
+     return a*2*x;
+    }
+    else if(choix_f==3)
+    {
+     return a*x*x;
+    }
+    else if(choix_f==4)
+    {
+     return a/(a*x+b)*(a*x+b);
+    }
+    else if(choix_f==5)
+    {
+     return  a/(a*x+b);
+    }
+    else if(choix_f==6)
+    {
+     return a*cos(a*x+b);
+    }
+    else if(choix_f==7)
+    {
+     return -a*sin(a*x+b);
+    }
+    else if(choix_f==8)
+    {
+     return a*2*x+b;
+    }
+}
+
 void waitkey()            // attend qu'on appuie sur ESC
 {
     SDL_Event event;
@@ -704,13 +859,26 @@ void waitkey()            // attend qu'on appuie sur ESC
     {
         while(SDL_PollEvent(&event))        // aquisition d'evenement
         {
-            if(event.type == SDL_KEYDOWN)  // on appuie sur une touche ?
+            if(event.type==SDL_KEYDOWN)  // on appuie sur une touche ?
             {
-                if(event.key.keysym.sym == SDLK_ESCAPE) return;  // c'est "ESC" ?
+                if(event.key.keysym.sym==SDLK_ESCAPE) return;  // c'est "ESC" ?
             }
         }
         SDL_Delay(1);
     }
+}
+
+void pause(void)
+{
+ SDL_Event evenement;
+ do SDL_WaitEvent(&evenement);
+ while(evenement.type != SDL_QUIT && evenement.type != SDL_KEYDOWN);
+}
+
+void putpixel(int xe, int ye, Uint32 c)
+{
+ Uint32 * numerocase;
+ numerocase= (Uint32 *)(screen->pixels)+xe+ye*screen->w; *numerocase=c;
 }
 
 void SDL_PutPixel32(SDL_Surface *surface, int x, int y, Uint32 pixel)
@@ -821,11 +989,52 @@ void ShowFoncion(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,double
             Line(screen,x,y,lastx,lasty,couleur);
         lastx = x;
         lasty = y;
-
     }
 }
 
-void ShowAxis(SDL_Surface* screen,double minX,double maxX,double minY,double maxY,double a,double b,int choix_f)
+void ShowFoncionSecondDegree(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,double,double,double,int),double minX,double maxX,double minY,double maxY,double a,double b,double c,int choix_f)
+{
+    int i;
+    int lastx = 0;
+    int lasty = 0;
+    int x,y;
+    double resfonc;
+
+    for(i=0;i<XRES;i++)
+    {
+        x = i;
+        resfonc = fonc(Ecr_to_ReX(i,minX,maxX),a,b,c,choix_f);
+        y = Re_to_EcrY(resfonc,minY,maxY);
+
+        if(i!=0)
+            Line(screen,x,y,lastx,lasty,couleur);
+        lastx = x;
+        lasty = y;
+    }
+}
+
+void ShowTengente(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,double,double,int),double minX,double maxX,double minY,double maxY,double a,double b,double x1,int choix_f)
+{
+    int i;
+    int lastx = 0;
+    int lasty = 0;
+    int x,y;
+    double resfonc;
+
+    for(i=0;i<XRES;i++)
+    {
+        x = i;
+        resfonc = fonc(Ecr_to_ReX(i,minX,maxX)-x1,a,b,1);
+        y = Re_to_EcrY(resfonc,minY,maxY);
+
+        if(i!=0)
+            Line(screen,x,y,lastx,lasty,couleur);
+        lastx = x;
+        lasty = y;
+    }
+}
+
+void ShowAxis(SDL_Surface* screen,double minX,double maxX,double minY,double maxY,double a,double b,double c,int choix_f,bool integral,bool derive,bool poly)
 {
     int centreX = Re_to_EcrX(0.0,minX,maxX);
     int centreY = Re_to_EcrY(0.0,minY,maxY);
@@ -833,22 +1042,103 @@ void ShowAxis(SDL_Surface* screen,double minX,double maxX,double minY,double max
     Line(screen,0,centreY,XRES-1,centreY,0xFFFFFF);  // axe horizontal
     Uint32 rouge = SDL_MapRGB(screen->format, 255, 0, 0);
     Uint32 bleu = SDL_MapRGB(screen->format, 0, 0, 255);
+    Uint32 bleu_ciel = SDL_MapRGB(screen->format, 0, 140, 255);
     Line(screen,(XRES/(maxX+1))*maxX,0,(XRES/(maxX+1))*maxX,YRES-1,rouge);
     Line(screen,(XRES/(maxX+1)),0,(XRES/(maxX+1)),YRES-1,rouge);
 
-    int xmax,xpas,y;
-    double resfonc2;
-    xmax=(XRES/(maxX+1))*maxX;
-    xpas=(XRES/(maxX+1));
-
-    for(int i=xpas;i<xmax;i++)
+    if(poly==true)
     {
-        resfonc2 = f(Ecr_to_ReX(i,minX,maxX),a,b,choix_f);
-        y = Re_to_EcrY(resfonc2,minY,maxY);
-        Line(screen,i,y,i,centreY,bleu);
+        if(integral==true)
+        {
+        int xmax,xpas,y;
+        double resfonc2;
+        xmax=(XRES/(maxX+1))*maxX;
+        xpas=(XRES/(maxX+1));
+
+            for(int i=xpas;i<xmax;i++)
+            {
+                if(derive==true)
+                {
+                resfonc2 = f_derive(Ecr_to_ReX(i,minX,maxX),a,b,8);
+                }
+                else
+                {
+                resfonc2 = f_second_degree(Ecr_to_ReX(i,minX,maxX),a,b,c,1);
+                }
+
+            y = Re_to_EcrY(resfonc2,minY,maxY);
+            Line(screen,i,y,i,centreY,bleu_ciel);
+            }
+        }
+    }
+    else
+    {
+        if(integral==true)
+        {
+        int xmax,xpas,y;
+        double resfonc2;
+        xmax=(XRES/(maxX+1))*maxX;
+        xpas=(XRES/(maxX+1));
+
+            for(int i=xpas;i<xmax;i++)
+            {
+                if(derive==true)
+                {
+                resfonc2 = f_derive(Ecr_to_ReX(i,minX,maxX),a,b,choix_f);
+                }
+                else
+                {
+                resfonc2 = f(Ecr_to_ReX(i,minX,maxX),a,b,choix_f);
+                }
+
+            y = Re_to_EcrY(resfonc2,minY,maxY);
+            Line(screen,i,y,i,centreY,bleu_ciel);
+            }
+        }
     }
 
     while(0);
+}
+
+void line(int x0,int y0, int x1,int y1, Uint32 c)
+{
+int dx,dy,x,y,residu,absdx,absdy,stepx,stepy,i;
+dx=x1-x0; dy=y1-y0; residu=0; x=x0;y=y0; putpixel(x,y,c);
+if (dx>0) stepx=1;else stepx=-1; if (dy>0) stepy=1; else stepy=-1;
+absdx=abs(dx);absdy=abs(dy);
+if (dx==0) for(i=0;i<absdy;i++) { y+=stepy;
+ putpixel(x,y,c); }
+else if(dy==0) for(i=0;i<absdx;i++){ x+=stepx;
+ putpixel(x,y,c); }
+else if (absdx==absdy)
+ for(i=0;i<absdx;i++) {x+=stepx; y+=stepy;
+ putpixel(x,y,c);
+ }
+else if (absdx>absdy)
+ for(i=0;i<absdx;i++)
+
+ { x+=stepx; residu+=absdy;
+ if(residu >= absdx) {residu -=absdx; y+=stepy;}
+ putpixel(x,y,c);
+ }
+else for(i=0;i<absdy;i++)
+ {y+=stepy; residu +=absdx;
+ if (residu>=absdy) {residu -= absdy;x +=stepx;}
+ putpixel(x,y,c);
+ }
+}
+
+void ShowAxisCercle(SDL_Surface* screen,double minX,double maxX,double minY,double maxY)
+{
+    int centreX = Re_to_EcrX(0.0,minX,maxX);
+    int centreY = Re_to_EcrY(0.0,minY,maxY);
+    //printf("%f",maxX);
+    //printf("%i",centreX);
+    Line(screen,centreX,0,centreX,YRES-1,0xFFFFFF);  // axe vertical
+    Line(screen,0,centreY,XRES-1,centreY,0xFFFFFF);  // axe horizontal
+    Uint32 rouge = SDL_MapRGB(screen->format, 255, 0, 0);
+    Uint32 bleu = SDL_MapRGB(screen->format, 0, 0, 255);
+    Uint32 bleu_ciel = SDL_MapRGB(screen->format, 0, 140, 255);
 }
 
 /*Calcul d'une intégral par la méthode des trapèze qui découpe l'interval en n trapèze qui pour tout x variant de 0,1,2,3..etc calcul la somme de x*f(x).
@@ -856,16 +1146,34 @@ L'aire d'un trapèze étant (l1 + l2) x h / 2 on retrouve dans cette fonction po
 (f(a)+f(b)+2*sum)=(l1 + l2) l1 et l2 les longueurs des ses deux côtés(tous les n trapèzes confondues) ce qui nous donne la valeur de la surface
 d'un trapèze comme ci l'interval de découpage ne représenté au final qu'un seul trapèze pour n=1 cependant augmenter la valeur de n nous permet d'obtenir
 une meilleur précision de la surface de l'intégral!*/
-double trapezoidal(double x1,double x2,int n,double a, double b,int choix_f){
+double trapezoidal(double x1,double x2,int n,double a, double b,double c,int choix_f,bool poly){
   double x,h=0,sum=0,integral;
   double i;
-  h=fabs(x2-x1)/n;
 
-  for(i=1;i<n;i++){
-    x=x1+i*h;
-    sum=sum+f(x,a,b,choix_f);
+  if(poly=true)
+  {
+      h=fabs(x2-x1)/n;
+
+      for(i=1;i<n;i++)
+      {
+      x=x1+i*h;
+      sum=sum+f_second_degree(x,a,b,c,1);
+      }
+
+      integral=(h/2)*(f_second_degree(x1,a,b,c,1)+f_second_degree(x2,a,b,c,1)+2*sum);
   }
-  integral=(h/2)*(f(x1,a,b,choix_f)+f(x2,a,b,choix_f)+2*sum);
+  else
+  {
+      h=fabs(x2-x1)/n;
+
+      for(i=1;i<n;i++)
+      {
+      x=x1+i*h;
+      sum=sum+f(x,a,b,choix_f);
+      }
+
+      integral=(h/2)*(f(x1,a,b,choix_f)+f(x2,a,b,choix_f)+2*sum);
+  }
 
   return integral;
 }
@@ -885,12 +1193,12 @@ double simpson(int n, double x1, double x2,double a,double b,int choix_f)
 
   // Etape 3
   NN = n -1;
-  for (i=1; i<=NN; i++)
+  for(i=1; i<=NN; i++)
     {
       // Etape 4
       X = x1 + i*h;
       // Etape 5
-      if ((i%2) == 0)
+      if((i%2) == 0)
         Iapp2 = Iapp2 + f(X,a,b,choix_f);
       else
         Iapp1 = Iapp1 + f(X,a,b,choix_f);
@@ -904,23 +1212,365 @@ double simpson(int n, double x1, double x2,double a,double b,int choix_f)
 
 }
 
+void affiche_courbe(double minX,double maxX,double minY,double maxY,double a,double b,double c,int choix_f,bool integral,bool tengente,bool derive,bool poly)
+{
+           SDL_Surface *screen;
+           SDL_Init(SDL_INIT_VIDEO);
+           float ten_x=0;
+
+           if(poly==true)
+           {
+               if(tengente==true)
+               {
+               printf("\nEntrez la valeur x du point de la tengente %c la courbe compris entre %i et %i?:\n",133,(int)minX+1,(int)maxX-1);
+               scanf("%f",&ten_x);
+               }
+
+               screen=SDL_SetVideoMode(XRES,YRES,32,SDL_SWSURFACE|SDL_DOUBLEBUF);
+
+               if(SDL_MUSTLOCK(screen))
+               SDL_LockSurface(screen);
+
+               ShowAxis(screen,minX,maxX,minY,maxY,a,b,c,choix_f,integral,derive,poly);
+
+               if(derive==true && integral==true)
+               {
+
+               }
+               else
+               {
+               ShowFoncionSecondDegree(screen,0x00FF00,f_second_degree,minX,maxX,minY,maxY,a,b,c,1);
+               }
+
+
+              if(tengente==true)
+              {
+              double ten_a=0,ten_b=0;
+              ten_a=f_derive(ten_x,a,b,8);
+              ten_b=f_second_degree(ten_x,a,b,c,1);
+              ShowTengente(screen,0x0000FF,f,minX,maxX,minY,maxY,ten_a,ten_b,ten_x,1);
+              }
+              else if(derive==true)
+              {
+              ShowFoncion(screen,0x0000FF,f_derive,minX,maxX,minY,maxY,a,b,8);
+              }
+
+              if(SDL_MUSTLOCK(screen))
+              SDL_UnlockSurface(screen);
+              SDL_Flip(screen);
+              waitkey();
+           }
+           else
+           {
+              if(tengente==true)
+              {
+               printf("\nEntrez la valeur x du point de la tengente %c la courbe compris entre %i et %i?:\n",133,(int)minX+1,(int)maxX-1);
+               scanf("%f",&ten_x);
+              }
+
+              screen=SDL_SetVideoMode(XRES,YRES,32,SDL_SWSURFACE|SDL_DOUBLEBUF);
+
+              if(SDL_MUSTLOCK(screen))
+              SDL_LockSurface(screen);
+
+              ShowAxis(screen,minX,maxX,minY,maxY,a,b,c,choix_f,integral,derive,poly);
+
+              if(derive==true && integral==true)
+              {
+
+              }
+              else
+              {
+               ShowFoncion(screen,0x00FF00,f,minX,maxX,minY,maxY,a,b,choix_f);
+              }
+
+
+              if(tengente==true)
+              {
+               double ten_a=0,ten_b=0;
+               ten_a=f_derive(ten_x,a,b,choix_f);
+               ten_b=f(ten_x,a,b,choix_f);
+               ShowTengente(screen,0x0000FF,f,minX,maxX,minY,maxY,ten_a,ten_b,ten_x,1);
+              }
+              else if(derive==true)
+              {
+               ShowFoncion(screen,0x0000FF,f_derive,minX,maxX,minY,maxY,a,b,choix_f);
+              }
+
+              if(SDL_MUSTLOCK(screen))
+              SDL_UnlockSurface(screen);
+              SDL_Flip(screen);
+              waitkey();
+           }
+
+
+}
+
+static bool test_encrypt_decrypt(int nb_bit )
+    {
+    mini_rsa::big_int pub,pri,mod ;
+
+    mini_rsa::compute_keys( nb_bit,&pub,&pri,&mod ) ;      // génération de la bi-clef
+    mini_rsa::big_int v = mini_rsa::random( nb_bit-1 ) ;   // génération d'une donnée aléatoire
+    mini_rsa::big_int w = mini_rsa::encrypt( pri,mod,v ) ; // chiffrement avec la clef privée
+    mini_rsa::big_int x = mini_rsa::encrypt( pub,mod,w ) ; // déchiffrement avec la clef publique
+    mini_rsa::big_int y = mini_rsa::encrypt( pub,mod,x ) ; // chiffrement avec la clef publique
+    mini_rsa::big_int z = mini_rsa::encrypt( pri,mod,y ) ; // déchiffrement avec la clef privée
+    return( (v == x) && (v == z) ) ;                       // vérifications
+    }
+
+///////////////////////////////////////////////////////////////////////////////
+
+// le nb d'iterations dépend du nombre de bits
+static int nb_loop ( int nb_bit )
+    {
+    return( nb_bit*nb_bit*nb_bit*nb_bit*nb_bit/1000  ) ;
+    }
+
+
+void saisir_chaine(char * lpBuffer, int buf_size)
+{
+    char * p;
+
+    fgets(lpBuffer, buf_size, stdin);
+
+    if ((p = strchr(lpBuffer, '\n')) == NULL)
+    {
+        int c;
+
+        do
+            c = getchar();
+        while (c != EOF && c != '\n');
+    }
+    else
+        *p = '\0';
+}
+
+void Affiche_Courbe_Second_Degree(double a,double b,double c,int choix_f)
+{
+  int n;
+  float x1,x2,spmthd=0;
+  double minX, maxX, minY, maxY;
+  int choix;
+  SDL_Surface *screen;
+
+  SDL_Init(SDL_INIT_VIDEO);
+
+  printf("Entrez la valeur x1 de la borne inf%crieure de l'interval de la fonction!\nx1=",130,130);
+  scanf("%f",&x1);
+  printf("Entrez la valeur x2 de la borne sup%crieure de l'interval de la fonction!\nx2=",130,130);
+  scanf("%f",&x2);
+  printf("Entrez la valeur n correspondant au nombre de d%ccoupage de l'interval en trap%cze(Pour le calcul int%cgral)!\nn=",130,138,130);
+  scanf("%i",&n);
+
+  spmthd=trapezoidal(x1,x2,n,a,b,c,choix_f,true);
+  printf("\nValeur de l'int%cgral de la fonction polyn%cme: %ix%c+%ix+%i sur [%i,%i]: %f \n",130,147,(int)a,253,(int)b,(int)c,(int)x1,(int)x2,spmthd);
+
+  printf("\nEntrez le num%cro de l\'op%cration desir%ce?:\n",130,130,130);
+  printf("\n(1) Afficher une repr%csentation graphique de la courbe(En vert!) + Calcul int%cgral(En bleu ciel!) sur l'interval [%i,%i]?\n",130,130,(int)x1,(int)x2);
+  printf("\n(2) Afficher une repr%csentation graphique de la courbe(En vert!) + Tengente(En bleu fonc%c!) %c un point x \nde l'interval [%i,%i]?\n",130,130,133,(int)x1,(int)x2);
+  printf("\n(3) Afficher une repr%csentation graphique de la courbe(En vert!) + Deriv%c de la fonction(En bleu fonc%c!) sur [%i,%i]?\n",130,130,130,(int)x1,(int)x2);
+  printf("\n(4) Afficher une repr%csentation graphique de la derive(En bleu fonc%c!) + Calcul int%cgral(En bleu ciel!) \nsur l'interval [%i,%i]?\n",130,130,130,(int)x1,(int)x2);
+
+  printf("\nQuel est votre choix?:");
+
+  scanf("%d",&choix);
+
+  switch(choix)
+  {
+         case 1:
+         {
+          minX=x1-1;
+          maxX=x2+1;
+
+                 double minYx1=f_second_degree(x1,a,b,c,choix_f)-5;
+                 double minYx2=f_second_degree(x2,a,b,c,choix_f)-5;
+                 double maxYx1=f_second_degree(x1,a,b,c,choix_f)+15;
+                 double maxYx2=f_second_degree(x2,a,b,c,choix_f)+15;
+
+                 if(maxYx1>maxYx2)
+                 {
+                    maxY=maxYx1;
+                 }
+                 else
+                 {
+                    maxY=maxYx2;
+                 }
+
+                 if(minYx1>minYx2)
+                 {
+                    minY=minYx2;
+                 }
+                 else
+                 {
+                    minY=minYx1;
+                 }
+
+          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,true,false,false,true);
+         };break;
+
+         case 2:
+         {
+           minX=x1-1;
+           maxX=x2+1;
+
+                 double minYx1=f_second_degree(x1,a,b,c,choix_f)-5;
+                 double minYx2=f_second_degree(x2,a,b,c,choix_f)-5;
+                 double maxYx1=f_second_degree(x1,a,b,c,choix_f)+15;
+                 double maxYx2=f_second_degree(x2,a,b,c,choix_f)+15;
+
+                 if(maxYx1>maxYx2)
+                 {
+                    maxY=maxYx1;
+                 }
+                 else
+                 {
+                    maxY=maxYx2;
+                 }
+
+                 if(minYx1>minYx2)
+                 {
+                    minY=minYx2;
+                 }
+                 else
+                 {
+                    minY=minYx1;
+                 }
+
+
+          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,false,true,false,true);
+
+          };break;
+          case 3:
+          {
+
+           minX=x1-1;
+           maxX=x2+1;
+
+                 double minYx1=f_second_degree(x1,a,b,c,choix_f)-5;
+                 double minYx2=f_second_degree(x2,a,b,c,choix_f)-5;
+                 double maxYx1=f_second_degree(x1,a,b,c,choix_f)+15;
+                 double maxYx2=f_second_degree(x2,a,b,c,choix_f)+15;
+
+                 if(maxYx1>maxYx2)
+                 {
+                    maxY=maxYx1;
+                 }
+                 else
+                 {
+                    maxY=maxYx2;
+                 }
+
+                 if(minYx1>minYx2)
+                 {
+                    minY=minYx2;
+                 }
+                 else
+                 {
+                    minY=minYx1;
+                 }
+
+          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,false,false,true,true);
+
+          };break;
+          case 4:
+          {
+
+           minX=x1-1;
+           maxX=x2+1;
+
+                 double minYx1=f_second_degree(x1,a,b,c,choix_f)-5;
+                 double minYx2=f_second_degree(x2,a,b,c,choix_f)-5;
+                 double maxYx1=f_second_degree(x1,a,b,c,choix_f)+15;
+                 double maxYx2=f_second_degree(x2,a,b,c,choix_f)+15;
+
+                 if(maxYx1>maxYx2)
+                 {
+                    maxY=maxYx1;
+                 }
+                 else
+                 {
+                    maxY=maxYx2;
+                 }
+
+                 if(minYx1>minYx2)
+                 {
+                    minY=minYx2;
+                 }
+                 else
+                 {
+                    minY=minYx1;
+                 }
+
+          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,true,false,true,true);
+
+          };break;
+  }
+}
+
+void Tableau_Variation(double minX, double maxX, double minY, double maxY, double a, double b, int choix_f)
+{
+    int maxXInter=0,minXInter=minX;
+
+    printf("\n%c Tableau de variation de f(x) sur [%i,%i]: %c",186,(int)minX,(int)maxX,186);
+
+   for(int i=minX;i<=maxX;i++)
+   {
+       if(f_derive(i,a,b,choix_f)>0)
+       {
+         if(i>maxXInter)
+         {
+             maxXInter=i;
+         }
+
+         printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
+         printf("\n%c %i Positive %i %c",186, maxXInter-1,maxXInter,186);
+         printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
+         printf("\n%c Sur [%i,%i] f'(x)>0 ==> f(x) croissante %c",186, maxXInter-1,maxXInter,186);
+
+       }
+       else if(f_derive(i,a,b,choix_f)<0)
+       {
+         if(i>maxXInter)
+         {
+             maxXInter=i;
+         }
+
+         printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
+         printf("\n%c %i  Negative %i %c",186, maxXInter-1,maxXInter,186);
+         printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
+         printf("\n%c Sur [%i,%i] f'(x)<0 ==> f(x) d%ccroissante %c",186, maxXInter-1,maxXInter,130,186);
+       }
+       else
+       {
+         if(i>maxXInter)
+         {
+             maxXInter=i;
+         }
+
+         printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
+         printf("\n%c %i Nulle %i %c",186,maxXInter-1,maxXInter,186);
+         printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
+         printf("\n%c Sur [%i,%i] f'(x)<0 ==> f(x) constante %c",186,maxXInter-1, maxXInter,186);
+       }
+   }
+}
+
 void Calcul_Integral(bool stats,float tab[])
 {
   int i,n;
   float x1,x2,spmthd=0,a,b,res_poisson=0,res_poisson_au_plus=0,k_poisson=0,y_poisson=0;
   int res_pourcentage_au_plus=0,res_pourcentage=0;
   double minX, maxX, minY, maxY;
-  char fonction[10];
-  int fonction2;
-  int choix, choix_f,choix_poisson;
+  int choix_courbe=-1, choix_f, choix_poisson=0, choix2;
   SDL_Surface *screen;
 
   SDL_Init(SDL_INIT_VIDEO);
 
   if(stats==false)
   {
-  printf("Entrez la fonction de l'integral a calculer!\n (1) Fonction lineaire: a*x+b \n (2) Fonction x au carre: a*x*x+b \n (3) Fonction x au cube: a*x*x*x+b \n (4) Fonction inverse: 1/(a*x+b)\n (5) Fonction logarithme: log(a*x+b) \n (6) Fonction sinus: sin(a*x+b)\n (7) Fonction cosinus: cos(a*x+b)\n (8) Fonction loi de poisson avec P(X=k;y)=(y^k*e^-y)/k!\n");
-  printf("\nQuel est votre choix? :");
+  printf("Entrez la fonction de l'int%cgral %c calculer!\n (1) Fonction lin%caire: a*x+b \n (2) Fonction x au carr%c: a*x%c+b \n (3) Fonction x au cube: a*x%c+b \n (4) Fonction inverse: 1/(a*x+b)\n (5) Fonction logarithme: log(a*x+b) \n (6) Fonction sinus: sin(a*x+b)\n (7) Fonction cosinus: cos(a*x+b)\n (8) Fonction loi de poisson avec P(X=k;y)=(y^k*e^-y)/k!\n",130,133,130,130,253,252);
+  printf("\nQuel est votre choix?:");
   scanf("%i",&choix_f);
   }
   else
@@ -930,9 +1580,9 @@ void Calcul_Integral(bool stats,float tab[])
 
   if(choix_f==8)
   {
-    printf("(1) Probabilite de la loi de poisson de type P(X=k,y) Probabilite qu'il se produise exactement k evenements par rapport a une frequence periodique y connue!\n");
-    printf("(2) Probabilite de la loi de poisson de type P(X>=k,y) Probabilite qu'il se produise exactement k ou plus evenements par rapport a une frequence periodique y connue!\n");
-    printf("(3) Probabilite de la loi de poisson de type P(X<=k,y) Probabilite qu'il se produise exactement k ou moins evenements par rapport a une frequence periodique y connue!\n");
+    printf("(1) Probabilit%c de la loi de poisson de type P(X=k,y) Probabilit%c qu'il se produise exactement k %cv%cnements par rapport %c une fr%cquence p%criodique y connue!\n",130,130,130,130,133,130,130);
+    printf("(2) Probabilit%c de la loi de poisson de type P(X>=k,y) Probabilit%c qu'il se produise exactement k ou plus %cv%cnements par rapport %c une fr%cquence p%criodique y connue!\n",130,130,130,130,133,130,130);
+    printf("(3) Probabilit%c de la loi de poisson de type P(X<=k,y) Probabilit%c qu'il se produise exactement k ou moins %cv%cnements par rapport %c une fr%cquence p%criodique y connue!\n",130,130,130,130,133,130,130);
     printf("Quel est votre choix?:");
     scanf("%i",&choix_poisson);
 
@@ -940,9 +1590,9 @@ void Calcul_Integral(bool stats,float tab[])
      {
      case 1:
           {
-            printf("Entrez la valeur de k sachant que k correspond au nombre exact qu'un evenement se produise!\nk=");
+            printf("Entrez la valeur de k sachant que k correspond au nombre exact qu'un %cv%cnement se produise!\nk=",130,130);
             scanf("%f",&k_poisson);
-            printf("Entrez la valeur de y sachant que y correspond au nombre d'evenements survenue pour une periodicite connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=");
+            printf("Entrez la valeur de y sachant que y correspond au nombre d'%cv%cnements survenue pour une p%criodicit%c connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=",130,130,130,130);
             scanf("%f",&y_poisson);
 
             res_poisson=poisson(k_poisson,y_poisson);
@@ -952,14 +1602,14 @@ void Calcul_Integral(bool stats,float tab[])
             a=y_poisson;
             b=1;
 
-            printf("La probabilite qu'il se produise exactement k evenements pour une frequence periodique de: %i est de: %f \nsoit %i pourcent!\n",(int)y_poisson,res_poisson,res_pourcentage);
+            printf("La probabilit%c qu'il se produise exactement k %cv%cnements pour une fr%cquence p%criodique de: %i est de: %f \nsoit %i pourcent!\n",(int)y_poisson,res_poisson,res_pourcentage,130,130,130,130,130);
 
           };break;
      case 2:
           {
-            printf("Entrez la valeur de k sachant que k correspond au nombre exact ou plus qu'un evenement se produise!\nk=");
+            printf("Entrez la valeur de k sachant que k correspond au nombre exact ou plus qu'un %cv%cnement se produise!\nk=",130,130);
             scanf("%f",&k_poisson);
-            printf("Entrez la valeur de y sachant que y correspond au nombre d'evenements survenue pour une periodicite connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=");
+            printf("Entrez la valeur de y sachant que y correspond au nombre d'%cv%cnements survenue pour une p%criodicit%c connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=",130,130,130,130);
             scanf("%f",&y_poisson);
 
             for(int i=0; i<=k_poisson; i++)
@@ -975,14 +1625,14 @@ void Calcul_Integral(bool stats,float tab[])
             a=y_poisson;
             b=1;
 
-            printf("La probabilite qu'il se produise exactement k evenements ou plus pour une frequence periodique de: %i \nest de: %f soit %i pourcent!\n",(int)y_poisson,res_poisson_au_plus,res_pourcentage_au_plus);
+            printf("La probabilit%c qu'il se produise exactement k %cv%cnements ou plus pour une fr%cquence p%criodique de: %i \nest de: %f soit %i pourcent!\n",130,130,130,130,130,(int)y_poisson,res_poisson_au_plus,res_pourcentage_au_plus);
 
           };break;
      case 3:
           {
-            printf("Entrez la valeur de k sachant que k correspond au nombre exact ou moins qu'un evenement se produise!\nk=");
+            printf("Entrez la valeur de k sachant que k correspond au nombre exact ou moins qu'un %cv%cnement se produise!\nk=",130,130);
             scanf("%f",&k_poisson);
-            printf("Entrez la valeur de y sachant que y correspond au nombre d'evenements survenue pour une periodicite connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=");
+            printf("Entrez la valeur de y sachant que y correspond au nombre d'%cv%cnements survenue pour une p%criodicit%c connue\n(Exemple: Il se produit en moyenne 10 accidents par an!)!\ny=",130,130,130,130);
             scanf("%f",&y_poisson);
 
             for(int i=0; i<=k_poisson; i++)
@@ -996,10 +1646,10 @@ void Calcul_Integral(bool stats,float tab[])
             a=y_poisson;
             b=1;
 
-            spmthd=trapezoidal(0,k_poisson,50,y_poisson,0,choix_f);
-            printf("\nValeur de l'integral: %f \n",spmthd);
+            spmthd=trapezoidal(0,k_poisson,50,y_poisson,0,0,choix_f,false);
+            printf("\nValeur de l'int%cgral: %f \n",130,spmthd);
 
-            printf("La probabilite qu'il se produise exactement k evenements ou moins pour une frequence periodique de: %i \nest de: %f soit %i pourcent!\n",(int)y_poisson,res_poisson,res_pourcentage);
+            printf("La probabilit%c qu'il se produise exactement k %cv%cnements ou moins pour une fr%cquence p%criodique de: %i \nest de: %f soit %i pourcent!\n",130,130,130,130,130,(int)y_poisson,res_poisson,res_pourcentage);
 
           };break;
      }
@@ -1019,27 +1669,66 @@ void Calcul_Integral(bool stats,float tab[])
        b=tab[8];
       }
 
-  printf("Entrez la valeur x1 de la borne inferieure de l'interval de l'integral!\nx1=");
+  printf("Entrez la valeur x1 de la borne inf%crieure de l'interval de l'int%cgral!\nx1=",130,130);
   scanf("%f",&x1);
-  printf("Entrez la valeur x2 de la borne superieure de l'interval de l'integral!\nx2=");
+  printf("Entrez la valeur x2 de la borne sup%crieure de l'interval de l'int%cgral!\nx2=",130,130);
   scanf("%f",&x2);
-  printf("Entrez la valeur n correspondant au nombre de decoupage de l'interval en trapeze!\nn=");
+  printf("Entrez la valeur n correspondant au nombre de d%ccoupage de l'interval en trap%cze!\nn=",130,138);
   scanf("%i",&n);
 
-  spmthd=trapezoidal(x1,x2,n,a,b,choix_f);
-  printf("\nValeur de l'integral: %f \n",spmthd);
+  spmthd=trapezoidal(x1,x2,n,a,b,0,choix_f,false);
+  printf("\nValeur de l'int%cgral de la fonction sur [%i,%i]: %f \n",130,(int)x1,(int)x2,spmthd);
   }
 
-  printf("\nEntrez le numero de l\'operation desiree?:\n");
-  printf("\n(1) Afficher une representation graphique de la courbe?\n",spmthd);
-  printf("\nQuel est votre choix? :");
+  printf("\nEntrez le num%cro de l\'op%cration desir%ce?:\n",130,130,130);
+  printf("\n(1) Afficher une repr%csentation graphique de la courbe(En vert!) + Calcul int%cgral(En bleu ciel!) sur l'interval [%i,%i]?\n",130,130,(int)x1,(int)x2);
 
-  scanf("%d",&choix);
+  if(stats==false && choix_poisson==0)
+  {
+     printf("\n(2) Afficher une repr%csentation graphique de la courbe(En vert!) + Tengente(En bleu fonc%c!) %c un point x \nde l'interval [%i,%i]?\n",130,130,133,(int)x1,(int)x2);
+     printf("\n(3) Afficher une repr%csentation graphique de la courbe(En vert!) + Deriv%c de la fonction(En bleu fonc%c!) sur [%i,%i]?\n",130,130,130,(int)x1,(int)x2);
+     printf("\n(4) Afficher une repr%csentation graphique de la derive(En bleu fonc%c!) + Calcul int%cgral(En bleu ciel!) \nsur l'interval [%i,%i]?\n",130,130,130,(int)x1,(int)x2);
+     printf("\n(5) Dresser le tableau de variation de la fonction sur l'interval [%i,%i]?\n",(int)x1,(int)x2);
+  }
+  printf("\nQuel est votre choix?:");
 
-  switch(choix)
+  while(choix_courbe!=0)
+  {
+  scanf("%d",&choix_courbe);
+
+  switch(choix_courbe)
   {
    case 1:
          {
+          minX=x1-1;
+          maxX=x2+1;
+
+           if(choix_f==8)
+           {
+                 minY=-0.1;
+                 maxY=f(x2,a,b,choix_f)+0.1;
+           }
+           else
+           {
+
+                 minY=-10;
+                 double maxYx1=f(x1,a,b,choix_f)+5;
+                 double maxYx2=f(x2,a,b,choix_f)+5;
+
+                 if(maxYx1>maxYx2)
+                 {
+                    maxY=maxYx1;
+                 }
+                 else
+                 {
+                    maxY=maxYx2;
+                 }
+           }
+          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,false,false);
+         };break;
+         case 2:
+         {
+
            minX=x1-1;
            maxX=x2+1;
 
@@ -1051,9 +1740,9 @@ void Calcul_Integral(bool stats,float tab[])
            else
            {
 
-                 minY=-50;
-                 double maxYx1=f(x1,a,b,choix_f)+25;
-                 double maxYx2=f(x2,a,b,choix_f)+25;
+                 minY=-10;
+                 double maxYx1=f(x1,a,b,choix_f)+5;
+                 double maxYx2=f(x2,a,b,choix_f)+5;
 
                  if(maxYx1>maxYx2)
                  {
@@ -1065,28 +1754,438 @@ void Calcul_Integral(bool stats,float tab[])
                  }
            }
 
-           screen=SDL_SetVideoMode(XRES,YRES,32,SDL_SWSURFACE|SDL_DOUBLEBUF);
-
-           if(SDL_MUSTLOCK(screen))
-           SDL_LockSurface(screen);
-
-           ShowAxis(screen,minX,maxX,minY,maxY,a,b,choix_f);
-
-           ShowFoncion(screen,0x00FF00,f,minX,maxX,minY,maxY,a,b,choix_f);
-
-           if(SDL_MUSTLOCK(screen))
-           SDL_UnlockSurface(screen);
-           SDL_Flip(screen);
-           waitkey();
+          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,false,true,false,false);
 
           };break;
+          case 3:
+          {
 
+           minX=x1-1;
+           maxX=x2+1;
+
+           if(choix_f==8)
+           {
+                 minY=-0.1;
+                 maxY=f(x2,a,b,choix_f)+0.1;
+           }
+           else
+           {
+
+                 minY=-10;
+                 double maxYx1=f(x1,a,b,choix_f)+5;
+                 double maxYx2=f(x2,a,b,choix_f)+5;
+
+                 if(maxYx1>maxYx2)
+                 {
+                    maxY=maxYx1;
+                 }
+                 else
+                 {
+                    maxY=maxYx2;
+                 }
+           }
+
+          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,false,false,true,false);
+
+          };break;
+          case 4:
+          {
+
+           minX=x1-1;
+           maxX=x2+1;
+
+           if(choix_f==8)
+           {
+                 minY=-0.1;
+                 maxY=f(x2,a,b,choix_f)+0.1;
+           }
+           else
+           {
+
+                 minY=-10;
+                 double maxYx1=f(x1,a,b,choix_f)+5;
+                 double maxYx2=f(x2,a,b,choix_f)+5;
+
+                 if(maxYx1>maxYx2)
+                 {
+                    maxY=maxYx1;
+                 }
+                 else
+                 {
+                    maxY=maxYx2;
+                 }
+           }
+
+          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,true,false);
+
+          };break;
+          case 5:
+          {
+           minX=x1-1;
+           maxX=x2+1;
+
+           minY=-10;
+           double maxYx1=f(x1,a,b,choix_f)+5;
+           double maxYx2=f(x2,a,b,choix_f)+5;
+
+           if(maxYx1>maxYx2)
+             {
+              maxY=maxYx1;
+             }
+             else
+             {
+              maxY=maxYx2;
+             }
+
+           int choix_courbe2=0;
+           Tableau_Variation(minX,maxX,minY,maxY,a,b,choix_f);
+           printf("\n\n(1) Afficher une repr%csentation graphique de la courbe(En vert!) + Calcul int%cgral(En bleu ciel!) sur l'interval [%i,%i]?\n",130,130,(int)x1,(int)x2);
+           printf("Quel est votre choix?:");
+           scanf("%d",&choix_courbe2);
+
+           switch(choix_courbe2)
+           {
+               case 1:
+               {
+               affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,false,false);
+               }break;
+           }
+
+          }break;
   }
+  }
+}
+
+void RSA()
+{
+     int tot,n,nb_bit;
+
+            // calcul du nb total d'iteration qu'on aurra à faire (juste pour affichier le % !)
+            for(tot=0,nb_bit=9;nb_bit<=mini_rsa::max_nb_bit;nb_bit++)
+                for(int i=0;i<nb_loop(nb_bit);i++ )
+                tot++ ;
+
+            // Boucle sur le nombre de bits : on commence à 9 car en dessous, ça n'a plus de sens
+            //(pas assez de nombre premiers dans ces petits intervalles)
+            for(n=0,nb_bit=9;nb_bit<=mini_rsa::max_nb_bit;nb_bit++)
+            // Le nombre de tests effectués pour un nombre de bit donné n'est pas constant
+            for(int i=nb_loop(nb_bit);i>0;--i)
+            {
+            if((++n&127)==0) // affiche la progression
+                cout << "test de mini_rsa sur " << nb_bit << " bits (" << (n*100)/tot << "%)\r" ;
+
+            // appelle le test
+            if(!test_encrypt_decrypt( nb_bit )) // et affiche un message en cas d'erreur
+                cout << "echec de mini_rsa avec " << nb_bit << " bits !  " << endl ;
+            }
+
+            cout << endl << "fini." << endl ;
+}
+
+void Second_Degre()
+{
+       float a,b,c,d,r1,r2,x;
+       int choix;
+
+       printf("\n\nCe programme r%csoud une %cquation du second degr%c du type ax%c+bx+c=0",130,130,130,253);
+
+       printf("\n\nEntrez la valeur de a:");
+       scanf("%f", &a);
+       printf("\nEntrez la valeur de b:");
+       scanf("%f", &b);
+       printf("\nEntrez la valeur de c:");
+       scanf("%f",&c);
+       d =b*b-(4*a*c);
+
+       if(a==0)
+       {
+          if(b!=0)
+          {
+             x=-c/b;
+             printf("\nUne racine simple: %f",x);
+          }
+          else if(c==0)
+             printf("\nInfinit%c de racines",130);
+
+          else printf("\nPas de solutions");
+       }
+       else
+       {
+          if(d>0)
+          {
+               r1 =(b-sqrt(d))/(2*a);
+               r2 =(-b-sqrt(d))/(2*a);
+               printf("\nIl y a deux solutions: %f %f et le polynome du second degr%c peut d%csormais s'%ccrire ainsi:\n %f(x-%f)(x-%f)",-r1,r2,130,130,130,a,r1,r2);
+          }
+          else
+          {
+               if(d==0)
+               {
+                    r1 =(-b)/(2*a);
+                    printf("\nIl y a une solution: %f et le polynome du second degr%c peut d%csormais s'%ccrire ainsi:\n %f(x-%f)",r1,130,130,130,a,r1);
+               }
+               else printf("\nPas de racines r%celles",130);
+          }
+
+          printf("\n(1) Afficher une repr%csentation graphique de la courbe sur un interval donn%c?\n",130,130);
+          printf("\nQuel est votre choix?:");
+          scanf("%d",&choix);
+
+          switch(choix)
+          {
+            case 1:
+            {
+	        Affiche_Courbe_Second_Degree(a,b,c,1);
+            }
+          }
+
+       }
+       getch();
+}
+
+void circle(int xo, int yo, int R, Uint32 c)
+ {
+ int x, y, F, F1, F2,newx,newy;
+ x=xo; y=yo+R; F=0;
+
+    if(x<800 && x>=0 && y>=0 && y<600) putpixel(x,y,c);
+    if(x<800 && x>=0 && 2*yo-y>=0 && 2*yo-y<600) putpixel (x,2*yo-y, c);
+
+    while(y>yo)
+    {
+    F1=F+2*(x-xo)+1; F2=F-2*(y-yo)+1;
+    if(abs(F1)<abs(F2))
+        {
+            x+=1; F=F1;
+        }
+    else
+        {
+            y-=1; F=F2;
+        }
+
+    if(x<800 && x>=0 && y>=0 && y<600)
+        putpixel(x,y,c);
+        newx=2*xo-x;
+        newy=2*yo-y;
+
+    if(x<800 && x>=0 && newy>=0 && newy<600)
+        putpixel(x, newy,c);
+    if(newx<800 && newx>=0 && y>=0 && y<600)
+        putpixel( newx,y,c);
+    if(newx<800 && newx>=0 && newy>=0 && newy<600)
+        putpixel(newx,newy, c);
+    }
+
+    if(xo+R<800 && xo+R>=0) putpixel(xo+R,yo,c);
+    if(xo-R<800 && xo-R>=0) putpixel(xo-R,yo, c);
+ }
+
+ void filldisc( int xo, int yo, int R, Uint32 c)
+ {
+ int x, y, F, F1, F2,newx,newy,xx;
+ x=xo; y=yo+R; F=0;
+ if (x<800 && x>=0 && y>=0 && y<600) putpixel(x,y,c);
+ if (x<800 && x>=0 && 2*yo-y>=0 && 2*yo-y<600) putpixel (x,2*yo-y, c);
+ while( y>yo)
+ {
+ F1=F+2*(x-xo)+1; F2=F-2*(y-yo)+1;
+ if ( abs(F1)<abs(F2)) { x+=1; F=F1;}
+ else {y-=1; F=F2;}
+ newx=2*xo-x ; newy=2*yo-y ;
+ for(xx=newx; xx<=x; xx++)if (xx<800 && xx>=0 && y>=0 && y<600 )
+ putpixel(xx,y,c);
+ for(xx=newx; xx<=x; xx++)if (xx<800 && xx>=0 && newy>=0 && newy<600 )
+ putpixel(xx,newy,c);
+ }
+ if (xo+R<800 && xo+R>=0&& y>=0 && y<600) putpixel(xo+R,yo,c);
+ if (xo-R<800 && xo-R>=0&& y>=0 && y<600) putpixel(xo-R,yo, c);
+ }
+
+
+void Cercle()
+{
+    float x=0,y=0,r=0;
+    double minX,maxX,minY,maxY;
+    int choix_graph=0;
+
+    printf("\n\nEntrez la valeur x des coordonn%ces du centre du cercle:",130);
+    scanf("%f",&x);
+    printf("\nEntrez la valeur y des coordonn%ces du centre du cercle:",130);
+    scanf("%f",&y);
+    printf("\nEntrez la valeur r du rayon du cercle de centre(%i,%i):",(int)x,(int)y);
+    scanf("%f",&r);
+    printf("\nL'%cquation cart%csienne du cercle est de la forme: (x-%i)%c+(y-%i)%c=%i",130,130,(int)x,253,(int)y,253,(int)r*(int)r);
+    printf("\n(1) Afficher une repr%csentation graphique du cercle de centre(%i,%i):",130,(int)x,(int)y);
+    printf("\nQuel est votre choix?:");
+    scanf("%d",&choix_graph);
+
+    switch(choix_graph)
+    {
+    case 1:
+         {
+         minX=-r-10;
+         maxX=r+10;
+         minY=-r-10;
+         maxY=r+10;
+         SDL_Init(SDL_INIT_VIDEO);
+         screen=SDL_SetVideoMode(800,600,32, SDL_SWSURFACE|SDL_DOUBLEBUF);
+
+         if(SDL_MUSTLOCK(screen))
+              SDL_LockSurface(screen);
+
+         /* exemples de couleurs avec leurs trois composantes RGB */
+         couleur[0]=SDL_MapRGB(screen->format,0,0,0); /** white */
+         couleur[1]=SDL_MapRGB(screen->format,255,0,0); /** red */
+         couleur[2]=SDL_MapRGB(screen->format,0,250,0); /** vert */
+         SDL_FillRect(screen,0,couleur[0]); /* donne un fond blanc à la fenêtre */
+         ShowAxisCercle(screen,minX,maxX,minY,maxY);
+         circle(Re_to_EcrX(x,minX,maxX),Re_to_EcrY(y,minY,maxY),(XRES/(2*r+2*10))*r,couleur[1]);
+
+         SDL_Flip(screen); /* Cette fonction affiche l’image issue du programme sur l’écran. SI on ne le fait pas, on
+         ne verra rien. On sera souvent amené à l’utiliser plusieurs fois dans le programme pour
+         voir ce qui se passe */
+         pause();
+         }
+    }
+}
+
+void Equation_Diff()
+{
+    int i, n;
+    float t, l, p, m, T;
+    float N[10000], dN[10000];
+    char val;
+    FILE* sortie = NULL;
+    FILE* sortie2 = NULL;
+
+    printf("RESOLUTION DE L'EQUATION DIFFERENTIELLE DE DECROISSANCE RADIOACTIVE.\n");
+
+    /* saisie des données */
+
+    printf("-Conditions initiales :\n");
+    printf("t0:");
+    scanf("%f", &t);
+
+    printf("N0:");
+    scanf("%f",&N[0]);
+
+    printf("-Constante de radioactivit%c\n",130);
+
+    printf("Lambda:");
+    scanf("%f",&l);
+
+    printf("-Pas:");
+    scanf("%f",&p);
+
+    retour:;
+    printf("-Nombre de calculs(<10000):");
+    scanf("%d",&n);
+
+    if(n>=10000)
+     {
+      printf("%d est sup%crieur %c 10000\n",130,133,n);
+      goto retour;
+     }
+
+  /* calculs */
+
+  printf("\n      t            dN/dt           N\n");
+  printf(" %f     %f      %f\n",t,(-l*N[0]),N[0]);
+
+  dN[0]=-l*N[0];
+
+  for(i=1;i<=n;i++)                    // routine de calcul, selon
+      {                                   // la méthode d'Euler.
+         T=t+(i*p);
+         dN[i]=-l*N[i-1];
+         N[i]=N[i-1]+(dN[i]*p);
+         printf(" %f     %f      %f\n",T,dN[i],N[i]);
+      }
+
+  /* ****************************************************** */
+  /* sauvegarde des données dans un le fichier donnees.txt  */
+  /* ****************************************************** */
+
+  /* demande s'il faut effectuer la sauvegarde */
+
+  printf("\n Souhaitez vous sauvegarder ces donn%ces dans un fichier?(O/N)\n",130);
+  val=getchar();   // attend la saisie d'un caractère
+
+  while(val!='o' && val!='O' && val!='n' && val!='N') // vérifie le caractère
+        {
+          val=getchar();
+        }
+
+  if(val=='o' || val=='0')
+     {
+       /* **************************************************** */
+       /*         enregistrement du fichier donnees.txt                               */
+       /* **************************************************** */
+
+       sortie=fopen("C:\\donnees.txt","wt");           //ouvre ou créer le fichier donnees.txt en mode écriture
+
+       if(sortie==NULL)                //renvoi un message d'erreur si le fichier n'a pas pu être ouvert ou créé
+          {
+           printf("\nErreur dans la creation du fichier donnees.txt\n");
+          }
+
+       printf("\nLe fichier donnees.txt a ete correctement ouvert\n");
+       printf("Enregistrement de donnees.txt...\n");
+
+       /* Enregistrement du fichier */
+
+       fprintf(sortie,"\n      t            dN/dt                        N\n");
+       fprintf(sortie," %f     %f      %f\n",t,(-l*N[0]),N[0]);
+
+       for(i=1;i<=n;i++)
+           {
+            T=t+(i*p);
+            dN[i]=-l*N[i-1];
+            N[i]=N[i-1]+(dN[i]*p);
+            fprintf(sortie," %f     %f      %f\n",T,dN[i],N[i]);
+           }
+
+       fprintf(sortie,"\n****** FIN DE FICHIER ******\n");
+       fclose(sortie);
+
+       printf("Donn%ces enregistr%ces!\n",130,130);
+
+       /* **************************************************** */
+       /*         enregistrement du fichier courbe.txt                                  */
+       /* **************************************************** */
+
+
+       sortie2=fopen("C:\\courbe.txt", "wt");             //ouvre ou créer le fichier courbe.txt en mode écriture
+
+       if(sortie2==NULL)               //renvoi un message d'erreur si le fichier n'a pas pu être ouvert ou créé
+          {
+           printf("\nErreur dans la creation du fichier courbe.txt\n");
+          }
+
+       printf("\nLe fichier courbe.txt a ete correctement ouvert\n");
+       printf("Enregistrement de courbe.txt...\n");
+
+       fprintf(sortie2,"%f,%f\n",t,N[0]);
+
+       for(i=1;i<=n;i++)
+           {
+            T=t+(i*p);
+            dN[i]=-l*N[i-1];
+            N[i]=N[i-1]+(dN[i]*p);
+            fprintf(sortie2,"%f,%f\n",T,N[i]);
+           }
+
+       fclose(sortie2);
+
+       printf("Donn%ces enregistr%ces!\n",130,130);
+    }
+
+  scanf("%f",&m);
 }
 
 int main(int argc, char *argv[])
 {
-  	int position,choix=-1,choix1=-1,choix1_2=-1,choix1_1=-1,N,i=1;		/*Déclaration des variables*/
+  	int position,choix=-1,choix1=-1,choix1_2=-1,choix1_1=-1,choix_eq=-1,N,i=1;		/*Déclaration des variables*/
    	float Xi[MAX],Yi[MAX],result[10];
 	float ProduitXiYi[MAX];
 	float carre_ecart_a_moyenne_Xi[MAX];
@@ -1105,14 +2204,18 @@ int main(int argc, char *argv[])
     freopen("CON", "w", stdout); // redirects stdout
     freopen("CON", "w", stderr); // redirects stderr
 
-	titre("Menu Principale:");
+	titre("Menu Principal:");
 
-    printf("\n(1) Calcul d'int%cgral + representation graphique.",130);
-    printf("\n(2) Saisir des donnees statistiques et calcul de la droite de regression lineaire.",130);
-    printf("\n(3) Calcul de probabilite(Loi de bernouilli de parametre n et k).",130);
-    printf("\n(4) S'abonner et suivre les dernieres nouvelles de Vertin Go Website!",130);
+    printf("\n(1) Calcul d'int%cgral + Repr%csentation graphique.",130,130);
+    printf("\n(2) Saisir des donn%ces statistiques et calcul de la droite de r%cgression lin%caire.",130,130,130);
+    printf("\n(3) Calcul de probabilit%c(Loi de bernouilli de param%ctre n et k).",130,138);
+    printf("\n(4) Calcul des coefficients de B%czouts!",130);
+    printf("\n(5) Calcul vectorielle dans un plan!",130);
+    printf("\n(6) R%csolution d'%cquation!",130,130);
+    printf("\n(7) Autres fonctions utiles!");
+    printf("\n(8) S'abonner et suivre les derni%cres nouvelles de Vertin Go Website!",138);
     printf("\n(0) Quitter le programme.");
-    printf("\n\n  Quel est votre choix? :");
+    printf("\n\n Quel est votre choix?:");
     scanf("%d",&choix1_1);
 
 	switch(choix1_1)
@@ -1135,9 +2238,10 @@ int main(int argc, char *argv[])
             printf("\n(3) Afficher le tableau des valeurs interm%cdiaires.",130);
             printf("\n(4) Afficher les r%csultats.",130);
             printf("\n(5) Sauvegarder les donn%ces dans un fichier.",130);
-            printf("\n(6) Calcul int%cgral + repr%csentation graphique de la droite de regression lineaire.",130);
-            printf("\n(7) S'abonner et suivre les dernieres nouvelles de Vertin Go Website!",130);
+            printf("\n(6) Calcul int%cgral + Repr%csentation graphique de la droite de r%cgression lin%caire.",130,130,130,130);
+            printf("\n(7) S'abonner et suivre les derni%cres nouvelles de Vertin Go Website!",138);
             //printf("\n(8) Revenir au menu principal.",130);
+            printf("\n\nQuel est votre choix?:");
             scanf("%d",&choix);
 
             switch(choix)
@@ -1150,10 +2254,10 @@ int main(int argc, char *argv[])
                         titre("Menu Donnees:");
                         printf("\nEntrez le num%cro de l\'op%cration d%csir%ce:\n",130,130,130,130);
                         printf("\n(1) Entrer des nouvelles valeurs.");
-                        printf("\n(2) Modiffier les valeurs existantes.");
-                        printf("\n(3) Revenir au menu precedent.");
+                        printf("\n(2) Modifier les valeurs existantes.");
+                        printf("\n(3) Revenir au menu pr%cc%cdent.",130,130);
                         printf("\n(0) Quitter le programme.");
-                        printf("\n\n Quel est votre choix? :");
+                        printf("\n\nQuel est votre choix?:");
                         scanf("%d",&choix1);
 
 
@@ -1171,7 +2275,7 @@ int main(int argc, char *argv[])
 
 								/*Entree des élements Xi*/
 
-								titre("Entree des valeurs de Xi:");/*Fonction d'affichage de titre*/
+								titre("Entrez des valeurs de Xi:");/*Fonction d'affichage de titre*/
 
 								while(i<(N+1))
 								{
@@ -1183,7 +2287,7 @@ int main(int argc, char *argv[])
 
 								/*Entree des élements Yi*/
 
-								titre("Entree des valeurs de Yi:");/*Fonction d'affichage de titre*/
+								titre("Entrez des valeurs de Yi:");/*Fonction d'affichage de titre*/
 
 								while (i<(N+1))
 								{
@@ -1203,12 +2307,12 @@ int main(int argc, char *argv[])
 
 								while(choix1_2!=0)
 								{
-									titre("Menu Modiffication Donnees");
+									titre("Menu Modification Donnees");
 									printf("\nEntrez le num%cro de l\'op%cration d%csir%ce:\n",130,130,130,130);
 									printf("\n(1) Modifier un %cl%cment des Xi.",130,130);
 									printf("\n(2) Modifier un %cl%cment des Yi.",130,130);
 									printf("\n(3) Revenir au menu pr%cc%cdant.",130,130);
-									printf("\n(4) Revenir au menu statistique.");
+									printf("\n(4) Revenir au menu statistiques.");
 									printf("\n(0) Quitter le programme.");
 									printf("\n\n Quel est votre choix? :");
 									scanf("%d",&choix1_2);
@@ -1217,7 +2321,7 @@ int main(int argc, char *argv[])
 									{
 										case 1:
 											{
-												titre("Modiffication d'un element des Xi:");
+												titre("Modification d'un element des Xi:");
 												printf("Entrez la position de l\'%cl%cment dans le tableau:",130,130);
 												scanf("%d",&position);
 												printf("\nEntrez la nouvelle valeur de X%d:",position);
@@ -1316,7 +2420,7 @@ int main(int argc, char *argv[])
 
                 case 0:;break;
 
-                default:printf("\nEntree non valide!\n");break;
+                default:printf("\nEntr%ce non valide!\n",130);break;
                 getchar();
                 };
             }
@@ -1327,8 +2431,64 @@ int main(int argc, char *argv[])
 	        getchar();
 	        break;
 	    }
-
         case 4:
+	    {
+            bezout();
+	        getchar();
+	        break;
+	    }
+        case 5:
+	    {
+            menuvecteurs();
+	        getchar();
+	        break;
+	    }
+	    case 6:
+	    {
+	        choix_eq=-1;
+
+	        while(choix_eq!=0)
+                {
+                    titre("Menu Resolution d'equation");
+                    printf("\nEntrez le num%cro de l\'op%cration d%csir%ce:\n",130,130,130,130);
+                    printf("\n(1) R%csolution d'une %cquation du second degr%c.",130,130,130);
+                    printf("\n(2) Param%ctrer et repr%csenter graphiquement une %cquation de cercle.",138,130,130);
+                    printf("\n(3) R%csolution d'une %cquation diff%crentielle(D%ccroissance radioactive) par la m%cthode d'euler.",130,130,130,130,130);
+                    printf("\n\nQuel est votre choix?:");
+                    scanf("%d",&choix_eq);
+
+                    switch(choix_eq)
+                          {
+                          case 1:
+                               {
+                                   Second_Degre();
+                                   getchar();
+	                               break;
+                               }break;
+                          case 2:
+                               {
+                                   Cercle();
+                                   getchar();
+	                               break;
+                               }break;
+                          case 3:
+                               {
+                                   Equation_Diff();
+                                   getchar();
+	                               break;
+                               }break;
+                          }
+
+                }
+
+	    }
+	    case 7:
+	    {
+            menuoutils();
+	        getchar();
+	        break;
+	    }
+        case 8:
 	    {
 	        system("start chrome.exe https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1");
 	        getchar();
@@ -1337,6 +2497,5 @@ int main(int argc, char *argv[])
 	};
 
 }
-
 	getchar();
 }
