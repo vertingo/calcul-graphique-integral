@@ -1264,7 +1264,9 @@ void affiche_courbe(double minX,double maxX,double minY,double maxY,double a,dou
            {
               if(tengente==true)
               {
-               printf("\nEntrez la valeur x du point de la tengente %c la courbe compris entre %i et %i?:\n",133,(int)minX+1,(int)maxX-1);
+               printf("Equation d'une tengente au point d'abscisse a de la fonction f(x) est y=f'(a)(x-a)+f(a) avec f'(a) la d%criv%c de f(x)!",130,130);
+               printf("\nEntrez la valeur a du point de la tengente %c la courbe compris entre %i et %i?:\n",133,(int)minX+1,(int)maxX-1);
+               printf("a=");
                scanf("%f",&ten_x);
               }
 
@@ -1291,6 +1293,9 @@ void affiche_courbe(double minX,double maxX,double minY,double maxY,double a,dou
                ten_a=f_derive(ten_x,a,b,choix_f);
                ten_b=f(ten_x,a,b,choix_f);
                ShowTengente(screen,0x0000FF,f,minX,maxX,minY,maxY,ten_a,ten_b,ten_x,1);
+               printf("Equation d'une tengente au point d'abscisse a de la fonction f(x) est y=f'(a)(x-a)+f(a) avec f'(a) la d%criv%c de f(x)!",130,130);
+               printf("\nEntrez la valeur a du point de la tengente %c la courbe compris entre %i et %i?:\n",133,(int)minX+1,(int)maxX-1);
+               printf("a=");
               }
               else if(derive==true)
               {
