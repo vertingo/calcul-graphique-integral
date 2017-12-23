@@ -815,6 +815,25 @@ double f_second_degree(double x,double a,double b,double c,int choix_f)
     }
 }
 
+long int a_parmi_b(long int a, long int b)
+{
+ long int res;
+ res=Factorielle(b)/(Factorielle(a)*Factorielle(b-a));
+ return res;
+}
+
+double f_binome_de_newton(int x,int n,int a,int b,int choix_f)
+{
+    if(choix_f==1)
+    {
+        return a_parmi_b(x,n)*pow(b,x)*pow(a,(n-x));
+    }
+    else if(choix_f==2)
+    {
+        return (a+b)^x;
+    }
+}
+
 double f_derive(double x,double a,double b,int choix_f)
 {
 
@@ -1013,6 +1032,27 @@ void ShowFoncionSecondDegree(SDL_Surface* screen,Uint32 couleur,double (*fonc)(d
     }
 }
 
+void ShowFoncionBinomeDeNewton(SDL_Surface* screen,Uint32 couleur,double (*fonc)(int,int,int,int,int),double minX,double maxX,double minY,double maxY,double a,double b,double n,int choix_f)
+{
+    int i;
+    int lastx = 0;
+    int lasty = 0;
+    int x,y;
+    double resfonc;
+
+    for(i=0;i<XRES;i++)
+    {
+        x = i;
+        resfonc = fonc(Ecr_to_ReX(i,minX,maxX),n,a,b,choix_f);
+        y = Re_to_EcrY(resfonc,minY,maxY);
+
+        if(i!=0)
+            Line(screen,x,y,lastx,lasty,couleur);
+        lastx = x;
+        lasty = y;
+    }
+}
+
 void ShowTengente(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,double,double,int),double minX,double maxX,double minY,double maxY,double a,double b,double x1,int choix_f)
 {
     int i;
@@ -1034,7 +1074,7 @@ void ShowTengente(SDL_Surface* screen,Uint32 couleur,double (*fonc)(double,doubl
     }
 }
 
-void ShowAxis(SDL_Surface* screen,double minX,double maxX,double minY,double maxY,double a,double b,double c,int choix_f,bool integral,bool derive,bool poly)
+void ShowAxis(SDL_Surface* screen,double minX,double maxX,double minY,double maxY,double a,double b,double c,int choix_f,bool integral,bool derive,bool poly,bool binome,bool binome2)
 {
     int centreX = Re_to_EcrX(0.0,minX,maxX);
     int centreY = Re_to_EcrY(0.0,minY,maxY);
@@ -1043,8 +1083,17 @@ void ShowAxis(SDL_Surface* screen,double minX,double maxX,double minY,double max
     Uint32 rouge = SDL_MapRGB(screen->format, 255, 0, 0);
     Uint32 bleu = SDL_MapRGB(screen->format, 0, 0, 255);
     Uint32 bleu_ciel = SDL_MapRGB(screen->format, 0, 140, 255);
-    Line(screen,(XRES/(maxX+1))*maxX,0,(XRES/(maxX+1))*maxX,YRES-1,rouge);
-    Line(screen,(XRES/(maxX+1)),0,(XRES/(maxX+1)),YRES-1,rouge);
+
+    if(binome2==true)
+    {
+        Line(screen,(XRES/(maxX+1))*maxX,0,(XRES/(maxX+1))*maxX,YRES-1,rouge);
+        Line(screen,(XRES/(maxX+1))*(maxX-1),0,(XRES/(maxX+1))*(maxX-1),YRES-1,rouge);
+    }
+    else
+    {
+        Line(screen,(XRES/(maxX+1))*maxX,0,(XRES/(maxX+1))*maxX,YRES-1,rouge);
+        Line(screen,(XRES/(maxX+1)),0,(XRES/(maxX+1)),YRES-1,rouge);
+    }
 
     if(poly==true)
     {
@@ -1078,13 +1127,33 @@ void ShowAxis(SDL_Surface* screen,double minX,double maxX,double minY,double max
         int xmax,xpas,y;
         double resfonc2;
         xmax=(XRES/(maxX+1))*maxX;
-        xpas=(XRES/(maxX+1));
+
+        if(binome2)
+        {
+            xpas=(XRES/(maxX+1))*(maxX-1);
+        }
+        else
+        {
+            xpas=(XRES/(maxX+1));
+        }
 
             for(int i=xpas;i<xmax;i++)
             {
                 if(derive==true)
                 {
                 resfonc2 = f_derive(Ecr_to_ReX(i,minX,maxX),a,b,choix_f);
+                }
+                else if(binome==true)
+                {
+                   if(binome2==true)
+                   {
+                       resfonc2 = f_binome_de_newton((int)Ecr_to_ReX(i,minX,maxX),(int)c,(int)a,(int)b,2);
+                   }
+                   else
+                   {
+                       resfonc2 = f_binome_de_newton((int)Ecr_to_ReX(i,minX,maxX),(int)c,(int)a,(int)b,1);
+                   }
+
                 }
                 else
                 {
@@ -1212,7 +1281,7 @@ double simpson(int n, double x1, double x2,double a,double b,int choix_f)
 
 }
 
-void affiche_courbe(double minX,double maxX,double minY,double maxY,double a,double b,double c,int choix_f,bool integral,bool tengente,bool derive,bool poly)
+void affiche_courbe(double minX,double maxX,double minY,double maxY,double a,double b,double c,int choix_f,bool integral,bool tengente,bool derive,bool poly,bool binome,bool binome2)
 {
            SDL_Surface *screen;
            SDL_Init(SDL_INIT_VIDEO);
@@ -1231,7 +1300,7 @@ void affiche_courbe(double minX,double maxX,double minY,double maxY,double a,dou
                if(SDL_MUSTLOCK(screen))
                SDL_LockSurface(screen);
 
-               ShowAxis(screen,minX,maxX,minY,maxY,a,b,c,choix_f,integral,derive,poly);
+               ShowAxis(screen,minX,maxX,minY,maxY,a,b,c,choix_f,integral,derive,poly,binome,binome2);
 
                if(derive==true && integral==true)
                {
@@ -1260,6 +1329,37 @@ void affiche_courbe(double minX,double maxX,double minY,double maxY,double a,dou
               SDL_Flip(screen);
               waitkey();
            }
+           else if(binome==true)
+           {
+               screen=SDL_SetVideoMode(XRES,YRES,32,SDL_SWSURFACE|SDL_DOUBLEBUF);
+
+               if(SDL_MUSTLOCK(screen))
+               SDL_LockSurface(screen);
+
+               ShowAxis(screen,minX,maxX,minY,maxY,a,b,c,choix_f,integral,derive,poly,binome,binome2);
+
+               if(derive==true && integral==true)
+               {
+
+               }
+               else
+               {
+                   if(binome2==true)
+                   {
+                       ShowFoncionBinomeDeNewton(screen,0x00FF00,f_binome_de_newton,(int)minX,(int)maxX,(int)minY,(int)maxY,(int)a,(int)b,(int)c,2);
+                   }
+                   else
+                   {
+                       ShowFoncionBinomeDeNewton(screen,0x00FF00,f_binome_de_newton,(int)minX,(int)maxX,(int)minY,(int)maxY,(int)a,(int)b,(int)c,1);
+                   }
+
+               }
+
+              if(SDL_MUSTLOCK(screen))
+              SDL_UnlockSurface(screen);
+              SDL_Flip(screen);
+              waitkey();
+           }
            else
            {
               if(tengente==true)
@@ -1275,7 +1375,7 @@ void affiche_courbe(double minX,double maxX,double minY,double maxY,double a,dou
               if(SDL_MUSTLOCK(screen))
               SDL_LockSurface(screen);
 
-              ShowAxis(screen,minX,maxX,minY,maxY,a,b,c,choix_f,integral,derive,poly);
+              ShowAxis(screen,minX,maxX,minY,maxY,a,b,c,choix_f,integral,derive,poly,binome,binome2);
 
               if(derive==true && integral==true)
               {
@@ -1411,7 +1511,7 @@ void Affiche_Courbe_Second_Degree(double a,double b,double c,int choix_f)
                     minY=minYx1;
                  }
 
-          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,true,false,false,true);
+          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,true,false,false,true,false,false);
          };break;
 
          case 2:
@@ -1443,7 +1543,7 @@ void Affiche_Courbe_Second_Degree(double a,double b,double c,int choix_f)
                  }
 
 
-          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,false,true,false,true);
+          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,false,true,false,true,false,false);
 
           };break;
           case 3:
@@ -1475,7 +1575,7 @@ void Affiche_Courbe_Second_Degree(double a,double b,double c,int choix_f)
                     minY=minYx1;
                  }
 
-          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,false,false,true,true);
+          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,false,false,true,true,false,false);
 
           };break;
           case 4:
@@ -1507,7 +1607,7 @@ void Affiche_Courbe_Second_Degree(double a,double b,double c,int choix_f)
                     minY=minYx1;
                  }
 
-          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,true,false,true,true);
+          affiche_courbe(minX,maxX,minY,maxY,a,b,c,choix_f,true,false,true,true,false,false);
 
           };break;
   }
@@ -1516,48 +1616,120 @@ void Affiche_Courbe_Second_Degree(double a,double b,double c,int choix_f)
 void Tableau_Variation(double minX, double maxX, double minY, double maxY, double a, double b, int choix_f)
 {
     int maxXInter=0,minXInter=minX;
+    char lettre[1]="";
+    FILE* fichier = NULL;
 
-    printf("\n%c Tableau de variation de f(x) sur [%i,%i]: %c",186,(int)minX,(int)maxX,186);
+    fichier = fopen("tableau_de_variation.txt","w");
 
-   for(int i=minX;i<=maxX;i++)
+    printf("Souhaitez vous sauvegarder le tableau de variation dans un fichier(tableau_de_variation.txt)?\n o/n \n");
+    printf("Quel est votre choix?:");
+    scanf(" %c",&lettre);
+
+    if(strcmp(lettre,"o")==1)
+    {
+
+        printf("\n%c Tableau de variation de f(x) sur [%i,%i]: %c",186,(int)minX,(int)maxX,186);
+        fprintf(fichier,"\n%c Tableau de variation de f(x) sur [%i,%i]: %c",186,(int)minX,(int)maxX,186);
+
+        for(int i=minX;i<=maxX;i++)
+        {
+            if(f_derive(i,a,b,choix_f)>0)
+            {
+
+                if(i>maxXInter)
+                {
+                maxXInter=i;
+                }
+
+                printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
+                printf("\n%c Sur [%i,%i] le signe de la fonction f'(x) est positif %c",186, maxXInter-1,maxXInter,186);
+                printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
+                printf("\n%c Sur [%i,%i] f'(x)>0 ==> f(x) croissante %c",186, maxXInter-1,maxXInter,186);
+                fprintf(fichier,"\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
+                fprintf(fichier,"\n%c Sur [%i,%i] le signe de la fonction f'(x) est positif %c",186, maxXInter-1,maxXInter,186);
+                fprintf(fichier,"\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
+                fprintf(fichier,"\n%c Sur [%i,%i] f'(x)>0 ==> f(x) croissante %c",186, maxXInter-1,maxXInter,186);
+            }
+            else if(f_derive(i,a,b,choix_f)<0)
+            {
+                if(i>maxXInter)
+                {
+                maxXInter=i;
+                }
+
+                printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
+                printf("\n%c Sur [%i,%i] le signe de f'(x) est n%cgatif %c",186, maxXInter-1,maxXInter,130,186);
+                printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
+                printf("\n%c Sur [%i,%i] f'(x)<0 ==> f(x) d%ccroissante %c",186, maxXInter-1,maxXInter,130,186);
+                fprintf(fichier,"\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
+                fprintf(fichier,"\n%c Sur [%i,%i] le signe de f'(x) est n%cgatif %c",186, maxXInter-1,maxXInter,130,186);
+                fprintf(fichier,"\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
+                fprintf(fichier,"\n%c Sur [%i,%i] f'(x)<0 ==> f(x) d%ccroissante %c",186, maxXInter-1,maxXInter,130,186);
+            }
+            else
+            {
+
+                if(i>maxXInter)
+                {
+                maxXInter=i;
+                }
+
+                printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
+                printf("\n%c Sur [%i,%i] le signe de f'(x) est null %c",186,maxXInter-1,maxXInter,186);
+                printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
+                printf("\n%c Sur [%i,%i] f'(x)=0 ==> f(x) constante %c",186,maxXInter-1, maxXInter,186);
+                fprintf(fichier,"\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
+                fprintf(fichier,"\n%c Sur [%i,%i] le signe de f'(x) est null %c",186,maxXInter-1,maxXInter,186);
+                fprintf(fichier,"\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
+                fprintf(fichier,"\n%c Sur [%i,%i] f'(x)=0 ==> f(x) constante %c",186,maxXInter-1, maxXInter,186);
+            }
+        }
+   }
+   else
    {
-       if(f_derive(i,a,b,choix_f)>0)
-       {
-         if(i>maxXInter)
-         {
-             maxXInter=i;
-         }
+        printf("\n%c Tableau de variation de f(x) sur [%i,%i]: %c",186,(int)minX,(int)maxX,186);
 
-         printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
-         printf("\n%c %i Positive %i %c",186, maxXInter-1,maxXInter,186);
-         printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
-         printf("\n%c Sur [%i,%i] f'(x)>0 ==> f(x) croissante %c",186, maxXInter-1,maxXInter,186);
+        for(int i=minX;i<=maxX;i++)
+        {
+            if(f_derive(i,a,b,choix_f)>0)
+            {
 
-       }
-       else if(f_derive(i,a,b,choix_f)<0)
-       {
-         if(i>maxXInter)
-         {
-             maxXInter=i;
-         }
+                if(i>maxXInter)
+                {
+                maxXInter=i;
+                }
 
-         printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
-         printf("\n%c %i  Negative %i %c",186, maxXInter-1,maxXInter,186);
-         printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
-         printf("\n%c Sur [%i,%i] f'(x)<0 ==> f(x) d%ccroissante %c",186, maxXInter-1,maxXInter,130,186);
-       }
-       else
-       {
-         if(i>maxXInter)
-         {
-             maxXInter=i;
-         }
+                printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
+                printf("\n%c Sur [%i,%i] le signe de la fonction f'(x) est positif %c",186, maxXInter-1,maxXInter,186);
+                printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
+                printf("\n%c Sur [%i,%i] f'(x)>0 ==> f(x) croissante %c",186, maxXInter-1,maxXInter,186);
+            }
+            else if(f_derive(i,a,b,choix_f)<0)
+            {
+                if(i>maxXInter)
+                {
+                maxXInter=i;
+                }
 
-         printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
-         printf("\n%c %i Nulle %i %c",186,maxXInter-1,maxXInter,186);
-         printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
-         printf("\n%c Sur [%i,%i] f'(x)<0 ==> f(x) constante %c",186,maxXInter-1, maxXInter,186);
-       }
+                printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186, maxXInter-1, maxXInter,186);
+                printf("\n%c Sur [%i,%i] le signe de f'(x) est n%cgatif %c",186, maxXInter-1,maxXInter,130,186);
+                printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1,maxXInter,186);
+                printf("\n%c Sur [%i,%i] f'(x)<0 ==> f(x) d%ccroissante %c",186, maxXInter-1,maxXInter,130,186);
+            }
+            else
+            {
+
+                if(i>maxXInter)
+                {
+                maxXInter=i;
+                }
+
+                printf("\n%c Signe de la fonction f'(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
+                printf("\n%c Sur [%i,%i] le signe de f'(x) est null %c",186,maxXInter-1,maxXInter,186);
+                printf("\n%c Tableau de variation de la fonction f(x) sur [%i,%i]: %c",186,maxXInter-1, maxXInter,186);
+                printf("\n%c Sur [%i,%i] f'(x)=0 ==> f(x) constante %c",186,maxXInter-1, maxXInter,186);
+            }
+        }
    }
 }
 
@@ -1729,7 +1901,7 @@ void Calcul_Integral(bool stats,float tab[])
                     maxY=maxYx2;
                  }
            }
-          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,false,false);
+          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,false,false,false,false);
          };break;
          case 2:
          {
@@ -1759,7 +1931,7 @@ void Calcul_Integral(bool stats,float tab[])
                  }
            }
 
-          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,false,true,false,false);
+          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,false,true,false,false,false,false);
 
           };break;
           case 3:
@@ -1790,7 +1962,7 @@ void Calcul_Integral(bool stats,float tab[])
                  }
            }
 
-          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,false,false,true,false);
+          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,false,false,true,false,false,false);
 
           };break;
           case 4:
@@ -1821,7 +1993,7 @@ void Calcul_Integral(bool stats,float tab[])
                  }
            }
 
-          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,true,false);
+          affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,true,false,false,false);
 
           };break;
           case 5:
@@ -1852,7 +2024,7 @@ void Calcul_Integral(bool stats,float tab[])
            {
                case 1:
                {
-               affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,false,false);
+               affiche_courbe(minX,maxX,minY,maxY,a,b,0,choix_f,true,false,false,false,false,false);
                }break;
            }
 
@@ -2188,6 +2360,166 @@ void Equation_Diff()
   scanf("%f",&m);
 }
 
+void binome_de_newton()
+{
+   long int a, b, n, i, coeff,somme_coeff=0;
+   int choix,choix_c;
+
+   printf("(1) Calcul du bin%cme de Newton du type (a+b)^n\n",147);
+   printf("(2) Calcul du bin%cme de Newton du type f(x)=(a+b)^x \n   (Pour mod%cliser graphiquement sous forme d'escalier le bin%cme de Newton pour chaque valeur x enti%cre!)\n",147,130,147,138);
+   printf("(3) Calcul du bin%cme de Newton du type f(x)={Somme de k=0 jusqu'%c n[(k parmi n)a^(n-k)*b^(k)]} \n   (Pour mod%cliser graphiquement sous forme d'escalier la somme des n termes pour chaque valeur x enti%cre!)\n",147,133,130,138);
+   printf("(4) D%cmonstration du bin%cme de Newton\n",130,147);
+   printf("Quel est votre choix?:");
+   scanf("%d",&choix);
+
+   switch(choix)
+   {
+        case 1:
+        {
+            printf("Calcul du bin%cme de Newton (a+b)^n",147);
+            printf("\nTaper le param%ctre a:",138);
+            scanf("%d",&a);
+            printf("\nTaper le param%ctre b:",138);
+            scanf("%d",&b);
+            printf("\nTaper le param%ctre n:",138);
+            scanf("%d",&n);
+
+            for(i=0;i<=n;i++)
+            {
+            coeff=a_parmi_b(i,n)*pow(b,i)*pow(a,(n-i));
+            somme_coeff=somme_coeff+coeff;
+
+                if(coeff!=1) printf("%d",coeff);
+                else printf("");
+
+                if((n-i)==1) printf("");
+                else if((n-i)!=0) printf("^%d",n-i);
+                else printf("");
+
+                if((n-i)!=0) printf("+");
+            }
+
+            printf("\nValeur du bin%cme de Newton:(%i+%i)^%i=%i",147,a,b,n,somme_coeff);
+        }break;
+         case 2:
+        {
+            double minX,maxX,minY,maxY;
+
+            printf("Calcul du bin%cme de Newton (a+b)^x",147);
+            printf("\nTaper le param%ctre a:",138);
+            scanf("%d",&a);
+            printf("\nTaper le param%ctre b:",138);
+            scanf("%d",&b);
+            printf("\nTaper le param%ctre x:",138);
+            scanf("%d",&n);
+
+            printf("Somme des x termes...=");
+            for(i=0;i<=n;i++)
+            {
+            coeff=a_parmi_b(i,n)*pow(b,i)*pow(a,(n-i));
+            somme_coeff=somme_coeff+coeff;
+
+            if(coeff!=1) printf("%d",coeff);
+            else printf("");
+
+            if((n-i)==1) printf("");
+            else if((n-i)!=0) printf("^%d",n-i);
+            else printf("");
+
+            if((n-i)!=0) printf("+");
+            }
+
+            printf("\nValeur du bin%cme de Newton:(%i+%i)^%i=%i",147,a,b,n,somme_coeff);
+
+
+            printf("\n(1) Afficher une repr%csentation graphique de la fonction f(x)=(a+b)^x pour x=%i?\n",130,n);
+            scanf("%d",&choix_c);
+
+            switch(choix_c)
+            {
+                case 1:
+                {
+                      minX=-1;
+                      maxX=n+1;
+
+                      double maxY=f_binome_de_newton(n,0,a,b,2);
+
+                    affiche_courbe(minX,maxX,0,maxY,a,b,n,2,true,false,false,false,true,true);
+                }
+            }
+
+        }break;
+        case 3:
+        {
+            double minX,maxX,minY,maxY;
+
+            printf("Calcul du bin%cme de Newton (a+b)^x",147);
+            printf("\nTaper le param%ctre a:",138);
+            scanf("%d",&a);
+            printf("\nTaper le param%ctre b:",138);
+            scanf("%d",&b);
+            printf("\nTaper le param%ctre x:",138);
+            scanf("%d",&n);
+
+            printf("Somme des x termes...=");
+            for(i=0;i<=n;i++)
+            {
+            coeff=a_parmi_b(i,n)*pow(b,i)*pow(a,(n-i));
+            somme_coeff=somme_coeff+coeff;
+
+            if(coeff!=1) printf("%d",coeff);
+            else printf("");
+
+            if((n-i)==1) printf("");
+            else if((n-i)!=0) printf("^%d",n-i);
+            else printf("");
+
+            if((n-i)!=0) printf("+");
+            }
+
+            printf("\nValeur du bin%cme de Newton:(%i+%i)^%i=%i",147,a,b,n,somme_coeff);
+
+            if(a>b)
+            {
+                printf("\nEtant donn%c a>b la repr%csentation graphique sera sous forme d'escalier %c droite pour des valeurs x>3!",130,130,133);
+            }
+            else if(a<b)
+            {
+                printf("\nEtant donn%c a<b la repr%csentation graphique sera sous forme d'escalier %c gauche pour des valeurs x>3!",130,130,133);
+            }
+            else if(b==a)
+            {
+                printf("\nEtant donn%c a=b la repr%csentation graphique sera sous forme d'escalier %cquilibr%c %c droite et %c gauche pour des valeurs x>3!",130,130,130,130,133,133);
+            }
+
+            printf("\n(1) Afficher une repr%csentation graphique de la somme des x termes..?\n",130,a,b,n,somme_coeff);
+            scanf("%d",&choix_c);
+
+            switch(choix_c)
+            {
+                case 1:
+                {
+                      minX=0;
+                      maxX=n;
+
+                    affiche_courbe(minX,maxX,0,somme_coeff,a,b,n,1,true,false,false,false,true,false);
+                }
+            }
+
+        }break;
+        case 4:
+        {
+             printf("Il s'agit de d%cmontrer par r%ccurrence au rang n+1 que (a+b)^n={Somme de k=0 jusqu'%c n[(k parmi n)a^(n-k)*b^(k)]}",130,130,133);
+             printf("Initialisation Pour n=0, (a+b)^0=1=(0 parmi 0)a^0*b^0 donc H0 est vraie au rang n=1.\n");
+             printf("Supposons l'hypoth%cse de r%ccurrence vraie au rang n+1 ==> (a+b)^(n+1)=(a+b)*(a+b)^n.\n",138,130);
+             printf("\nOn part donc (a+b)^(n+1) ==> (a+b)*(a+b)^n \n=(a+b){Somme de k=0 jusqu'%c n[(k parmi n)a^(n-k)*b^k]}\n=a{Somme de k=0 jusqu'%c n[(k parmi n)a^(n-k)*b^k]}+b{Somme de k=0 jusqu'%c n[(k parmi n)a^(n-k)*b^k]}\n={Somme de k=0 jusqu'%c n[(k parmi n)a^(n-k+1)*b^k]}+{Somme de k=0 jusqu'%c n[(k parmi n)a^(n-k)*b^(k+1)]}\n={Somme de k=0 jusqu'%c n[(k parmi n)a^(n-k+1)*b^k]}+{Somme de k=1 jusqu'%c n+1[(k-1 parmi n)a^(n-(k-1))b^((k-1)+1)]}\n=(0 parmi 0)a^(n+1)*b^0+{Somme de k=1 jusqu'%c n[(k parmi n)a^(n+1-k)*b^k+(n parmi n)a^0*b^(n+1)]}+{Somme de k=1 jusqu'%c n[(k-1 parmi n)a^(n+1-k)b^k]}\n=(0 parmi 0)a^(n+1)*b^0+(n+1 parmi n+1)a^0*b^(n+1)+{Somme de k=1 jusqu'%c n[((k parmi n)+(k-1 parmi n))a^(n+1-k)*b^k]}",133,133,133,133,133,133,133,133,133,133);
+             printf("\n\nComme (k parmi n+1)=(k parmi n)+(k-1 parmi n):\n(a+b)^(n+1)=(0 parmi 0)a^(n+1)*b^0+(n+1 parmi n+1)a^0*b^(n+1)+{Somme de k=1 jusqu'%c n[(k parmi (n-1)))a^(n+1-k)*b^k\n={Somme de k=0 jusqu'%c n+1[(k parmi n+1)a^(n+1-k)*b^k \nPar cons%cquent, Un => Un+1.",133,133,130);
+             printf("\n\nConclusion: Pour tout n appartenant %c l'ensemble des entiers relatifs, Un est vraie : nous venons de d%cmontrer la formule du bin%cme de Newton!",133,130,147);
+        }break;
+   }
+
+}
+
 int main(int argc, char *argv[])
 {
   	int position,choix=-1,choix1=-1,choix1_2=-1,choix1_1=-1,choix_eq=-1,N,i=1;		/*Déclaration des variables*/
@@ -2217,8 +2549,9 @@ int main(int argc, char *argv[])
     printf("\n(4) Calcul des coefficients de B%czouts!",130);
     printf("\n(5) Calcul vectorielle dans un plan!",130);
     printf("\n(6) R%csolution d'%cquation!",130,130);
-    printf("\n(7) Autres fonctions utiles!");
-    printf("\n(8) S'abonner et suivre les derni%cres nouvelles de Vertin Go Website!",138);
+    printf("\n(7) Bin%cme de Newton!",147);
+    printf("\n(8) Autres fonctions utiles!");
+    printf("\n(9) S'abonner et suivre les derni%cres nouvelles de Vertin Go Website!",138);
     printf("\n(0) Quitter le programme.");
     printf("\n\n Quel est votre choix?:");
     scanf("%d",&choix1_1);
@@ -2489,11 +2822,17 @@ int main(int argc, char *argv[])
 	    }
 	    case 7:
 	    {
+            binome_de_newton();
+	        getchar();
+	        break;
+	    }
+	    case 8:
+	    {
             menuoutils();
 	        getchar();
 	        break;
 	    }
-        case 8:
+        case 9:
 	    {
 	        system("start chrome.exe https://www.youtube.com/channel/UC2g_-ipVjit6ZlACPWG4JvA?sub_confirmation=1");
 	        getchar();

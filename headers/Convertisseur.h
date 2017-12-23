@@ -170,11 +170,11 @@ et affichage de la reponse
 
 void menuconvertisseur() {
 	for(int choix(1);(choix>0&&choix<5);) {
-		cout <<"\n\nMath 2nd - Outils utiles - Convertisseur";
-		cout <<"\n\n1 - De longueurs";
-		cout <<"\n2 - De temperatures";
-		cout <<"\n3 - De temps";
-		cout <<"\n4 - De mesures d\'angle";
+		cout <<"\n\nOutils utiles - Convertisseur";
+		cout <<"\n\n(1) De longueurs";
+		cout <<"\n(2) De temperatures";
+		cout <<"\n(3) De temps";
+		cout <<"\n(4) De mesures d\'angle";
 		cout <<"\n---------------";
 		cout <<"\nAutre - Retour menu principal";
 		cout <<"\n\nVotre choix : ";

@@ -37,12 +37,12 @@ cout <<"\n\n"<<temperature<<"F = "<<(temperature+459.67)/1.8<<"K";
 }
 void con_temperature() {
 cout <<"\n\nConvertions de temperatures : ";
-cout <<"\n\n1 - Celsius    ->     kelvin";
-cout <<"\n2 - Celsius    -> Fahrenheit";
-cout <<"\n3 - kelvin     ->    Celsius";
-cout <<"\n4 - kelvin     -> Fahrenheit";
-cout <<"\n5 - Fahrenheit ->    Celsius";
-cout <<"\n6 - Fahrenheit ->     kelvin";
+cout <<"\n\n(1) - Celsius    ->     kelvin";
+cout <<"\n(2) - Celsius    -> Fahrenheit";
+cout <<"\n(3) - kelvin     ->    Celsius";
+cout <<"\n(4) - kelvin     -> Fahrenheit";
+cout <<"\n(5) - Fahrenheit ->    Celsius";
+cout <<"\n(6) - Fahrenheit ->     kelvin";
 cout <<"\n\nVotre choix : ";
 int choix(getint());
 cout <<"\n\nTemperature initiale = ";
