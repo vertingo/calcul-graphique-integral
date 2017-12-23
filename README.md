@@ -98,8 +98,8 @@ Voyez les illustrations ci-dessous!
   <br>
   Représentation graphique de la formule du binôme de Newton tel que ∀ n ∈ N Hn:(a+b)^n=∑k=0 jusqu'à n(k parmi n)a^(n−k)*b^k!<br>
   On remarque:<br>
-  Pour des choix de valeurs a>b ==> Escalier à droite<br>
-  Pour des choix de valeurs a<b ==> Escalier à gauche<br>
+  Pour des choix de valeurs a>b ==> Escalier à droite!<br>
+  Pour des choix de valeurs a<b ==> Escalier à gauche!<br>
   Pour des choix de valeurs a=b ==> Escalier équilibré à droite et à gauche!<br>
   <table>
   <td>
