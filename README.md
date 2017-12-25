@@ -128,7 +128,7 @@ Voyez les illustrations ci-dessous!
   </td>
   <td valign='center'>
    <center> Intégral de -3x²+4x+3 sur [0,15]= -2882.699951<br>
-   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe9.png"><img src="images/image_courbe9.png" width="300" height="100"/></a>
+   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe9.png"><img src="images/image_courbe9.png" width="330" height="100"/></a>
    </center>
   </td>
   </table>
