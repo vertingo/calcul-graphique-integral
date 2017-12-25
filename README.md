@@ -126,7 +126,7 @@ Voyez les illustrations ci-dessous!
       <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe8.png"><img src="images/image_courbe8.png" width="200" height="100"/></a>
   </td>
-  <td>
+  <td valign='center'>
    <center> Intégral de -3x²+4x+3 sur [0,15]= -2882.699951<br>
    <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe9.png"><img src="images/image_courbe9.png" width="200" height="100"/></a>
    </center>
