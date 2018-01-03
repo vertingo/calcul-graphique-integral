@@ -94,15 +94,42 @@ Voyez les illustrations ci-dessous!
 </p>
 
 <p align="center">
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_binome.png"><img src="images/image_menu_binome.png" width="700" height="450"/></a>
+  <br>
+  Représentation graphique de la formule du binôme de Newton tel que ∀ n ∈ N Hn:(a+b)^n=∑k=0 jusqu'à n(k parmi n)a^(n−k)*b^k!<br>
+  On remarque:<br>
+  Pour des choix de valeurs a>b ==> Escalier à droite!<br>
+  Pour des choix de valeurs b>a ==> Escalier à gauche!<br>
+  Pour des choix de valeurs a=b ==> Escalier équilibré à droite et à gauche!<br>
+  <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_binome1.png"><img src="images/image_binome1.png" width="200" height="100"/></a>
+  </td>
+      <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_binome2.png"><img src="images/image_binome2.png" width="200" height="100"/></a>
+  </td>
+    <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_binome3.png"><img src="images/image_binome3.png" width="200" height="100"/></a>
+  </td>
+  </table>
+</p>
+
+<p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_second_degree.png"><img src="images/image_menu_second_degree.png" width="700" height="450"/></a>
   <br>
   Représentation graphique d'un polynôme du second degré de la forme ax²+bx+c!
-  <table>
+  
+  <table>
   <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe7.png"><img src="images/image_courbe7.png" width="200" height="100"/></a>
   </td>
       <td>
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe8.png"><img src="images/image_courbe8.png" width="200" height="100"/></a>
+  </td>
+  <td valign='center'>
+   <center> Intégral de -3x²+4x+3 sur [0,15]= -2882.699951<br>
+   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe9.png"><img src="images/image_courbe9.png" width="330" height="100"/></a>
+   </center>
   </td>
   </table>
 </p>
