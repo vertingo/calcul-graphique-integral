@@ -1779,7 +1779,7 @@ void Calcul_Integral(bool stats,float tab[])
             a=y_poisson;
             b=1;
 
-            printf("La probabilit%c qu'il se produise exactement k %cv%cnements pour une fr%cquence p%criodique de: %i est de: %f \nsoit %i pourcent!\n",(int)y_poisson,res_poisson,res_pourcentage,130,130,130,130,130);
+            printf("La probabilit%c qu'il se produise exactement k %cv%cnements pour une fr%cquence p%criodique de: %i est de: %f \nsoit %i pourcent!\n",130,130,130,130,130,(int)y_poisson,res_poisson,res_pourcentage);
 
           };break;
      case 2:
@@ -1823,8 +1823,6 @@ void Calcul_Integral(bool stats,float tab[])
             a=y_poisson;
             b=1;
 
-            spmthd=trapezoidal(0,k_poisson,50,y_poisson,0,0,choix_f,false);
-            printf("\nValeur de l'int%cgral: %f \n",130,spmthd);
 
             printf("La probabilit%c qu'il se produise exactement k %cv%cnements ou moins pour une fr%cquence p%criodique de: %i \nest de: %f soit %i pourcent!\n",130,130,130,130,130,(int)y_poisson,res_poisson,res_pourcentage);
 
