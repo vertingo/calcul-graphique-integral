@@ -804,6 +804,10 @@ double f(double x,double a,double b,int choix_f)
     {
      return poisson(x,a);
     }
+    else if(choix_f==9)
+    {
+     return a*exp(-b*x);
+    }
 
 }
 
@@ -2224,138 +2228,566 @@ void Cercle()
     }
 }
 
+void radioactivite(char atome[],float t_un_demi,bool choix_atome)
+{
+
+    if(choix_atome=true)
+    {
+            int i, n;
+            float t, l=0, p, m, T, T_max=0;
+            float N[10000], dN[10000];
+            char val;
+            FILE* sortie = NULL;
+            FILE* sortie2 = NULL;
+
+            printf("RESOLUTION DE L'EQUATION DIFFERENTIELLE DE DECROISSANCE RADIOACTIVE.\n");
+           /* saisie des données */
+
+            printf("-Conditions initiales:\n");
+            printf("t0:");
+            scanf("%f", &t);
+
+            printf("N0:");
+            scanf("%f",&N[0]);
+
+            l=(float)(log(2)/t_un_demi);
+            printf("-Constante de radioactivit%c Lambda du %s:\n",130,atome);
+            printf("Connaissant le temps de demi vie du %s t(1/2)=%f alors Lambda=log(2)/t(1/2)=%f\n",atome,t_un_demi,l);
+
+            printf("-Pas:");
+            scanf("%f",&p);
+
+            retour:;
+            printf("-Nombre de calculs(<10000):");
+            scanf("%d",&n);
+
+            if(n>=10000)
+            {
+            printf("%d est sup%crieur %c 10000\n",130,133,n);
+            goto retour;
+            }
+
+            /* calculs */
+
+            printf("\n      t            dN/dt           N\n");
+            printf(" %f     %f      %f\n",t,(-l*N[0]),N[0]);
+
+            dN[0]=-l*N[0];
+
+            for(i=1;i<=n;i++)                    // routine de calcul, selon
+            {                            // la méthode d'Euler.
+            T=t+(i*p);
+
+            if(T_max<T)
+            {
+                T_max=T;
+            }
+
+            dN[i]=-l*N[i-1];
+            N[i]=N[i-1]+(dN[i]*p);
+            printf(" %f     %f      %f\n",T,dN[i],N[i]);
+            }
+
+            /* ****************************************************** */
+            /* sauvegarde des données dans un le fichier donnees.txt  */
+            /* ****************************************************** */
+            /* demande s'il faut effectuer la sauvegarde */
+
+            int choix;
+            printf("(1) Afficher une repr%csentation graphique de la d%ccroissance du %s?\n",130,130,atome);
+            printf("(2) Sauvegarder ces donn%ces dans un fichier?\n",130);
+            printf("\nQuel est votre choix?:");
+            scanf("%d",&choix);
+
+            switch(choix)
+            {
+                case 1:
+                    {
+                         double minX=0;
+                         double maxX=T_max;
+
+                         double minY=-5;
+                         double maxY=N[0]+10;
+
+                         affiche_courbe(minX,maxX,minY,maxY,N[0],l,0,9,false,false,false,false,false,false);
+
+                    }break;
+                case 2:
+                    {
+                        /* **************************************************** */
+                        /*         enregistrement du fichier donnees.txt                               */
+                        /* **************************************************** */
+
+                        sortie=fopen("C:\\donnees.txt","wt");           //ouvre ou créer le fichier donnees.txt en mode écriture
+
+                        if(sortie==NULL)                //renvoi un message d'erreur si le fichier n'a pas pu être ouvert ou créé
+                        {
+                        printf("\nErreur dans la creation du fichier donnees.txt\n");
+                        }
+
+                        printf("\nLe fichier donnees.txt a ete correctement ouvert\n");
+                        printf("Enregistrement de donnees.txt...\n");
+
+                        /* Enregistrement du fichier */
+
+                        fprintf(sortie,"\n      t            dN/dt                        N\n");
+                        fprintf(sortie," %f     %f      %f\n",t,(-l*N[0]),N[0]);
+
+                        for(i=1;i<=n;i++)
+                        {
+                        T=t+(i*p);
+                        dN[i]=-l*N[i-1];
+                        N[i]=N[i-1]+(dN[i]*p);
+                        fprintf(sortie," %f     %f      %f\n",T,dN[i],N[i]);
+                        }
+
+                        fprintf(sortie,"\n****** FIN DE FICHIER ******\n");
+                        fclose(sortie);
+
+                        printf("Donn%ces enregistr%ces!\n",130,130);
+
+                        /* **************************************************** */
+                        /*         enregistrement du fichier courbe.txt                                  */
+                        /* **************************************************** */
+
+
+                        sortie2=fopen("C:\\courbe.txt", "wt");             //ouvre ou créer le fichier courbe.txt en mode écriture
+
+                        if(sortie2==NULL)               //renvoi un message d'erreur si le fichier n'a pas pu être ouvert ou créé
+                        {
+                        printf("\nErreur dans la creation du fichier courbe.txt\n");
+                        }
+
+                        printf("\nLe fichier courbe.txt a ete correctement ouvert\n");
+                        printf("Enregistrement de courbe.txt...\n");
+
+                        fprintf(sortie2,"%f,%f\n",t,N[0]);
+
+                        for(i=1;i<=n;i++)
+                        {
+                        T=t+(i*p);
+                        dN[i]=-l*N[i-1];
+                        N[i]=N[i-1]+(dN[i]*p);
+                        fprintf(sortie2,"%f,%f\n",T,N[i]);
+                        }
+
+                        fclose(sortie2);
+
+                        printf("Donn%ces enregistr%ces!\n",130,130);
+
+
+                    }break;
+
+            }
+
+    }
+    else
+    {
+            int i, n;
+            float t, l, p, m, T, T_max;
+            float N[10000], dN[10000];
+            char val;
+            FILE* sortie = NULL;
+            FILE* sortie2 = NULL;
+
+            printf("RESOLUTION DE L'EQUATION DIFFERENTIELLE DE DECROISSANCE RADIOACTIVE.\n");
+           /* saisie des données */
+
+            printf("-Conditions initiales:\n");
+            printf("t0:");
+            scanf("%f", &t);
+
+            printf("N0:");
+            scanf("%f",&N[0]);
+
+            printf("-Constante de radioactivit%c\n",130);
+            printf("Lambda:");
+            scanf("%f",&l);
+
+            printf("-Pas:");
+            scanf("%f",&p);
+
+            retour2:;
+            printf("-Nombre de calculs(<10000):");
+            scanf("%d",&n);
+
+            if(n>=10000)
+            {
+            printf("%d est sup%crieur %c 10000\n",130,133,n);
+            goto retour2;
+            }
+
+            /* calculs */
+
+            printf("\n      t            dN/dt           N\n");
+            printf(" %f     %f      %f\n",t,(-l*N[0]),N[0]);
+
+            dN[0]=-l*N[0];
+
+            for(i=1;i<=n;i++)                    // routine de calcul, selon
+            {                                   // la méthode d'Euler.
+            T=t+(i*p);
+
+            if(T_max<T)
+            {
+                T_max=T;
+            }
+
+            dN[i]=-l*N[i-1];
+            N[i]=N[i-1]+(dN[i]*p);
+            printf(" %f     %f      %f\n",T,dN[i],N[i]);
+            }
+
+            /* ****************************************************** */
+            /* sauvegarde des données dans un le fichier donnees.txt  */
+            /* ****************************************************** */
+            /* demande s'il faut effectuer la sauvegarde */
+
+            int choix;
+            printf("(1) Afficher une repr%csentation graphique?\n",130);
+            printf("(2) Sauvegarder ces donn%ces dans un fichier?\n",130);
+            printf("\nQuel est votre choix?:");
+            scanf("%d",&choix);
+
+            switch(choix)
+            {
+                case 1:
+                    {
+                         double minX=0;
+                         double maxX=T_max;
+
+                         double minY=-5;
+                         double maxY=N[0]+10;
+
+                         affiche_courbe(minX,maxX,minY,maxY,N[0],l,0,9,false,false,false,false,false,false);
+
+                    }break;
+                case 2:
+                    {
+                        /* **************************************************** */
+                        /*         enregistrement du fichier donnees.txt                               */
+                        /* **************************************************** */
+
+                        sortie=fopen("C:\\donnees.txt","wt");           //ouvre ou créer le fichier donnees.txt en mode écriture
+
+                        if(sortie==NULL)                //renvoi un message d'erreur si le fichier n'a pas pu être ouvert ou créé
+                        {
+                        printf("\nErreur dans la creation du fichier donnees.txt\n");
+                        }
+
+                        printf("\nLe fichier donnees.txt a ete correctement ouvert\n");
+                        printf("Enregistrement de donnees.txt...\n");
+
+                        /* Enregistrement du fichier */
+
+                        fprintf(sortie,"\n      t            dN/dt                        N\n");
+                        fprintf(sortie," %f     %f      %f\n",t,(-l*N[0]),N[0]);
+
+                        for(i=1;i<=n;i++)
+                        {
+                        T=t+(i*p);
+                        dN[i]=-l*N[i-1];
+                        N[i]=N[i-1]+(dN[i]*p);
+                        fprintf(sortie," %f     %f      %f\n",T,dN[i],N[i]);
+                        }
+
+                        fprintf(sortie,"\n****** FIN DE FICHIER ******\n");
+                        fclose(sortie);
+
+                        printf("Donn%ces enregistr%ces!\n",130,130);
+
+                        /* **************************************************** */
+                        /*         enregistrement du fichier courbe.txt                                  */
+                        /* **************************************************** */
+
+
+                        sortie2=fopen("C:\\courbe.txt", "wt");             //ouvre ou créer le fichier courbe.txt en mode écriture
+
+                        if(sortie2==NULL)               //renvoi un message d'erreur si le fichier n'a pas pu être ouvert ou créé
+                        {
+                        printf("\nErreur dans la creation du fichier courbe.txt\n");
+                        }
+
+                        printf("\nLe fichier courbe.txt a ete correctement ouvert\n");
+                        printf("Enregistrement de courbe.txt...\n");
+
+                        fprintf(sortie2,"%f,%f\n",t,N[0]);
+
+                        for(i=1;i<=n;i++)
+                        {
+                        T=t+(i*p);
+                        dN[i]=-l*N[i-1];
+                        N[i]=N[i-1]+(dN[i]*p);
+                        fprintf(sortie2,"%f,%f\n",T,N[i]);
+                        }
+
+                        fclose(sortie2);
+
+                        printf("Donn%ces enregistr%ces!\n",130,130);
+
+                    }break;
+
+            }
+
+
+    }
+
+}
+
 void Equation_Diff()
 {
-    int i, n;
+    int choix_radioactivite,choix_atome;
     float t, l, p, m, T;
     float N[10000], dN[10000];
     char val;
     FILE* sortie = NULL;
     FILE* sortie2 = NULL;
 
-    printf("RESOLUTION DE L'EQUATION DIFFERENTIELLE DE DECROISSANCE RADIOACTIVE.\n");
+    printf("(1) Calcul de la d%ccroissance radioactive en s%clectionnant un atome parmi ceux les plus suceptibles de se d%csint%cgrer?\n",130,130,130,130);
+    printf("(2) Calcul de la d%ccroissance radioactive en param%ctrant les conditions initiales et constante de radioactivit%c?\n",130,138,130);
+    printf("\nQuel est votre choix?:");
+    scanf("%d",&choix_radioactivite);
 
-    /* saisie des données */
+    switch(choix_radioactivite)
+    {
+     case 1:
+         {
+             printf("Choississez le type d'atome suceptible de se d%csint%cgrer!\n",130,130);
+             printf("(1) Hydrog%cne 7\n",138);
+             printf("(2) Azote 16\n");
+             printf("(3) Fluor 20\n");
+             printf("(4) Oxyg%cne 16\n",138);
+             printf("(5) Fluor 18\n");
+             printf("(6) Radium 224\n");
+             printf("(7) Radon 222\n");
+             printf("(8) Sodium 22\n");
+             printf("(9) Cobalt 60\n");
+             printf("(10) Tritium(Hydrog%cne 3)\n",138);
+             printf("(11) Strontium 90\n");
+             printf("(12) C%csium 137\n",130);
+             printf("(13) Radium 226\n");
+             printf("(14) Carbone 14\n");
+             printf("(15) Chlore 36\n");
+             printf("(16) Aluminium 26\n");
+             printf("(17) Uranium 235\n");
+             printf("(18) Potassium 40\n");
+             printf("(19) Uranium 238\n");
+             printf("(20) Thorium 232\n");
+             printf("(21) Samarium 147\n");
+             printf("(22) Osmium 184\n");
+             printf("(23) Indium 115\n");
+             printf("(24) X%cnon 124\n",130);
+             printf("(25) Vanadium 50\n");
+             printf("(26) Calcium 48\n");
+             printf("(27) Molybd%cne 100\n",138);
+             printf("(28) Bismuth 209\n");
+             printf("(29) Zirconium 96\n");
+             printf("(30) Tellure 130\n");
+             printf("(31) Tellure 128\n");
+             printf("\nQuel est votre choix?:");
+             scanf("%d",&choix_atome);
 
-    printf("-Conditions initiales :\n");
-    printf("t0:");
-    scanf("%f", &t);
+             switch(choix_atome)
+             {
+                case 1:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(22.2,-23);
+                        radioactivite("Hydrogene 7",t_un_demi,true);
+                    }break;
+                case 2:
+                    {
+                        double t_un_demi;
+                        t_un_demi=7.13;
+                        radioactivite("Azote 16",t_un_demi,true);
+                    }break;
+                case 3:
+                    {
+                        double t_un_demi;
+                        t_un_demi=11.163;
+                        radioactivite("Fluor 20",t_un_demi,true);
+                    }break;
+                case 4:
+                    {
+                        double t_un_demi;
+                        t_un_demi=2.037*60;
+                        radioactivite("Oxygene 16",t_un_demi,true);
+                    }break;
+                case 5:
+                    {
+                        double t_un_demi;
+                        t_un_demi=1.8293*60*60;
+                        radioactivite("Fluor 18",t_un_demi,true);
+                    }break;
 
-    printf("N0:");
-    scanf("%f",&N[0]);
+                case 6:
+                    {
+                        double t_un_demi;
+                        t_un_demi=3.62*24*60*60;
+                        radioactivite("Radium 224",t_un_demi,true);
+                    }break;
+                case 7:
+                    {
+                        double t_un_demi;
+                        t_un_demi=3.8235*24*60*60;
+                        radioactivite("Radon 222",t_un_demi,true);
+                    }break;
+                case 8:
+                    {
+                        double t_un_demi;
+                        t_un_demi=2.605*365*24*60*60;
+                        radioactivite("Sodium 22",t_un_demi,true);
+                    }break;
+                case 9:
+                    {
+                        double t_un_demi;
+                        t_un_demi=5.272*365*24*60*60;
+                        radioactivite("Cobalt 60",t_un_demi,true);
+                    }break;
+                case 10:
+                    {
+                        double t_un_demi;
+                        t_un_demi=12.329*365*24*60*60;
+                        radioactivite("Tritium(Hydrogene 3)",t_un_demi,true);
+                    }break;
+                case 11:
+                    {
+                        double t_un_demi;
+                        t_un_demi=28.78*365*24*60*60;
+                        radioactivite("Strontium 90",t_un_demi,true);
+                    }break;
+                case 12:
+                    {
+                        double t_un_demi;
+                        t_un_demi=30.254*365*24*60*60;
+                        radioactivite("Cesium 137",t_un_demi,true);
+                    }break;
+                case 13:
+                    {
+                        double t_un_demi;
+                        t_un_demi=1602*365*24*60*60;
+                        radioactivite("Radium 226",t_un_demi,true);
+                    }break;
+                case 14:
+                    {
+                        double t_un_demi;
+                        t_un_demi=5730*365*24*60*60;
+                        radioactivite("Carbone 14",t_un_demi,true);
+                    }break;
+                case 15:
+                    {
+                        double t_un_demi;
+                        t_un_demi=301000*365*24*60*60;
+                        radioactivite("Chlore 36",t_un_demi,true);
+                    }break;
+                case 16:
+                    {
+                        double t_un_demi;
+                        t_un_demi=717000*365*24*60*60;
+                        radioactivite("Aluminium 26",t_un_demi,true);
+                    }break;
+                case 17:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(7040,6)*365*24*60*60;
+                        radioactivite("Uranium 235",t_un_demi,true);
+                    }break;
+                case 18:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(12.8,9)*365*24*60*60;
+                        radioactivite("Potassium 40",t_un_demi,true);
+                    }break;
+                case 19:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(44.68,9)*365*24*60*60;
+                        radioactivite("Uranium 238",t_un_demi,true);
+                    }break;
+                case 20:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(140.5,9)*365*24*60*60;
+                        radioactivite("Thorium 232",t_un_demi,true);
+                    }break;
+                case 21:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(1060,9)*365*24*60*60;
+                        radioactivite("Samarium 147",t_un_demi,true);
+                    }break;
+                case 22:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(560,12)*365*24*60*60;
+                        radioactivite("Osmium 184",t_un_demi,true);
+                    }break;
+                case 23:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(4410,12)*365*24*60*60;
+                        radioactivite("Indium 115",t_un_demi,true);
+                    }break;
+                case 24:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(1100,15)*365*24*60*60;
+                        radioactivite("Xenon 124",t_un_demi,true);
+                    }break;
+                case 25:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(1400,15)*365*24*60*60;
+                        radioactivite("Vanadium 50",t_un_demi,true);
+                    }break;
+                case 26:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(60,18)*365*24*60*60;
+                        radioactivite("Calcium 48",t_un_demi,true);
+                    }break;
+                case 27:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(100,18)*365*24*60*60;
+                        radioactivite("Molybdene 100",t_un_demi,true);
+                    }break;
+                case 28:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(210,18)*365*24*60*60;
+                        radioactivite("Bismuth 209",t_un_demi,true);
+                    }break;
+                case 29:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(380,18)*365*24*60*60;
+                        radioactivite("Zirconium 96",t_un_demi,true);
+                    }break;
+                case 30:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(7900,18)*365*24*60*60;
+                        radioactivite("Tellure 130",t_un_demi,true);
+                    }break;
+                case 31:
+                    {
+                        double t_un_demi;
+                        t_un_demi=pow(22,24)*365*24*60*60;
+                        radioactivite("Tellure 128",t_un_demi,true);
+                    }break;
+             }
+         }break;
+     case 2:
+         {
 
-    printf("-Constante de radioactivit%c\n",130);
+          radioactivite("",0,false);
 
-    printf("Lambda:");
-    scanf("%f",&l);
+         }break;
 
-    printf("-Pas:");
-    scanf("%f",&p);
-
-    retour:;
-    printf("-Nombre de calculs(<10000):");
-    scanf("%d",&n);
-
-    if(n>=10000)
-     {
-      printf("%d est sup%crieur %c 10000\n",130,133,n);
-      goto retour;
-     }
-
-  /* calculs */
-
-  printf("\n      t            dN/dt           N\n");
-  printf(" %f     %f      %f\n",t,(-l*N[0]),N[0]);
-
-  dN[0]=-l*N[0];
-
-  for(i=1;i<=n;i++)                    // routine de calcul, selon
-      {                                   // la méthode d'Euler.
-         T=t+(i*p);
-         dN[i]=-l*N[i-1];
-         N[i]=N[i-1]+(dN[i]*p);
-         printf(" %f     %f      %f\n",T,dN[i],N[i]);
-      }
-
-  /* ****************************************************** */
-  /* sauvegarde des données dans un le fichier donnees.txt  */
-  /* ****************************************************** */
-
-  /* demande s'il faut effectuer la sauvegarde */
-
-  printf("\n Souhaitez vous sauvegarder ces donn%ces dans un fichier?(O/N)\n",130);
-  val=getchar();   // attend la saisie d'un caractère
-
-  while(val!='o' && val!='O' && val!='n' && val!='N') // vérifie le caractère
-        {
-          val=getchar();
-        }
-
-  if(val=='o' || val=='0')
-     {
-       /* **************************************************** */
-       /*         enregistrement du fichier donnees.txt                               */
-       /* **************************************************** */
-
-       sortie=fopen("C:\\donnees.txt","wt");           //ouvre ou créer le fichier donnees.txt en mode écriture
-
-       if(sortie==NULL)                //renvoi un message d'erreur si le fichier n'a pas pu être ouvert ou créé
-          {
-           printf("\nErreur dans la creation du fichier donnees.txt\n");
-          }
-
-       printf("\nLe fichier donnees.txt a ete correctement ouvert\n");
-       printf("Enregistrement de donnees.txt...\n");
-
-       /* Enregistrement du fichier */
-
-       fprintf(sortie,"\n      t            dN/dt                        N\n");
-       fprintf(sortie," %f     %f      %f\n",t,(-l*N[0]),N[0]);
-
-       for(i=1;i<=n;i++)
-           {
-            T=t+(i*p);
-            dN[i]=-l*N[i-1];
-            N[i]=N[i-1]+(dN[i]*p);
-            fprintf(sortie," %f     %f      %f\n",T,dN[i],N[i]);
-           }
-
-       fprintf(sortie,"\n****** FIN DE FICHIER ******\n");
-       fclose(sortie);
-
-       printf("Donn%ces enregistr%ces!\n",130,130);
-
-       /* **************************************************** */
-       /*         enregistrement du fichier courbe.txt                                  */
-       /* **************************************************** */
-
-
-       sortie2=fopen("C:\\courbe.txt", "wt");             //ouvre ou créer le fichier courbe.txt en mode écriture
-
-       if(sortie2==NULL)               //renvoi un message d'erreur si le fichier n'a pas pu être ouvert ou créé
-          {
-           printf("\nErreur dans la creation du fichier courbe.txt\n");
-          }
-
-       printf("\nLe fichier courbe.txt a ete correctement ouvert\n");
-       printf("Enregistrement de courbe.txt...\n");
-
-       fprintf(sortie2,"%f,%f\n",t,N[0]);
-
-       for(i=1;i<=n;i++)
-           {
-            T=t+(i*p);
-            dN[i]=-l*N[i-1];
-            N[i]=N[i-1]+(dN[i]*p);
-            fprintf(sortie2,"%f,%f\n",T,N[i]);
-           }
-
-       fclose(sortie2);
-
-       printf("Donn%ces enregistr%ces!\n",130,130);
     }
 
-  scanf("%f",&m);
+
 }
 
 void binome_de_newton()
@@ -2789,7 +3221,7 @@ int main(int argc, char *argv[])
                     printf("\nEntrez le num%cro de l\'op%cration d%csir%ce:\n",130,130,130,130);
                     printf("\n(1) R%csolution d'une %cquation du second degr%c.",130,130,130);
                     printf("\n(2) Param%ctrer et repr%csenter graphiquement une %cquation de cercle.",138,130,130);
-                    printf("\n(3) R%csolution d'une %cquation diff%crentielle(D%ccroissance radioactive) par la m%cthode d'euler.",130,130,130,130,130);
+                    printf("\n(3) R%csolution d'une %cquation diff%crentielle(Calcul de la d%ccroissance radioactive!)",130,130,130,130);
                     printf("\n\nQuel est votre choix?:");
                     scanf("%d",&choix_eq);
 
