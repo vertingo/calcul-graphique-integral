@@ -144,7 +144,7 @@ Voyez les illustrations ci-dessous!
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_radioactivite.png"><img src="images/image_menu_radioactivite.png" width="200" height="100"/></a>
   </td>
   <td>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_radioactivite.png"><img src="images/image_menu_radioactivite.png" width="200" height="100"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_radioactivite2.png"><img src="images/image_menu_radioactivite2.png" width="200" height="100"/></a>
   </td>
   </table>
 </p>
