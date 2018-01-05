@@ -135,6 +135,21 @@ Voyez les illustrations ci-dessous!
 </p>
 
 <p align="center">
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_radioactivite.png"><img src="images/image_courbe_radioactivite.png" width="700" height="450"/></a>
+  <br>
+  Calcul de la décroissance radioactive + représentation graphique de la courbe!
+  
+  <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_radioactivite.png"><img src="images/image_menu_radioactivite.png" width="200" height="100"/></a>
+  </td>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_radioactivite.png"><img src="images/image_menu_radioactivite.png" width="200" height="100"/></a>
+  </td>
+  </table>
+</p>
+
+<p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="450"/></a>
   <center>Représentation graphique de la fonction x² sur [0,25] et [25,50] d'une fonction lineaire ax+b sur [0,25] et cos(x) sur [0,100]!</center>
   <table>
