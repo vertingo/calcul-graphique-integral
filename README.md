@@ -134,6 +134,19 @@ Voyez les illustrations ci-dessous!
   </table>
 </p>
 
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_trajectoire.png"><img src="images/image_courbe_radioactivite.png" width="700" height="450"/></a>
+  <br>
+  Calcul de la trajectoire d'un projectile + représentation graphique!
+  
+  <table>
+  <td>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_trajectoire.png"><img src="images/image_menu_radioactivite.png" width="200" height="100"/></a>
+  </td>
+  </table>
+</p>
+
 <p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_radioactivite.png"><img src="images/image_courbe_radioactivite.png" width="700" height="450"/></a>
   <br>
