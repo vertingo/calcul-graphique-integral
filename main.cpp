@@ -808,6 +808,11 @@ double f(double x,double a,double b,int choix_f)
     {
      return a*exp(-b*x);
     }
+    else if(choix_f==10)
+    {
+        return ((-9.80665)/(2*pow(a,2)*pow(cos(b),2)))*pow(x,2)+(tan(b))*x;
+    }
+
 
 }
 
@@ -2950,6 +2955,57 @@ void binome_de_newton()
 
 }
 
+void equation_cartesienne_trajectoire()
+{
+   float angle, v0;
+   int choix,choix_t;
+
+   printf("(1) Calcul de la trajectoire d'un projectile dans le champ de pesanteur uniforme en param%ctrant les valeurs de \nv0(Vitesse initial) et de l'Angle form%c par rapport %c l'horizontal(Angle initial en degr%c)\n",138,130,133,130);
+   //printf("(2) Calcul de la trajectoire d'un projectile dans le champ de pesanteur uniforme!\n");
+
+   printf("\nQuel est votre choix?:");
+   scanf("%d",&choix);
+
+   switch(choix)
+   {
+        case 1:
+        {
+          double minX,maxX,minY,maxY;
+
+          printf("Entrer la valeur de la vitesse initial v0 en m/s!\n");
+          printf("v0:");
+          scanf("%f",&v0);
+          printf("\nEntrer la valeur de l'angle initial form%c par rapport %c l'horizontal en degr%c!\n",130,133,130);
+          printf("Angle:");
+          scanf("%f",&angle);
+
+          minX=0;
+          maxX=((2*pow(v0,2)*sin(2*angle))/9.80665);
+          minY=0;
+          maxY=(0.5*((pow(v0,2)*pow(sin(angle),2))/9.80665))+1;
+
+          printf("Pour une vitesse initial de %i m/s et un angle initial de %i degr%c le projectile atteindra une hauteur maximale de %i m%ctres et atterrira %c %i m%ctres plus loin pour une dur%ce de %f secondes!\n",(int)v0,(int)angle,130,(int)abs(maxY-1),130,133,(int)abs(maxX),130,130,(float)abs(maxX/v0));
+          printf("\n(1) Afficher une repr%csentation graphique de la trajectoire?\n",130);
+          printf("Quel est votre choix?:");
+          scanf("%d",&choix_t);
+
+          switch(choix_t)
+          {
+            case 1:
+            {
+                affiche_courbe(minX,maxX,minY,maxY,v0,angle,0,10,false,false,false,false,false,false);
+            }break;
+          }
+
+        }break;
+        case 2:
+        {
+
+        }break;
+   }
+
+}
+
 int main(int argc, char *argv[])
 {
   	int position,choix=-1,choix1=-1,choix1_2=-1,choix1_1=-1,choix_eq=-1,N,i=1;		/*Déclaration des variables*/
@@ -3222,6 +3278,7 @@ int main(int argc, char *argv[])
                     printf("\n(1) R%csolution d'une %cquation du second degr%c.",130,130,130);
                     printf("\n(2) Param%ctrer et repr%csenter graphiquement une %cquation de cercle.",138,130,130);
                     printf("\n(3) R%csolution d'une %cquation diff%crentielle(Calcul de la d%ccroissance radioactive!)",130,130,130,130);
+                    printf("\n(4) R%csolution d'une %cquation cart%csienne d'une trajectoire de param%ctre initial v0(Vitesse initial) et d'Angle form%c \npar rapport %c l'horizontal(Angle en degr%c)!",130,130,130,138,130,133,130);
                     printf("\n\nQuel est votre choix?:");
                     scanf("%d",&choix_eq);
 
@@ -3242,6 +3299,12 @@ int main(int argc, char *argv[])
                           case 3:
                                {
                                    Equation_Diff();
+                                   getchar();
+	                               break;
+                               }break;
+                          case 4:
+                               {
+                                   equation_cartesienne_trajectoire();
                                    getchar();
 	                               break;
                                }break;
