@@ -136,7 +136,7 @@ Voyez les illustrations ci-dessous!
 
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_trajectoire.png"><img src="images/image_menu_trajectoire.png" width="700" height="450"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_equation_trajectoire.png"><img src="images/image_menu_equation_trajectoire.png" width="700" height="450"/></a>
   <br>
   Calcul de la trajectoire d'un projectile + représentation graphique!
   
