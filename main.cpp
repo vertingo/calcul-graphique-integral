@@ -3006,6 +3006,178 @@ void equation_cartesienne_trajectoire()
 
 }
 
+
+void equation_chimique()
+{
+   float quantite_reactif,quantite_reactif2,quantite_produit=0,x_max=0;
+   int stoechiometrique,stoechiometrique2,choix_reaction=0;
+
+    printf("Quelques soit les r%cactifs il est possible de simuler les r%csultats en terme de quantit%c de mati%cre d'une r%caction en \nmentionnant simplement les quantit%cs des r%cactifs et leur proportions stoechiom%ctriques!\n",130,130,130,130,130,130,130,130);
+    printf("\nEntrer la quantit%c de mati%cre du premier r%cactif en mole:\n",130,138,130);
+    printf("n(Reactif-1)=");
+    scanf("%f",&quantite_reactif);
+    printf("Entrer la quantit%c de mati%cre du second r%cactif en mole:\n",130,138,130);
+    printf("n(Reactif-2)=");
+    scanf("%f",&quantite_reactif2);
+    printf("Entrer la proportion stoechiom%ctrique du premier r%cactif:\n",130,130);
+    printf("Proportion stoechiom%ctrique(Reactif-1)=");
+    scanf("%d",&stoechiometrique);
+    printf("Entrer la proportion stoechiom%ctrique du second r%cactif:\n",130,130);
+    printf("Proportion stoechiom%ctrique(Reactif-2)=");
+    scanf("%d",&stoechiometrique2);
+
+    float x_max1=(float)quantite_reactif/stoechiometrique;
+    float x_max2=(float)quantite_reactif2/stoechiometrique2;
+
+    if(x_max1>x_max2)
+    {
+        x_max=x_max2;
+    }
+    else
+    {
+        x_max=x_max1;
+    }
+
+    printf("\n\n%c",201);
+
+	ligne(22);/*boucle d affichage double ligne*/
+
+	printf("%c",187);
+	printf("\n%c Tableau d'avancement:%c",186,186);
+	printf("\n%c",200);
+
+	ligne(22);/*boucle d affichage double ligne*/
+
+	printf("%c",188);
+
+	printf("\n\n%c",201);
+
+	ligne(7);/*boucle d affichage double ligne*/
+
+	printf("%c",203);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",203);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",203);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",203);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",203);
+
+
+	printf("\n%c   Equation          %cR%cactif-1(aq)+ R%cactif-2(aq)=> produit(s)%c",186,186,130,130,186);
+    printf("\n%c",204);
+	ligne(7);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+
+
+    /*Boucle d affichage des données proprement dites*/
+
+    printf("\n%c Etat  %c Avancement  %c n(Reactif-1)%c n(Reactif-2)%c n(Produit)  %c",186,186,186,186,186,186,186);
+
+	printf("\n%c",204);
+	ligne(7);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",202);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",202);
+
+
+    printf("\n%cInitial%c    x=0      %c  %f   %c  %f   %c  %f   %c",186,186,186,quantite_reactif,186,quantite_reactif2,186,quantite_produit,186);
+
+	printf("\n%c",204);
+	ligne(7);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+
+
+	printf("\n%c Inter %c     x       %c %f-%ix %c %f-%ix %c      x      %c",186,186,186,quantite_reactif,stoechiometrique,186,quantite_reactif2,stoechiometrique2,186,186);
+
+	printf("\n%c",204);
+	ligne(7);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",202);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",202);
+
+
+	printf("\n%c Final %cXmax=%f%c   %f  %c   %f  %c   %f  %c",186,186,x_max,186,(float)quantite_reactif-stoechiometrique*x_max,186,(float)quantite_reactif2-stoechiometrique2*x_max,186,x_max,186);
+
+	printf("\n%c",204);
+	ligne(7);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",206);
+	ligne(13);/*boucle d affichage double ligne*/
+	printf("%c",202);
+	ligne(13);/*boucle d affichage double ligne*/
+    printf("%c",202);
+
+
+	printf("\n");
+
+	if(quantite_reactif-stoechiometrique*x_max==0)
+    {
+        printf("Le r%cactif limitant est le premier r%cactif!",130,130);
+    }
+    else
+    {
+         printf("Le r%cactif limitant est le second r%cactif!",130,130);
+    }
+    printf("\n");
+
+    printf("Pour obtenir un m%clange dans les proportions stoechiom%ctrique il faut que [n(R%cactif-1)/%i] = [n(R%cactif-2)/%i]\n",130,130,130,stoechiometrique,130,stoechiometrique2);
+    printf("Si [n(R%cactif-1)/%i] > [n(R%cactif-2)/%i] alors le R%cactif-1 est introduit en exc%cs et le r%cactif limitant est le R%cactif-2\n",130,stoechiometrique,130,stoechiometrique2,130,138,130,130);
+    printf("Si [n(R%cactif-1)/%i] < [n(R%cactif-2)/%i] alors le R%cactif-2 est introduit en exc%cs et le r%cactif limitant est le R%cactif-1\n",130,stoechiometrique,130,stoechiometrique2,130,138,130,130);
+
+    printf("\n");
+
+    printf("\n(1) Calculer la masse en gramme du produit de la r%caction en indiquant la masse molaire du produit!",130);
+    printf("\n\n Quel est votre choix?:");
+    scanf("%d",&choix_reaction);
+
+    switch(choix_reaction)
+	{
+        case 1:
+	    {
+           float masse_molaire;
+           printf("Donner la masse molaire en g/mol du produit de la r%caction!\n",130);
+           printf("Masse molaire du produit de la r%caction=",130);
+           scanf("%f",&masse_molaire);
+           printf("La masse de produit g%cn%cr%c par la r%caction est de: %f gramme(s)",130,130,130,130,(float)masse_molaire*x_max);
+	    }break;
+	}
+
+
+}
+
 int main(int argc, char *argv[])
 {
   	int position,choix=-1,choix1=-1,choix1_2=-1,choix1_1=-1,choix_eq=-1,N,i=1;		/*Déclaration des variables*/
@@ -3279,6 +3451,7 @@ int main(int argc, char *argv[])
                     printf("\n(2) Param%ctrer et repr%csenter graphiquement une %cquation de cercle.",138,130,130);
                     printf("\n(3) R%csolution d'une %cquation diff%crentielle(Calcul de la d%ccroissance radioactive!)",130,130,130,130);
                     printf("\n(4) R%csolution d'une %cquation cart%csienne d'une trajectoire de param%ctre initial v0(Vitesse initial) et d'Angle form%c \npar rapport %c l'horizontal(Angle en degr%c)!",130,130,130,138,130,133,130);
+                    printf("\n(5) R%csolution d'une %cquation chimique en indiquant les proportions stoechiom%ctriques des r%cactifs!",130,130,130,130);
                     printf("\n\nQuel est votre choix?:");
                     scanf("%d",&choix_eq);
 
@@ -3305,6 +3478,12 @@ int main(int argc, char *argv[])
                           case 4:
                                {
                                    equation_cartesienne_trajectoire();
+                                   getchar();
+	                               break;
+                               }break;
+                          case 5:
+                               {
+                                   equation_chimique();
                                    getchar();
 	                               break;
                                }break;
