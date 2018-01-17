@@ -19,9 +19,9 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
   
   <p align="center">
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_poisson.png"><img src="images/image_menu_reaction.png" width="700" height="450"/></a>
+  <br>
   Tableau d'avancement d'une réaction chimique!
-  
-</p>
+  </p>
 
 
 ## Prérequis
