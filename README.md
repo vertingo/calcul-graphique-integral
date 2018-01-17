@@ -15,9 +15,12 @@ Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécut
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_courbe_8.png"><img src="images/image_courbe_8.png" width="200" height="100"/></a>
   </td>
   </table><br>
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_poisson.png"><img src="images/image_menu_reaction.png" width="700" height="450"/></a>
+  </p>
   
-
+  <p align="center">
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_poisson.png"><img src="images/image_menu_reaction.png" width="700" height="450"/></a>
+  Tableau d'avancement d'une réaction chimique!
+  
 </p>
 
 
