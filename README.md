@@ -76,7 +76,7 @@ Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de 
 Voyez les illustrations ci-dessous!
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="550"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu.png"><img src="images/image_menu.png" width="700" height="600"/></a>
   <center>Représentation graphique de la fonction x² sur [0,25] et [25,50] d'une fonction lineaire ax+b sur [0,25] et cos(x) sur [0,100]!</center>
   <table>
   <td>
@@ -94,7 +94,7 @@ Voyez les illustrations ci-dessous!
 </p>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_equation_trajectoire.png"><img src="images/image_menu_equation_trajectoire.png" width="700" height="550"/></a>
+  <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/image_menu_equation_trajectoire.png"><img src="images/image_menu_equation_trajectoire.png" width="700" height="650"/></a>
   <br>
   Calcul de la trajectoire d'un projectile + représentation graphique!
   
