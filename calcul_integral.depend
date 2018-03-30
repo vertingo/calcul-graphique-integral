@@ -298,3 +298,7 @@
 	<iostream>
 	"utilisateur.h"
 
+1512700463 source:c:\users\vertingo\desktop\projet c\projet_sdl\calcul_integral\mini_rsa.cpp
+	<cstdlib>
+	"mini_rsa.h"
+

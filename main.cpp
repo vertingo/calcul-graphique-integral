@@ -2984,7 +2984,37 @@ void equation_cartesienne_trajectoire()
           minY=0;
           maxY=(0.5*((pow(v0,2)*pow(sin(angle),2))/9.80665))+1;
 
-          printf("Pour une vitesse initial de %i m/s et un angle initial de %i degr%c le projectile atteindra une hauteur maximale de %i m%ctres et atterrira %c %i m%ctres plus loin pour une dur%ce de %f secondes!\n",(int)v0,(int)angle,130,(int)abs(maxY-1),130,133,(int)abs(maxX),130,130,(float)abs(maxX/v0));
+          printf("\nPour conna%ctre la hauteur maximale et la distance atteinte par le projectile une fois atterri on applique \nle Principe Fondamental de la Dynamique(PFD) ou seconde loi de Newton dans un r%cf%crentiel terreste muni \nd'un rep%cre (O,x,y)\n",140,130,130,138);
+          printf("D'apr%cs le PFD on a: Somme des forces ext%crieures [ P + ... + ...] = m.a avec a vecteur acc%cl%cration et P le poid!\n",130,130,130,130);
+          printf("Etant donn%ce que le projectile n'est soumi qu'a son poid apr%cs le lanc%c on obtient donc l'%cquation suivante:\n m.g = m.a => g = a \n\n",130,138,130,130);
+          printf("Vu que g(intensit%c de la pesanteur)est une composante sur les y on peut donc %ccrire le vecteur acc%cl%cration sous la \nforme suivante:\n a(x=0;y=-g)\n\n",130,130,130,130);
+          printf("Sachant que le vecteur acc%cl%cration est la d%criv%c du vecteur vitesse soit a=dv/dt si on int%cgre le vecteur vitesse v \nsachant que le vecteur v0 %c pour composante sur les x => v0*cos(Angle) et y => v0*sin(Angle) \n on obtient les %cquations horaires sur les x et les y de la trajectoire:\n",130,130,130,130,138,133,130);
+          printf("a(0,-g) => v(v0*cos(Angle),-gt+v0*sin(Angle)) => OM(v0*cos(Angle)*t,-gt+v0*sin(Angle)*t)\n");
+          printf("\nAvec M le point ou se situe le projectile %c une date t on obtient donc les deux %cquations horaires suivantes:\n x(t)=v0*cos(Angle)*t\n et y(t)=-gt+v0*sin(Angle)*t \n\n",133,130);
+          printf("Pour obtenir l'%cquation de la trajectoire il suffit d%csormais de fusionner les deux %cquations pr%cc%cdente en isolant\n la valeur t dans la premi%cre et en remplacant cette derni%cre dans la seconde ce qui donne:\n",130,130,130,130,130,138,138);
+          printf("t = x/(v0*cos(Angle)) et on remplace la valeur t dans la seconde\n=> y(t)=-g[x/(v0*cos(Angle))]+v0*sin(Angle)*[x/(v0*cos(Angle))]\n\n");
+          printf("Au final on obtient donc la fameuse %cquation de la trajectoire suivante tel que:\n f(x)=-g*x%c/(2*v0%c*cos%c(Angle)) + tan(Angle)*x\n",130,253,253,253);
+          printf("Comment d%cterminer la port%ce et la longueur maximale?\n",130,130);
+          printf("Calcul de la port%ce sachant que le point d'atterrissage est A:\n",130);
+          printf("On doit donc r%csoudre l'%cquation suivante tel que:\n -g*xA%c/(2*v0%c*cos%c(Angle)) + tan(Angle)*xA = 0\n",130,130,253,253,253);
+          printf("La solution xA %ctant la solution non nulle, on a:\n-g/(2v0%c*cos%c(Angle))*xA = 0 => Factorisation des x!\n",130,253,253);
+          printf("xA = (2v0%c*cos%c(Angle)*tan(Angle))/g\n",253,253);
+          printf("xA = (2v0%c*cos%c(Angle)*tan(Angle))/g\n",253,253);
+          printf("D'apr%cs les formules de duplication: sin(2*Angle) = 2*sin(Angle)*cos(Angle), on a:\n",138);
+          printf("OA = xA = (v0%c*sin(2*Angle))/2g\n",253);
+          printf("xA = %i\n",(int)abs(maxX));
+          printf("Remarque: Pour obtenir une port%ce maximale quelques soit v0 il faut sin(2*Angle) = 1 soit 45 degr%cs\n\n",130,130);
+
+          printf("Calcul de la hauteur maximale atteinte en un point I:\n");
+          printf("La hauteur maximale est obtenue lorsque le vecteur vitesse V est horizontale soit Vy = 0\n");
+          printf("Alors -gt + v0*sin(Angle) = 0 => t = (v0*sin(Angle))/g\n");
+          printf("On remplace de nouveau dans l'%cquation horaire de y(t), on obtient:\n",130);
+          printf("xI = -0.5*(v0*sin(Angle)/g)%c + v0*sin(Angle)*((v0*sin(Angle))/g)\n",253);
+          printf("xI = -((v0%c*sin%c(Angle))/2*g) + ((v0%c*sin%c(Angle))/g)\n",253,253,253,253);
+          printf("xI = ((v0%c*sin%c(Angle))/2*g)\n",253,253);
+          printf("xI = %i",(int)abs(maxY-1));
+
+          printf("\n\nConclusion pour une vitesse initial de %i m/s et un angle initial de %i degr%c(s) le projectile atteindra une hauteur \nmaximale de %i m%ctres et atterrira %c %i m%ctres plus loin pour une dur%ce de %f secondes!\n",(int)v0,(int)angle,130,(int)abs(maxY-1),130,133,(int)abs(maxX),130,130,(float)abs(maxX/v0));
           printf("\n(1) Afficher une repr%csentation graphique de la trajectoire?\n",130);
           printf("Quel est votre choix?:");
           scanf("%d",&choix_t);
