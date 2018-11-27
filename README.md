@@ -1,5 +1,6 @@
-# Calcul d'intégral + plus représentation graphique
+![Image](https://raw.githubusercontent.com/vertingo/Easy_Admin_YouTube_Newsletter_Firebase/master/web/assets/images/github/vertin_go_website.jpg)
 
+# Calcul d'intégral + plus représentation graphique
 Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécuté voir ci-dessous) en langage C sous Code:Blocks!
 Retrouvez également le logiciel sous forme exécutable ==> https://dotnet.developpez.com/telecharger/detail/id/6262/Calcul-et-modelisation-d-une-integral
 
