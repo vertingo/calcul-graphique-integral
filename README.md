@@ -1,6 +1,6 @@
 ![Image](https://raw.githubusercontent.com/vertingo/Easy_Admin_YouTube_Newsletter_Firebase/master/web/assets/images/github/vertin_go_website.jpg)
 
-# Calcul d'intégral + plus représentation graphique
+# 🌐 Calcul d'intégral + plus représentation graphique
 Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécuté voir ci-dessous) en langage C sous Code:Blocks!
 Retrouvez également le logiciel sous forme exécutable ==> https://dotnet.developpez.com/telecharger/detail/id/6262/Calcul-et-modelisation-d-une-integral
 
@@ -25,7 +25,7 @@ Retrouvez également le logiciel sous forme exécutable ==> https://dotnet.devel
   </p>
 
 
-## Prérequis
+## 🌐 Prérequis
 Téléchargement et installation du logiciel Code::Blocks disponible en téléchargement sur le lien suivant: http://www.commentcamarche.net/download/telecharger-34056352-code-blocks
 
 1)Installation localement du compilateur MinGW disponible en téléchargement sur le lien suivant: https://sourceforge.net/projects/mingw-w64/
@@ -72,7 +72,7 @@ Une fois téléchargé rendez-vous dans le dossier d'installation du logiciel Co
   <a href="https://raw.githubusercontent.com/vertingo/Calcul_Graphique_Integral/master/images/newproject-sdl4.png"><img src="images/newproject-sdl4.png" width="700" height="450"/></a><br>
 </p>
 
-## Usage
+## 🌐 Usage
 Grâce à ce calculateur d'intégral vous allez pouvoir calculer l'intégral de n'importe quelle courbe en spécifiant la valeur des bornes inférieure et supérieure de l'intégral et également visualiser graphiquement l'air sous la courbe!
 Voyez les illustrations ci-dessous!
 
