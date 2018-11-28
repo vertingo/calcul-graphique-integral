@@ -1,4 +1,7 @@
 ![Image](https://raw.githubusercontent.com/vertingo/Easy_Admin_YouTube_Newsletter_Firebase/master/web/assets/images/github/vertin_go_website.jpg)
+### 🌐 Apporter votre soutien au projet :heart: pour de futures évolutions!
+[![GitHub stars](https://img.shields.io/github/stars/vertingo/screenshott.svg?style=social&label=Star)](https://github.com/vertingo/Calcul_Graphique_Integral) [![GitHub forks](https://img.shields.io/github/forks/vertingo/screenshott.svg?style=social&label=Fork)](https://github.com/vertingo/Calcul_Graphique_Integral/fork) [![GitHub watchers](https://img.shields.io/github/watchers/vertingo/screenshott.svg?style=social&label=Watch)](https://github.com/vertingo/Calcul_Graphique_Integral) [![GitHub followers](https://img.shields.io/github/followers/vertingo.svg?style=social&label=Follow)](https://github.com/vertingo)
+[![Twitter Follow](https://img.shields.io/twitter/follow/Vertin_Go.svg?style=social)](https://twitter.com/Vertin_Go)
 
 # 🌐 Calcul d'intégral + plus représentation graphique
 Un programme SDL(Nécessite l'installation de SDL pour être compilé et exécuté voir ci-dessous) en langage C sous Code:Blocks!
