@@ -173,7 +173,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1325738639 c:\program files (x86)\codeblocks\sdl-1.2.15\include\sdl\sdl_video.h
+1537000134 c:\program files (x86)\codeblocks\sdl-1.2.15\include\sdl\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -299,6 +299,62 @@
 	"utilisateur.h"
 
 1512700463 source:c:\users\vertingo\desktop\projet c\projet_sdl\calcul_integral\mini_rsa.cpp
+	<cstdlib>
+	"mini_rsa.h"
+
+1706674156 source:e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\main.cpp
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<unistd.h>
+	<windows.h>
+	<conio.h>
+	<string.h>
+	<sdl/sdl.h>
+	<string.h>
+	<iostream>
+	<vector>
+	<locale.h>
+	"headers/mini_rsa.h"
+	"headers/vecteurs.h"
+	"headers/utilisateur.h"
+	"headers/outils.h"
+
+1706674156 e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\headers\mini_rsa.h
+
+1706674156 e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\headers\vecteurs.h
+	"utilisateur.h"
+	"utilitaires.h"
+
+1706674156 e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\headers\utilisateur.h
+	<iostream>
+
+1706674156 e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\headers\utilitaires.h
+	<iostream>
+	<math.h>
+	<vector>
+
+1706674156 e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\headers\outils.h
+	<iostream>
+	<fstream>
+	<math.h>
+	<vector>
+	"convertisseur.h"
+	"utilisateur.h"
+	"utilitaires.h"
+
+1706674156 e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\headers\convertisseur.h
+	<iostream>
+	<string>
+	<vector>
+	"convertisseur_temperature.h"
+	"utilisateur.h"
+
+1706674156 e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\headers\convertisseur_temperature.h
+	<iostream>
+	"utilisateur.h"
+
+1706674156 source:e:\backup_pc_niji\ressources_vertin_go_website\projets\calcul-integral-project\calcul_graphique_integral\mini_rsa.cpp
 	<cstdlib>
 	"mini_rsa.h"
 
